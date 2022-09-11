@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +7,15 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  faUserCircle = faUserCircle
+  faUserCircle = faUserCircle;
+  faQuestionCircle = faQuestionCircle;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  toggleNav(e:any){
+    e.target.parentElement.classList.toggle('show')
   }
 
 }

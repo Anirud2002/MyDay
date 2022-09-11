@@ -1,7 +1,20 @@
 <nav class="sm:w-11/12 md:w-5/6 lg:w-4/5 w-full mx-auto p-6 flex flex-row justify-around items-center">
-    <div class="left-nav sm:flex-1">
-        <div class="logo">
+    <div class="left-nav flex-1 relative sm:w-auto w-full">
+        <div class="logo text-center sm:text-left">
             <h1 class="logo-title md:text-4xl sm:text-3xl text-2xl">myDay</h1>
+        </div>
+        <div class="nav-burger sm:hidden bg-black w-32 h-auto rounded-md absolute flex flex-col justify-center items-center -right-0 top-0 z-50">
+            <div class="dots absolute flex flex-col justify-center items-center translate-y-1/2 right-0 space-y-1 top-0 cursor-pointer w-6 h-6" (click)="toggleNav($event)">
+                <div class="dot bg-white rounded-full w-1 h-1"></div>
+                <div class="dot bg-white rounded-full w-1 h-1"></div>
+                <div class="dot bg-white rounded-full w-1 h-1"></div>
+            </div>
+            <ul class="burger-links flex flex-col justify-center items-center text-white space-y-10 my-10">
+                <li class="active">Share</li>
+                <li>Explore</li>
+                <li>Journals</li>
+                <li>Support <span><fa-icon [icon]="faQuestionCircle" size="sm"></fa-icon></span></li>
+            </ul>
         </div>
     </div>
     <div class="right-nav sm:flex items-center flex-2 hidden">
@@ -9,7 +22,7 @@
             <li class="active">Share</li>
             <li>Explore</li>
             <li>Journals</li>
-            <li>Support</li>
+            <li>Support <span><fa-icon [icon]="faQuestionCircle" size="sm"></fa-icon></span></li>
         </ul>
         <div class="avatar sm:ml-14 md:ml- lg:ml-28">
             <fa-icon [icon]="faUserCircle" size="2xl" class="cursor-pointer"></fa-icon>

@@ -10,6 +10,20 @@
     display: flex;
     flex-direction: column;
 }
+
+.nav-burger{
+    clip-path: circle(20px at right 24px);
+    transition: .7s cubic-bezier(.85,.09,.14,1.42);
+}
+
+.nav-burger.show{
+    clip-path: circle(100%);
+}
+
+.dot{
+    pointer-events: none;
+}
+
 .active::after{
     content: "";
     position: absolute;
@@ -20,4 +34,14 @@
     height: 4px;
     border-radius: 10px;
     background-color: var(--cyan);
+    animation: reveal .3s ease;
+}
+
+@keyframes reveal{
+    0%{
+        transform: translateX(-50%) scaleX(0);
+    }
+    100%{
+        transform: translateX(-50%) scaleX(1);
+    }
 }
