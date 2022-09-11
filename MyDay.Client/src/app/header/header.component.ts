@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +6,6 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  faUserCircle = faUserCircle;
   constructor() { }
 
   ngOnInit(): void {
