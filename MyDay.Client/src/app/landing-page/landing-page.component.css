@@ -9,11 +9,11 @@
 }
 
 button{
-    background-color: #07BF9E;
+    background-color: var(--cyan);
     font-family: "Roboto", sans-serif;
     transition: .2s ease;
 }
 
 button:hover{
-    background-color: #06b293;
+    background-color: var(--cyan-100);
 }

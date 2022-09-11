@@ -19,5 +19,5 @@
     width: 50%;
     height: 4px;
     border-radius: 10px;
-    background-color: #07BF9E;
+    background-color: var(--cyan);
 }

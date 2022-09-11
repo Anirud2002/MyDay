@@ -2,3 +2,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root{
+    --cyan: #07BF9E;
+    --cyan-100: #06b293;
+    --text-primary: #000000;
+    --text-secondary: #9E9E9E;
+}
