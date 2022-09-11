@@ -1,0 +1,19 @@
+:host ::ng-deep .ck-editor__editable_inline {
+    min-height: 400px;
+    height: auto;
+    border-radius: 0 0 10px 10px !important;
+}
+
+:host ::ng-deep .ck.ck-toolbar{
+    border-radius: 10px 10px 0 0 !important;
+}
+
+button{
+    background-color: #07BF9E;
+    font-family: "Roboto", sans-serif;
+    transition: .2s ease;
+}
+
+button:hover{
+    background-color: #06b293;
+}
