@@ -1,0 +1,23 @@
+.logo-title{
+    font-family: 'Dancing Script', cursive;
+}
+.links{
+    font-family: 'Roboto', sans-serif;
+}
+
+.active{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.active::after{
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 4px;
+    border-radius: 10px;
+    background-color: #07BF9E;
+}

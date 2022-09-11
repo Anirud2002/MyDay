@@ -1,17 +1,18 @@
-<nav class="sm:w-11/12 md:w-5/6 w-4/5 bg-slate-200 mx-auto p-6 flex flex-row justify-around items-center">
-    <div class="left-nav flex-1">
+<nav class="sm:w-11/12 md:w-5/6 lg:w-4/5 w-full mx-auto p-6 flex flex-row justify-around items-center">
+    <div class="left-nav sm:flex-1">
         <div class="logo">
             <h1 class="logo-title md:text-4xl sm:text-3xl text-2xl">myDay</h1>
         </div>
     </div>
-    <div class="right-nav flex-2">
-        <ul class="links flex flex-row justify-between space-x-20">
-            <li>Share</li>
+    <div class="right-nav sm:flex items-center flex-2 hidden">
+        <ul class="links flex flex-row justify-between lg:space-x-20 md:space-x-16 sm:space-x-10 space-x-10">
+            <li class="active">Share</li>
             <li>Explore</li>
             <li>Journals</li>
             <li>Support</li>
         </ul>
-        <div class="avatar">
+        <div class="avatar sm:ml-14 md:ml- lg:ml-28">
+            <fa-icon [icon]="faUserCircle" size="2xl" class="cursor-pointer"></fa-icon>
         </div>
     </div>
 </nav>
