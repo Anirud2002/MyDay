@@ -19,10 +19,10 @@
     </div>
     <div class="right-nav sm:flex items-center flex-2 hidden">
         <ul class="links flex flex-row justify-between lg:space-x-20 md:space-x-16 sm:space-x-10 space-x-10">
-            <li class="active">Share</li>
-            <li>Explore</li>
-            <li>Journals</li>
-            <li>Support <span><fa-icon [icon]="faQuestionCircle" size="sm"></fa-icon></span></li>
+            <li class="active" routerLink="/">Share</li>
+            <li routerLink="/explore">Explore</li>
+            <li routerLink="/journals">Journals</li>
+            <li routerLink="/support">Support <span><fa-icon [icon]="faQuestionCircle" size="sm"></fa-icon></span></li>
         </ul>
         <div class="avatar sm:ml-14 md:ml- lg:ml-28">
             <fa-icon [icon]="faUserCircle" size="2xl" class="cursor-pointer"></fa-icon>

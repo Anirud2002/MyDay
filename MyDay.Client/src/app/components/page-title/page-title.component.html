@@ -1,0 +1,17 @@
+
+<ng-container [ngSwitch]="activePage">
+    <div *ngSwitchCase="'/'" class="page-title mx-auto text-center my-10 text-lg sm:text-xl">
+        <p>Share your day with full Privacy</p>
+        <p>Heal yourself with <span class="font-bold italic">Journaling</span></p>
+    </div>
+    <div *ngSwitchCase="'/explore'" class="page-title mx-auto text-center my-10 text-lg sm:text-xl">
+        <p>Explore and Support Other's <span class="font-bold italic">Day</span></p>
+    </div>
+    <div *ngSwitchCase="'/journals'" class="page-title mx-auto text-center my-10 text-lg sm:text-xl">
+        <p>See why others are <span class="font-bold italic">Grateful</span></p>
+    </div>
+    <div *ngSwitchCase="'/support'" class="page-title mx-auto text-center my-10 text-lg sm:text-xl">
+        <p>Support the <span class="font-bold italic">Developer(s)</span></p>
+    </div>
+
+</ng-container>
