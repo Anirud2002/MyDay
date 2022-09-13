@@ -8,6 +8,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { ExploreComponent } from './components/explore/explore.component';
 import { HeaderComponent } from './components/header/header.component'; 
 import { PageTitleComponent } from './components/page-title/page-title.component';
+import { FloatingButtonComponent } from './components/floating-button/floating-button.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PageTitleComponent } from './components/page-title/page-title.component
     LandingPageComponent,
     ExploreComponent,
     HeaderComponent,
-    PageTitleComponent
+    PageTitleComponent,
+    FloatingButtonComponent
   ],
   imports: [
     BrowserModule,

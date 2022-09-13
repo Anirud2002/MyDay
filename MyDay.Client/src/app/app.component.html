@@ -3,13 +3,5 @@
     <app-page-title></app-page-title>
     <router-outlet></router-outlet>
 
-    <div class="info-section w-96 h-auto absolute right-10 bottom-10 p-6 pb-12 rounded-3xl">
-        <p class="text-white font-thin text-base">
-            <span class="font-semibold block text-center mb-4 text-lg">What is MyDay?</span>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod facilis rem vel enim, tempora repellendus provident quaerat dolorem beatae! Magni minus mollitia sit tenetur ducimus odit, maxime libero voluptatem blanditiis fugiat in ipsum eum optio, iure illo, possimus rerum eos ullam. Architecto, commodi et? Vel nostrum inventore molestias cupiditate ea.
-        </p>
-    </div>
-    <button class="rounded-full z-50 w-12 h-12 absolute flex justify-center items-center text-white right-10 bottom-10" (click)="toggleInfoSection()">
-        <fa-icon [icon]="faQuestion"></fa-icon>
-    </button>
+    <app-floating-button></app-floating-button>
 </div>
