@@ -9,6 +9,7 @@ import { ExploreComponent } from './components/explore/explore.component';
 import { HeaderComponent } from './components/header/header.component'; 
 import { PageTitleComponent } from './components/page-title/page-title.component';
 import { FloatingButtonComponent } from './components/floating-button/floating-button.component';
+import { JournalsComponent } from './components/journals/journals.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FloatingButtonComponent } from './components/floating-button/floating-b
     ExploreComponent,
     HeaderComponent,
     PageTitleComponent,
-    FloatingButtonComponent
+    FloatingButtonComponent,
+    JournalsComponent
   ],
   imports: [
     BrowserModule,

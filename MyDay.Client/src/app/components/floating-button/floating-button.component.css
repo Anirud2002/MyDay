@@ -5,7 +5,7 @@ p{
 .info-section{
     background-color: var(--cyan);
     clip-path: circle(5px at 100% 100%);
-    transition: .7s cubic-bezier(.85,.09,.14,1.42);
+    transition: .7s cubic-bezier(.55,.55,.83,.82);
 }
 
 .info-section.reveal{
