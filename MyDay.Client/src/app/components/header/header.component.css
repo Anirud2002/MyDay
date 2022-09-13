@@ -19,6 +19,7 @@
     height: 4px;
     border-radius: 10px;
     background-color: var(--cyan);
+    animation: reveal .3s ease;
 }
 
 li{

@@ -1,3 +1,22 @@
 p{
-    font-family: 'Dancing Script', cursive;
+    font-family: "Roboto", sans-serif;
+}
+
+.info-section{
+    background-color: var(--cyan);
+    clip-path: circle(5px at 100% 100%);
+    transition: .7s cubic-bezier(.85,.09,.14,1.42);
+}
+
+.info-section.reveal{
+    clip-path: circle(100%);
+}
+
+button{
+    background-color: var(--cyan);
+    transition: .2s ease;
+}
+
+button:hover{
+    background-color: var(--cyan-100);
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { faPaperPlane, faQuestion } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-landing-page',
@@ -10,9 +10,11 @@ import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 export class LandingPageComponent implements OnInit {
   public Editor = ClassicEditor;
   faPaperPlane = faPaperPlane;
+  faQuestion = faQuestion;
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }
