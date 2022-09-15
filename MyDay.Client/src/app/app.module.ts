@@ -11,6 +11,10 @@ import { PageTitleComponent } from './components/page-title/page-title.component
 import { FloatingButtonComponent } from './components/floating-button/floating-button.component';
 import { JournalsComponent } from './components/journals/journals.component';
 import { SupportComponent } from './components/support/support.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { InfoComponent } from './components/profile/components/info/info.component';
+import { MyPostsComponent } from './components/profile/components/my-posts/my-posts.component';
+import { MyJournalsComponent } from './components/profile/components/my-journals/my-journals.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { SupportComponent } from './components/support/support.component';
     PageTitleComponent,
     FloatingButtonComponent,
     JournalsComponent,
-    SupportComponent
+    SupportComponent,
+    ProfileComponent,
+    InfoComponent,
+    MyPostsComponent,
+    MyJournalsComponent
   ],
   imports: [
     BrowserModule,

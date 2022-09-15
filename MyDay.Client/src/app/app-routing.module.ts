@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ExploreComponent } from './components/explore/explore.component';
 import { JournalsComponent } from './components/journals/journals.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { SupportComponent } from './components/support/support.component';
 
 const routes: Routes = [
@@ -19,6 +20,10 @@ const routes: Routes = [
   },
   {
     path: "support", component: SupportComponent
+  }
+  ,
+  {
+    path: "profile", component: ProfileComponent
   }
 ];
 

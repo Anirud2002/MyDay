@@ -11,9 +11,9 @@
             </div>
             <ul class="burger-links flex flex-col justify-center items-center text-white space-y-10 my-10">
                 <li [class]="activePage === '/' ? 'active' : ''" routerLink="/">Share</li>
-            <li [class]="activePage === '/explore' ? 'active' : ''" routerLink="/explore">Explore</li>
-            <li [class]="activePage === '/journals' ? 'active' : ''" routerLink="/journals">Journals</li>
-            <li [class]="activePage === '/support' ? 'active' : ''" routerLink="/support">Support <span><fa-icon [icon]="faQuestionCircle" size="sm"></fa-icon></span></li>
+                <li [class]="activePage === '/explore' ? 'active' : ''" routerLink="/explore">Explore</li>
+                <li [class]="activePage === '/journals' ? 'active' : ''" routerLink="/journals">Journals</li>
+                <li [class]="activePage === '/support' ? 'active' : ''" routerLink="/support">Support <span><fa-icon [icon]="faQuestionCircle" size="sm"></fa-icon></span></li>
             </ul>
         </div>
     </div>
@@ -24,7 +24,7 @@
             <li [class]="activePage === '/journals' ? 'active' : ''" routerLink="/journals">Journals</li>
             <li [class]="activePage === '/support' ? 'active' : ''" routerLink="/support">Support <span><fa-icon [icon]="faQuestionCircle" size="sm"></fa-icon></span></li>
         </ul>
-        <div class="avatar sm:ml-14 md:ml- lg:ml-28">
+        <div class="avatar sm:ml-14 lg:ml-28" routerLink="/profile">
             <fa-icon [icon]="faUserCircle" size="2xl" class="cursor-pointer"></fa-icon>
         </div>
     </div>

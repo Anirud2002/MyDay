@@ -1,0 +1,27 @@
+<div class="sm:w-11/12 md:w-4/5 lg:w-3/5 w-full mx-auto p-6 flex flex-col justify-center items-center">
+    <div class="user-photo -mt-12">
+        <img src="../../../assets/IMG_2138.jpg" alt="" srcset="" class="w-48 h-48 rounded-full object-cover">
+    </div>
+    <div class="tabs mt-8">
+        <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
+            <ul class="flex flex-wrap -mb-px space-x-12">
+                <li class="w-36 inline-block p-4 text-blue-600 rounded-t-lg border-b-2 border-blue-600 active dark:text-blue-500 dark:border-blue-500 cursor-pointer" (click)="currentTab = 'info'">
+                   Info
+                </li>
+                <li class="w-36 inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 cursor-pointer" (click)="currentTab = 'posts'">
+                   My Posts
+                </li>
+                <li class="w-36 inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 cursor-pointer" (click)="currentTab = 'journals'">
+                   Journals
+                </li>           
+            </ul>
+        </div>
+    </div>
+    <div class="tab-section bg-orange-500">
+        <ng-container [ngSwitch]="currentTab">
+            <app-info *ngSwitchCase="'info'"></app-info>
+            <app-my-posts *ngSwitchCase="'posts'"></app-my-posts>
+            <app-my-journals *ngSwitchCase="'journals'"></app-my-journals>
+        </ng-container>
+    </div>
+</div>
