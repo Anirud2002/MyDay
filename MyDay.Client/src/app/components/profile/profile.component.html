@@ -4,20 +4,20 @@
     </div>
     <div class="tabs mt-8">
         <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
-            <ul class="flex flex-wrap -mb-px space-x-12">
-                <li class="w-36 inline-block p-4 text-blue-600 rounded-t-lg border-b-2 border-blue-600 active dark:text-blue-500 dark:border-blue-500 cursor-pointer" (click)="currentTab = 'info'">
+            <ul class="flex flex-wrap -mb-px lg:space-x-12 md:space-x-10 sm:space-x-8">
+                <li [class]="currentTab === 'info' ? 'active w-36' : 'w-36'"(click)="currentTab = 'info'">
                    Info
                 </li>
-                <li class="w-36 inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 cursor-pointer" (click)="currentTab = 'posts'">
+                <li [class]="currentTab === 'posts' ? 'active w-36' : 'w-36'" (click)="currentTab = 'posts'">
                    My Posts
                 </li>
-                <li class="w-36 inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 cursor-pointer" (click)="currentTab = 'journals'">
+                <li [class]="currentTab === 'journals' ? 'active w-36' : 'w-36'" (click)="currentTab = 'journals'">
                    Journals
                 </li>           
             </ul>
         </div>
     </div>
-    <div class="tab-section bg-orange-500">
+    <div class="tab-section w-full">
         <ng-container [ngSwitch]="currentTab">
             <app-info *ngSwitchCase="'info'"></app-info>
             <app-my-posts *ngSwitchCase="'posts'"></app-my-posts>

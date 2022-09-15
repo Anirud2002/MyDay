@@ -1,0 +1,10 @@
+li{
+    display: inline-block;
+    padding: 16px;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+}
+.active{
+    color: var(--cyan);
+    border-bottom: 2px solid var(--cyan);
+}

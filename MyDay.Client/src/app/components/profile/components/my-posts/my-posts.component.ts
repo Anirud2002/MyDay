@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faUserCircle, faShare, faHeart, faComment} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-my-posts',
@@ -6,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-posts.component.css']
 })
 export class MyPostsComponent implements OnInit {
-
+  faUserCircle = faUserCircle;
+  faShare = faShare;
+  faHeart = faHeart;
+  faComment = faComment;
   constructor() { }
 
   ngOnInit(): void {
