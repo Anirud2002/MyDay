@@ -10,6 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { PageTitleComponent } from './components/page-title/page-title.component';
 import { FloatingButtonComponent } from './components/floating-button/floating-button.component';
 import { JournalsComponent } from './components/journals/journals.component';
+import { SupportComponent } from './components/support/support.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { JournalsComponent } from './components/journals/journals.component';
     HeaderComponent,
     PageTitleComponent,
     FloatingButtonComponent,
-    JournalsComponent
+    JournalsComponent,
+    SupportComponent
   ],
   imports: [
     BrowserModule,

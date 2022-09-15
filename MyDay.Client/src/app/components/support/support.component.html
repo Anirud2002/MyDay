@@ -1,0 +1,47 @@
+<div class="sm:w-11/12 md:w-10/12 lg:w-3/4 w-full mx-auto p-6 flex flex-col justify-around items-center">
+    <div class="supports w-full flex md:flex-row flex-col justify-center md:items-start items-center">
+        <div class="financial-support flex flex-col items-start p-4 ">
+            <div class="support-heading flex flex-row items-center">
+                <h1 class="text-bold text-2xl lg:text-3xl italic">Financial Support</h1>
+                <button class="rounded-full lg:w-12 lg:h-12  w-10 h-10 flex justify-center items-center text-white ml-4">
+                    <fa-icon [icon]="faDollar" class="icon"></fa-icon>
+                </button>
+            </div>
+            <div class="financial-form">
+                <p class="text-neutral-400">We accept:</p>
+                <div class="cards mt-2">
+                    <div class="visa">
+                        <img src="../../../assets/full-color-800x450-cee226a48bed4177b90351075b332227.jpeg" class="w-16 rounded-xl" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="input-fields mt-6">
+                    <input type="text" placeholder="Card Number" class="w-60 border-2 rounded-md py-2 px-2 block">
+                    <input type="text" placeholder="MM / YY" class="inline-block w-20 border-2 rounded-md py-2 px-2 mt-2">
+                    <input type="text" placeholder="CVV" class="w-20 border-2 rounded-md py-2 px-2 mt-2 ml-4">
+                </div>
+            </div>
+            <div class="send-btn flex justify-center mt-6 w-full">
+                <button class="rounded-lg py-1 px-2 text-white cursor-pointer">Support <fa-icon [icon]="faDollar" class="ml-2"></fa-icon></button>
+            </div>
+        </div>
+
+        <div class="divider w-px h-48 mt-14 mx-16 hidden md:block"></div>
+
+        <div class="feedback-support flex flex-col items-startp-4 md:mt-0 mt-6">
+            <div class="support-heading flex flex-row items-center">
+                <h1 class="text-bold text-2xl lg:text-3xl italic">Feedback Support</h1>
+                <button class="rounded-full lg:w-12 lg:h-12  w-10 h-10 flex justify-center items-center text-white ml-4">
+                    <fa-icon [icon]="faComment" class="icon"></fa-icon>
+                </button>
+            </div>
+            <div class="feedback-form">
+                <div class="input-fields mt-6">
+                    <textarea type="text" placeholder="Feedback..." class="w-11/12 h-44 border-2 rounded-md py-2 px-2 block"></textarea>
+                </div>
+            </div>
+            <div class="send-btn flex justify-center mt-6 w-full">
+                <button class="rounded-lg py-1 px-2 text-white cursor-pointer">Support <fa-icon [icon]="faComment" class="ml-2"></fa-icon></button>
+            </div>
+        </div>
+    </div>
+</div>

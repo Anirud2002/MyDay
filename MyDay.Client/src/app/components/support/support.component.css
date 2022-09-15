@@ -1,0 +1,17 @@
+button{
+    background-color: var(--cyan);
+    transition: .2s ease;
+    cursor: default;
+}
+
+.send-btn button{
+    cursor: pointer;
+}
+
+.send-btn button:hover{
+    background-color: var(--cyan-100);
+}
+
+.divider{
+    background-color: #D9D9D9;
+}
