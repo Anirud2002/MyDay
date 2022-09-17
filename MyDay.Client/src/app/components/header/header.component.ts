@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faUserCircle, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { NavigationEnd, Event as NavigationEvent, Router } from '@angular/router';
+import { GetCurrentPageService } from '../../_services/get-current-page.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -9,23 +10,13 @@ import { NavigationEnd, Event as NavigationEvent, Router } from '@angular/router
 export class HeaderComponent implements OnInit {
   faUserCircle = faUserCircle;
   faQuestionCircle = faQuestionCircle;
-  activePage: string = "";
-  constructor(private router: Router) { 
-    this.router.events
-    .subscribe(
-      (event: NavigationEvent) => {
-        if(event instanceof NavigationEnd) {
-          this.getActivePage();
-        }
-    });
-  }
+  activePage: any;
+  constructor(private router: Router, private getCurrentPageService: GetCurrentPageService) { }
 
   ngOnInit(): void {
-    this.getActivePage();
-  }
-
-  getActivePage(){
-    this.activePage = this.router.url;
+    this.getCurrentPageService.getActivePageObservable().subscribe(res => {
+      this.activePage = res;
+    })
   }
 
   toggleNav(e:any){
