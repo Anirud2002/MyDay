@@ -12,7 +12,7 @@
         </p>
     </ng-container>
 </div>
-<button class="rounded-full z-50 w-12 h-12 fixed flex justify-center items-center text-white right-10 bottom-10" (click)="toggleInfoSection()">
+<button *ngIf="activePage != '/profile'" class="rounded-full z-50 w-12 h-12 fixed flex justify-center items-center text-white right-10 bottom-10" (click)="toggleInfoSection()">
     <ng-container [ngSwitch]="activePage">
         <fa-icon [icon]="faQuestion" *ngSwitchCase="'/'"></fa-icon>
         <fa-icon [icon]="faPlus" *ngSwitchCase="'/explore'"></fa-icon>
