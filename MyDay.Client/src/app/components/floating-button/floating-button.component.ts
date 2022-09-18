@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { faQuestion } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
+import { faQuestion, faPlus, faPencil, faSun } from '@fortawesome/free-solid-svg-icons';
+import { GetCurrentPageService } from '../../_services/get-current-page.service';
 
 @Component({
   selector: 'app-floating-button',
@@ -8,9 +10,17 @@ import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 })
 export class FloatingButtonComponent implements OnInit {
   faQuestion = faQuestion;
-  constructor() { }
+  faPlus = faPlus
+  faPencil = faPencil;
+  faSun = faSun;
+  activePage: any;
+
+  constructor(private router: Router, private getCurrentPageService: GetCurrentPageService) { }
 
   ngOnInit(): void {
+    this.getCurrentPageService.getActivePageObservable().subscribe(res => {
+      this.activePage = res;
+    })
   }
 
   toggleInfoSection(){
