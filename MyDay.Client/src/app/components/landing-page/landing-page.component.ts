@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { Component, Input, OnInit } from '@angular/core';
+import * as customCkEditor from '../../customCkBuild/build/ckeditor.js';
 import { faPaperPlane, faQuestion } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -8,7 +8,8 @@ import { faPaperPlane, faQuestion } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit {
-  public Editor = ClassicEditor;
+  public Editor = customCkEditor;
+  editorContent: string = "";
   faPaperPlane = faPaperPlane;
   faQuestion = faQuestion;
   constructor() { }
@@ -16,5 +17,7 @@ export class LandingPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
+  share(){
+    console.log(this.editorContent)
+  }
 }
