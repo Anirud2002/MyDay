@@ -31,3 +31,23 @@ button{
 button:hover{
     background-color: var(--cyan-100);
 }
+
+.down-arrow{
+    color: var(--cyan);
+    transition: .3s ease-in all;
+}
+
+.down-arrow.rotate{
+    transform: rotate(180deg);
+}
+
+.dropdown{
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: .3s ease-in all;
+}
+
+.dropdown.reveal{
+    transform: translateY(0px);
+    opacity: 1;
+}
