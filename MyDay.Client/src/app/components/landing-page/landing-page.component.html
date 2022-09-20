@@ -3,12 +3,14 @@
         <ckeditor
             [editor]="Editor" 
             [config]="{
-                placeholder: 'Quickly jot down your day and share it!'}"
+                placeholder: 'Quickly jot down your day and share it!'
+            }"
             class=" w-full lg:w-3/5"
-            [(ngModel)]="editorContent">
+            [(ngModel)]="editorContent"
+        >
         </ckeditor>
         <button class="mt-6 text-white px-4 py-1 rounded-md" (click)="share()">
-            Share <fa-icon [icon]="faPaperPlane"></fa-icon>
+            Share <fa-icon [icon]="faPaperPlane" class="ml-2"></fa-icon>
         </button>
     </div>
 </div>

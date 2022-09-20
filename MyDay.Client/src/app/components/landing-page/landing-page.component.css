@@ -8,6 +8,20 @@
     border-radius: 10px 10px 0 0 !important;
 }
 
+/* This fixes the negative margin for default styling of list. */
+:host ::ng-deep li{
+    list-style-position: inside;
+}
+
+:host ::ng-deep ol{
+    list-style: decimal;
+}
+
+:host ::ng-deep ul{
+    list-style: disc;
+}
+
+
 button{
     background-color: var(--cyan);
     font-family: "Roboto", sans-serif;
