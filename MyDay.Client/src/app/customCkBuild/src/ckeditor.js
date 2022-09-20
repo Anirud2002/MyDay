@@ -71,6 +71,7 @@ Editor.defaultConfig = {
 		items: [
 			'fontSize',
 			'fontFamily',
+			'alignment',
 			'|',
 			'bold',
 			'italic',
@@ -83,10 +84,7 @@ Editor.defaultConfig = {
 			// 'outdent',
 			'indent',
 			'imageUpload',
-			'undo',
-			'redo',
 			'highlight',
-			'alignment'
 		]
 	},
 	language: 'en',

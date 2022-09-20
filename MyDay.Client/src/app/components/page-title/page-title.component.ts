@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Event as NavigationEvent, Router } from '@angular/router';
 import { GetCurrentPageService } from '../../_services/get-current-page.service';
 @Component({
   selector: 'app-page-title',
@@ -9,7 +8,7 @@ import { GetCurrentPageService } from '../../_services/get-current-page.service'
 export class PageTitleComponent implements OnInit {
   activePage: any;
 
-  constructor(private router: Router, private getCurrentPageService: GetCurrentPageService) { }
+  constructor(private getCurrentPageService: GetCurrentPageService) { }
 
   ngOnInit(): void {
     this.getCurrentPageService.getActivePageObservable().subscribe(res => {

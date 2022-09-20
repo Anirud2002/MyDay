@@ -1,12 +1,7 @@
-<div class="sm:w-11/12 md:w-10/12 lg:w-3/4 w-full mx-auto p-6 flex flex-col justify-around items-center">
+<div class="sm:w-11/12 md:w-10/12 lg:w-3/4 w-full mx-auto flex flex-col justify-around items-center">
     <div class="supports w-full flex md:flex-row flex-col justify-center md:items-start items-center">
-        <div class="financial-support flex flex-col items-start p-4 ">
-            <div class="support-heading flex flex-row items-center">
-                <h1 class="text-bold text-2xl lg:text-3xl italic">Financial Support</h1>
-                <button class="rounded-full lg:w-12 lg:h-12  w-10 h-10 flex justify-center items-center text-white ml-4">
-                    <fa-icon [icon]="faDollar" class="icon"></fa-icon>
-                </button>
-            </div>
+        <div class="financial-support flex flex-col items-center p-4 md:w-1/2 w-full">
+            <h1 class="text-bold text-2xl lg:text-3xl italic">Financial Support</h1>
             <div class="financial-form">
                 <p class="text-neutral-400">We accept:</p>
                 <div class="cards mt-2">
@@ -25,18 +20,13 @@
             </div>
         </div>
 
-        <div class="divider w-px h-48 mt-14 mx-16 hidden md:block"></div>
+        <div class="divider w-px h-48 mt-14 mx-16 md:block hidden"></div>
 
-        <div class="feedback-support flex flex-col items-startp-4 md:mt-0 mt-6">
-            <div class="support-heading flex flex-row items-center">
-                <h1 class="text-bold text-2xl lg:text-3xl italic">Feedback Support</h1>
-                <button class="rounded-full lg:w-12 lg:h-12  w-10 h-10 flex justify-center items-center text-white ml-4">
-                    <fa-icon [icon]="faComment" class="icon"></fa-icon>
-                </button>
-            </div>
+        <div class="feedback-support flex flex-col items-center md:w-1/2 w-full p-4 md:mt-0 mt-6">
+            <h1 class="text-bold text-2xl lg:text-3xl italic text-center">Feedback Support</h1>
             <div class="feedback-form">
                 <div class="input-fields mt-6">
-                    <textarea type="text" placeholder="Feedback..." class="w-11/12 h-44 border-2 rounded-md py-2 px-2 block"></textarea>
+                    <textarea type="text" placeholder="Feedback..." class="w-80 h-44 border-2 rounded-md py-2 px-2 block"></textarea>
                 </div>
             </div>
             <div class="send-btn flex justify-center mt-6 w-full">
