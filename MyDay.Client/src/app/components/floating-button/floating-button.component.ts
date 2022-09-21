@@ -34,8 +34,7 @@ export class FloatingButtonComponent implements OnInit {
   checkInfoSection(){
     const infoSection = document.querySelector(".info-section")
     if(infoSection.classList.contains('reveal')) {
-      infoSection.classList.remove('reveal');
-      infoSection.classList.add('normal');
+      infoSection.classList.replace('reveal', 'normal');
     }
   }
 
