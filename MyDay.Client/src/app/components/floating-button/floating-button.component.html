@@ -4,8 +4,8 @@
             <span class="font-semibold block text-center mb-4 text-lg">What is MyDay?</span>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod facilis rem vel enim, tempora repellendus provident quaerat dolorem beatae! Magni minus mollitia sit tenetur ducimus odit, maxime libero voluptatem blanditiis fugiat in ipsum eum optio, 
         </p>
-        <button *ngSwitchCase="'/explore'" class="p-4 rounded-md text-white">Share your Day <fa-icon [icon]="faPencil" size="lg" class="ml-4"></fa-icon></button>
-        <button *ngSwitchCase="'/journals'" class="p-4 rounded-md text-white">Write your Journal <fa-icon [icon]="faSun" size="lg" class="ml-4"></fa-icon></button>
+        <button *ngSwitchCase="'/explore'" (click)="handleClick('myday')" class="p-4 rounded-md text-white">Share your Day <fa-icon [icon]="faPencil" size="lg" class="ml-4"></fa-icon></button>
+        <button *ngSwitchCase="'/journals'" (click)="handleClick('journal')" class="p-4 rounded-md text-white">Write your Journal <fa-icon [icon]="faSun" size="lg" class="ml-4"></fa-icon></button>
         <p class="text-white font-thin text-base" *ngSwitchCase="'/support'">
             <span class="font-semibold block text-center mb-4 text-lg">Help the Developers?</span>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod facilis rem vel enim, tempora repellendus provident quaerat dolorem beatae! Magni minus mollitia sit tenetur ducimus odit, maxime libero voluptatem blanditiis fugiat in ipsum eum optio, 

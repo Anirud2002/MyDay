@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as customCkEditor from '../../customCkBuild/build/ckeditor.js';
 import { faPaperPlane, faQuestion, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
@@ -14,9 +15,22 @@ export class LandingPageComponent implements OnInit {
   faPaperPlane = faPaperPlane;
   faQuestion = faQuestion;
   faChevronDown= faChevronDown;
-  constructor() { }
+  activeAction: string = "";
+  constructor(private router: Router) { 
+    if(this.router.getCurrentNavigation().extras.state != undefined){
+      this.activeAction = this.router.getCurrentNavigation().extras.state['action'];
+    }
+  }
 
   ngOnInit(): void {
+    this.validateActiveDropDownItem()
+  }
+
+  validateActiveDropDownItem(){
+    if(this.activeAction){
+      if(this.activeAction === 'myday') this.activeDropdownItem = "MyDay"
+      else this.activeDropdownItem = "Journal"
+    }
   }
 
   share(){

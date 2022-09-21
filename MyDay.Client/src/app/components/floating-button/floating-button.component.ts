@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faQuestion, faPlus, faPencil, faSun } from '@fortawesome/free-solid-svg-icons';
 import { GetCurrentPageService } from '../../_services/get-current-page.service';
 
@@ -14,7 +15,7 @@ export class FloatingButtonComponent implements OnInit {
   faSun = faSun;
   activePage: any;
 
-  constructor(private getCurrentPageService: GetCurrentPageService) { }
+  constructor(private router: Router,private getCurrentPageService: GetCurrentPageService) { }
 
   ngOnInit(): void {
     this.getCurrentPageService.getActivePageObservable().subscribe(res => {
@@ -25,6 +26,12 @@ export class FloatingButtonComponent implements OnInit {
   toggleInfoSection(){
     const infoSection = document.querySelector(".info-section")
     infoSection?.classList.toggle("reveal")
+  }
+
+  handleClick(activeAction){
+    this.router.navigateByUrl('/', {state: {
+      action: activeAction === "myday" ? "myday" : "journal"
+    }})
   }
   
 }
