@@ -8,6 +8,10 @@ p{
     transition: .3s cubic-bezier(.55,.55,.83,.82);
 }
 
+.info-section.normal{
+    transition: none;
+}
+
 .info-section.reveal{
     clip-path: circle(100%);
 }

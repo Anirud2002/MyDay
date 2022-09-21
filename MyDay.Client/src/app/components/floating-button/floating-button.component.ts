@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, Event as NavigationEvent, NavigationStart } from '@angular/router';
 import { faQuestion, faPlus, faPencil, faSun } from '@fortawesome/free-solid-svg-icons';
 import { GetCurrentPageService } from '../../_services/get-current-page.service';
 
@@ -15,7 +15,15 @@ export class FloatingButtonComponent implements OnInit {
   faSun = faSun;
   activePage: any;
 
-  constructor(private router: Router,private getCurrentPageService: GetCurrentPageService) { }
+  constructor(private router: Router,private getCurrentPageService: GetCurrentPageService) { 
+    this.router.events
+    .subscribe(
+      (event: NavigationEvent) => {
+        if(event instanceof NavigationStart) {
+          this.checkInfoSection()
+        }
+    });
+  }
 
   ngOnInit(): void {
     this.getCurrentPageService.getActivePageObservable().subscribe(res => {
@@ -23,12 +31,21 @@ export class FloatingButtonComponent implements OnInit {
     })
   }
 
+  checkInfoSection(){
+    const infoSection = document.querySelector(".info-section")
+    if(infoSection.classList.contains('reveal')) {
+      infoSection.classList.remove('reveal');
+      infoSection.classList.add('normal');
+    }
+  }
+
   toggleInfoSection(){
     const infoSection = document.querySelector(".info-section")
+    if(infoSection.classList.contains('normal')) infoSection.classList.remove('normal')
     infoSection?.classList.toggle("reveal")
   }
 
-  handleClick(activeAction){
+  handleClick(activeAction: string){
     this.router.navigateByUrl('/', {state: {
       action: activeAction === "myday" ? "myday" : "journal"
     }})
