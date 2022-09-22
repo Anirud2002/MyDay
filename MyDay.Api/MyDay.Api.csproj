@@ -14,6 +14,6 @@
     <None Remove="Features\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Features\" />
+    <Folder Include="Entities\" />
   </ItemGroup>
 </Project>
