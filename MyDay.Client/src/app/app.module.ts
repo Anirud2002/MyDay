@@ -16,6 +16,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { InfoComponent } from './components/profile/components/info/info.component';
 import { MyPostsComponent } from './components/profile/components/my-posts/my-posts.component';
 import { MyJournalsComponent } from './components/profile/components/my-journals/my-journals.component';
+import { CommentDialogueComponent } from './components/comment-dialogue/comment-dialogue.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MyJournalsComponent } from './components/profile/components/my-journals
     ProfileComponent,
     InfoComponent,
     MyPostsComponent,
-    MyJournalsComponent
+    MyJournalsComponent,
+    CommentDialogueComponent
   ],
   imports: [
     BrowserModule,
