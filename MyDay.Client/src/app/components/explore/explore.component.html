@@ -1,4 +1,4 @@
-<div class="sm:w-11/12 md:w-4/5 lg:w-3/5 w-full mx-auto p-4 md:p-6 flex flex-col justify-center items-center">
+<div class="sm:w-11/12 md:w-4/5 lg:w-3/5 w-full mx-auto p-4 md:p-6 flex flex-col justify-center items-center overflow-hidden">
     <div class="container flex items-start mb-8">
         <div class="user">
             <fa-icon [icon]="faUserCircle" size="2xl"></fa-icon>
@@ -10,9 +10,9 @@
             </div>
             <div class="post w-full h-96 mt-4 bg-slate-300 relative">
                 <app-comment-dialogue class="comment-dialogue absolute right-6 bottom-14 z-50"></app-comment-dialogue>
-                <div class="reactions absolute flex flex-row justify-around items-center bottom-6 right-6 w-32 h-7 bg-slate-500 rounded-md">
+                <div class="reactions absolute flex flex-row justify-around items-center bottom-6 right-6 w-32 h-7 bg-slate-500 rounded-md z-50">
                     <fa-icon [icon]="faHeart" class="text-center border-r-2 w-1/3 cursor-pointer"></fa-icon>
-                    <fa-icon [icon]="faComment" (click)="popCommentDialogue()" class="text-center border-r-2 w-1/3 cursor-pointer"></fa-icon>
+                    <fa-icon [icon]="faComment" (click)="popCommentDialogue($event)" class="text-center border-r-2 w-1/3 cursor-pointer"></fa-icon>
                     <fa-icon [icon]="faShare" class="text-center w-1/3 cursor-pointer"></fa-icon>
                 </div>
             </div>
@@ -29,12 +29,13 @@
             </div>
             <div class="post w-full h-96 mt-4 bg-slate-300 relative">
                 <app-comment-dialogue class="comment-dialogue absolute right-6 bottom-14 z-50"></app-comment-dialogue>
-                <div class="reactions absolute flex flex-row justify-around items-center bottom-6 right-6 w-32 h-7 bg-slate-500 rounded-md">
+                <div class="reactions absolute flex flex-row justify-around items-center bottom-6 right-6 w-32 h-7 bg-slate-500 rounded-md z-50">
                     <fa-icon [icon]="faHeart" class="text-center border-r-2 w-1/3 cursor-pointer"></fa-icon>
-                    <fa-icon [icon]="faComment" (click)="popCommentDialogue()" class="text-center border-r-2 w-1/3 cursor-pointer"></fa-icon>
+                    <fa-icon [icon]="faComment" (click)="popCommentDialogue($event)" class="text-center border-r-2 w-1/3 cursor-pointer"></fa-icon>
                     <fa-icon [icon]="faShare" class="text-center w-1/3 cursor-pointer"></fa-icon>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<div class="backdrop w-screen h-full absolute top-0 left-0 right-0 bottom-0 z-20"></div>

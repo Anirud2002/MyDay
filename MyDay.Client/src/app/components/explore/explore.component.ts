@@ -16,7 +16,7 @@ export class ExploreComponent implements OnInit {
     .subscribe(
       (event: NavigationEvent) => {
         if(event instanceof NavigationStart) {
-          this.commentDialogue()
+          this.checkCommentDialogue()
         }
     });
   }
@@ -24,15 +24,24 @@ export class ExploreComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  popCommentDialogue(){
-    const cmtBox = document.querySelector('.comment-dialogue');
+  popCommentDialogue(e){
+    const cmtBox = e.target.parentElement.parentElement.parentElement.parentElement.childNodes[0];
     if(cmtBox.classList.contains('normal')) cmtBox.classList.remove('normal')
     cmtBox.classList.toggle('reveal')
+    const backdrop = document.querySelector('.backdrop')
+    if(!backdrop.classList.contains('reveal')) backdrop.classList.add('reveal')
+    backdrop.addEventListener('click', () => {
+      cmtBox.classList.remove('reveal')
+      backdrop.classList.remove('reveal')
+      backdrop.removeAllListeners('click')
+    })
   }
 
-  commentDialogue(){
-    const cmtBox = document.querySelector('.comment-dialogue');
-    if(cmtBox.classList.contains('reveal')) cmtBox.classList.replace('reveal', 'normal')
+  checkCommentDialogue(){
+    const cmtBox = document.querySelectorAll('.comment-dialogue');
+    cmtBox.forEach(box => {
+      if(box.classList.contains('reveal')) box.classList.replace('reveal', 'normal')
+    })
   }
 
 }
