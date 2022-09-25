@@ -1,4 +1,4 @@
-<div class="info-section w-96 max-w-fit h-auto fixed right-10 bottom-10 p-6 pb-12 rounded-3xl flex items-center justify-center">
+<div class="info-section w-96 max-w-fit h-auto fixed right-10 bottom-10 p-6 pb-12 rounded-3xl flex items-center justify-center z-50">
     <ng-container [ngSwitch]="activePage">
         <p class="text-white font-thin text-base" *ngSwitchCase="'/'">
             <span class="font-semibold block text-center mb-4 text-lg">What is MyDay?</span>
@@ -12,7 +12,7 @@
         </p>
     </ng-container>
 </div>
-<button *ngIf="activePage != '/profile'" class="rounded-full z-10 w-12 h-12 fixed flex justify-center items-center text-white right-10 bottom-10" (click)="toggleInfoSection()">
+<button *ngIf="activePage != '/profile'" class="rounded-full z-50 w-12 h-12 fixed flex justify-center items-center text-white right-10 bottom-10" (click)="toggleInfoSection()">
     <ng-container [ngSwitch]="activePage">
         <fa-icon [icon]="faQuestion" *ngSwitchCase="'/'"></fa-icon>
         <fa-icon [icon]="faPlus" *ngSwitchCase="'/explore'"></fa-icon>
