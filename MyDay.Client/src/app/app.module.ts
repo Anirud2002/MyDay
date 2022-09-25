@@ -17,6 +17,7 @@ import { InfoComponent } from './components/profile/components/info/info.compone
 import { MyPostsComponent } from './components/profile/components/my-posts/my-posts.component';
 import { MyJournalsComponent } from './components/profile/components/my-journals/my-journals.component';
 import { CommentDialogueComponent } from './components/comment-dialogue/comment-dialogue.component';
+import { DropdownItemsPipe } from './_pipes/dropdown-items.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CommentDialogueComponent } from './components/comment-dialogue/comment-
     InfoComponent,
     MyPostsComponent,
     MyJournalsComponent,
-    CommentDialogueComponent
+    CommentDialogueComponent,
+    DropdownItemsPipe
   ],
   imports: [
     BrowserModule,

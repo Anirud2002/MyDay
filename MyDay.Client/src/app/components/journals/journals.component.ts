@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Event as NavigationEvent, NavigationStart } from '@angular/router';
-import { faUserCircle, faShare, faHeart, faComment} from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faShare, faHeart, faComment, faChevronDown} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-journals',
@@ -12,6 +12,9 @@ export class JournalsComponent implements OnInit {
   faShare = faShare;
   faHeart = faHeart;
   faComment = faComment;
+  faChevronDown = faChevronDown;
+  activeJournalCategory: string = 'Motivating';
+  journalCategories: string[] = ['Motivating', 'Grateful', 'Sad']
   constructor(private router:Router) {
     this.router.events
     .subscribe(
@@ -45,4 +48,13 @@ export class JournalsComponent implements OnInit {
     })
   }
 
+  toggleDropdown(){
+    console.log( document.querySelector('.dropdown'))
+    document.querySelector('.dropdown').classList.toggle('reveal')
+    document.querySelector('.down-arrow').classList.toggle('rotate')
+  }
+
+  changeActiveDropdownItem(category){
+    this.activeJournalCategory = category;
+  }
 }

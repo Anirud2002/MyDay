@@ -23,3 +23,23 @@
  .backdrop.reveal{
      display: block;
  }
+
+ .down-arrow{
+    color: var(--cyan);
+    transition: .3s ease-in all;
+}
+
+.down-arrow.rotate{
+    transform: rotate(180deg);
+}
+
+.dropdown{
+    transform: translateY(-90px);
+    opacity: 0;
+    transition: .3s ease-in all;
+}
+
+.dropdown.reveal{
+    transform: translateY(0px);
+    opacity: 1;
+}

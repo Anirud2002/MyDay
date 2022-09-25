@@ -45,6 +45,7 @@ button:hover{
     transform: translateY(-50px);
     opacity: 0;
     transition: .3s ease-in all;
+    margin-top: 10px;
 }
 
 .dropdown.reveal{

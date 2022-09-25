@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LandingPageComponent implements OnInit {
   public Editor = customCkEditor;
   activeDropdownItem: string = 'MyDay';
+  dropDownItems: string[] = ["MyDay", "Journal"];
   editorContent: string = "";
   faPaperPlane = faPaperPlane;
   faQuestion = faQuestion;

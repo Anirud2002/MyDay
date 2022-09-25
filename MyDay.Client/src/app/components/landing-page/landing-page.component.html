@@ -1,14 +1,14 @@
 <div class="container mx-auto relative">
-    <div class="sm:w-11/12 md:w-5/6 lg:w-4/5 w-full mx-auto p-6 flex flex-col justify-center items-center">
+    <div class="sm:w-11/12 md:w-5/6 lg:w-4/5 w-full mx-auto p-6 flex flex-col justify-center items-center -mt-8">
         <div class="overflow-hidden">
-            <div (click)="toggleDropdown()" >
-                <p class="z-40 cursor-pointer inline-block"> {{activeDropdownItem}}</p>
+            <div (click)="toggleDropdown()" class=" cursor-pointer flex items-center justify-around">
+                <p> {{activeDropdownItem}}</p>
                 <fa-icon [icon]="faChevronDown" class="down-arrow cursor-pointer ml-2 inline-block"></fa-icon>
             </div>
 
             <div class="dropdown z-10 w-auto border-2 flex items-center justify-center rounded-md">
-                <p class="cursor-pointer text-sm" (click)="changeActiveDropdownItem()">
-                   {{activeDropdownItem === "MyDay" ? "Journal" : "MyDay"}}
+                <p class="cursor-pointer text-sm" *ngFor="let category of dropDownItems | dropdownItems: activeDropdownItem : dropDownItems" (click)="changeActiveDropdownItem(category)">
+                   {{category}}
                 </p>
             </div>
         </div>
