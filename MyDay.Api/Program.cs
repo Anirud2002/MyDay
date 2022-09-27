@@ -1,6 +1,27 @@
-var builder = WebApplication.CreateBuilder(args);
+using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.DataModel;
+using Amazon.Runtime;
+using Microsoft.Extensions.Options;
+using MyDay.Api.Helpers;
+using MyDay.Api.Interface;
+using MyDay.Api.Options;
+using MyDay.Api.Service;
 
+var builder = WebApplication.CreateBuilder(args);
+ConfigurationManager configuration = builder.Configuration;
 // Add services to the container.
+builder.Services.Configure<DynamoDBAccessOptions>(configuration.GetSection(DynamoDBAccessOptions.AccessName));
+builder.Services.AddScoped<ICredentialService, CredentialService>();
+//var credentials = new BasicAWSCredentials(credList.GetAppSecrets()[0], credList.GetAppSecrets()[1]);
+
+var config = new AmazonDynamoDBConfig()
+{
+
+    RegionEndpoint = Amazon.RegionEndpoint.USWest2
+};
+var client = new AmazonDynamoDBClient(credentials, config);
+builder.Services.AddSingleton<IAmazonDynamoDB>(client);
+builder.Services.AddSingleton<IDynamoDBContext, DynamoDBContext>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

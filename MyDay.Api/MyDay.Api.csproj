@@ -8,12 +8,22 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.5.5" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="Features\" />
+    <None Remove="AWSSDK.DynamoDBv2" />
+    <None Remove="Options\" />
+    <None Remove="Helpers\" />
+    <None Remove="CredentialService\" />
+    <None Remove="Interface\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
+    <Folder Include="Options\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Service\" />
+    <Folder Include="Interface\" />
   </ItemGroup>
 </Project>
