@@ -12,7 +12,7 @@ ConfigurationManager configuration = builder.Configuration;
 // Add services to the container.
 builder.Services.Configure<DynamoDBAccessOptions>(configuration.GetSection(DynamoDBAccessOptions.AccessName));
 builder.Services.AddScoped<ICredentialService, CredentialService>();
-//var credentials = new BasicAWSCredentials(credList.GetAppSecrets()[0], credList.GetAppSecrets()[1]);
+var credentials = new BasicAWSCredentials(configuration["MyDayDB:AccessKey"], configuration["MyDayDB:SecretAccessKey"]);
 
 var config = new AmazonDynamoDBConfig()
 {
