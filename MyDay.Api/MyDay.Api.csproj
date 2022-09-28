@@ -19,6 +19,7 @@
     <None Remove="Helpers\" />
     <None Remove="CredentialService\" />
     <None Remove="Interface\" />
+    <None Remove="DTOs\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
@@ -26,5 +27,6 @@
     <Folder Include="Helpers\" />
     <Folder Include="Service\" />
     <Folder Include="Interface\" />
+    <Folder Include="DTOs\" />
   </ItemGroup>
 </Project>

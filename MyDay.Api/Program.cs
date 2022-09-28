@@ -1,8 +1,6 @@
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.Runtime;
-using Microsoft.Extensions.Options;
-using MyDay.Api.Helpers;
 using MyDay.Api.Options;
 
 var builder = WebApplication.CreateBuilder(args);
