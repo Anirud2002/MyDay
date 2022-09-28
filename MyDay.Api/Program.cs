@@ -3,15 +3,12 @@ using Amazon.DynamoDBv2.DataModel;
 using Amazon.Runtime;
 using Microsoft.Extensions.Options;
 using MyDay.Api.Helpers;
-using MyDay.Api.Interface;
 using MyDay.Api.Options;
-using MyDay.Api.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
 // Add services to the container.
 builder.Services.Configure<DynamoDBAccessOptions>(configuration.GetSection(DynamoDBAccessOptions.AccessName));
-builder.Services.AddScoped<ICredentialService, CredentialService>();
 var credentials = new BasicAWSCredentials(configuration["MyDayDB:AccessKey"], configuration["MyDayDB:SecretAccessKey"]);
 
 var config = new AmazonDynamoDBConfig()
