@@ -25,7 +25,7 @@ export class ExploreComponent implements OnInit {
   }
 
   popCommentDialogue(e){
-    const cmtBox = e.target.parentElement.parentElement.parentElement.parentElement.childNodes[0];
+    const cmtBox = e.target.parentElement.parentElement.childNodes[0];
     if(cmtBox.classList.contains('normal')) cmtBox.classList.remove('normal')
     cmtBox.classList.toggle('reveal')
     const backdrop = document.querySelector('.backdrop')
