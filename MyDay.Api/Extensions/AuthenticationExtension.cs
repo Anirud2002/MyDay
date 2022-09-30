@@ -4,9 +4,9 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace MyDay.Api.Extensions
 {
-    public static class AuthenticationExtenson
+    public static class AuthenticationExtension
     {
-        public static IServiceCollection AddAutheticationServices(this IServiceCollection services, IConfiguration config)
+        public static IServiceCollection AddAuthenticationServices(this IServiceCollection services, IConfiguration config)
         {
             services.AddAuthentication(options =>
             {

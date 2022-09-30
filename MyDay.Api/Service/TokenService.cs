@@ -4,12 +4,13 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using MyDay.Api.Entities;
+using MyDay.Api.Interface;
 
 namespace MyDay.Api.Service
 {
-	public class TokenService
+	public class TokenService : ITokenService
 	{
-		private readonly SymmetricSecurityKey _key;
+        private readonly SymmetricSecurityKey _key;
 		private readonly IConfiguration _config;
 		public TokenService(IConfiguration config)
 		{

@@ -4,7 +4,7 @@ using Amazon.DynamoDBv2.DataModel;
 using Microsoft.AspNetCore.Mvc;
 using MyDay.Api.DTOs;
 using MyDay.Api.Entities;
-
+using MyDay.Api.Interface;
 
 namespace MyDay.Api.Controllers
 {
@@ -12,9 +12,11 @@ namespace MyDay.Api.Controllers
     public class AccountController : Controller
     {
         private readonly IDynamoDBContext _dynamoDBContext;
-        public AccountController(IDynamoDBContext dynamoDBContext)
+        private readonly ITokenService _tokenService;
+        public AccountController(IDynamoDBContext dynamoDBContext, ITokenService tokenService)
         {
             _dynamoDBContext = dynamoDBContext;
+            _tokenService = tokenService;
         }
 
         [HttpPost("register")]
@@ -46,7 +48,8 @@ namespace MyDay.Api.Controllers
                 UserName = user.UserName,
                 Email = user.Email,
                 FirstName = user.FirstName,
-                LastName = user.LastName
+                LastName = user.LastName,
+                Token = _tokenService.CreateToken(user)
             });
         }
 
@@ -56,12 +59,12 @@ namespace MyDay.Api.Controllers
             var user = await _dynamoDBContext.LoadAsync<MyDayUser>(loginDTO.UserName);
 
             // check for username if it exists
-            if(user == null) return BadRequest("Username/Passowrd Invalid");
+            if (user == null) return BadRequest("Username/Passowrd Invalid");
 
             using var hmac = new HMACSHA512(user.PasswordSalt);
             var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDTO.Password));
 
-            for(var i = 0; i < hash.Length; i++)
+            for (var i = 0; i < hash.Length; i++)
             {
                 if (user.PasswordHash[i] != hash[i]) return BadRequest("Username/Password Invalid");
             }
@@ -83,9 +86,9 @@ namespace MyDay.Api.Controllers
             {
                 return true;
             }
-            return false;           
+            return false;
         }
-        
+
     }
 }
 
