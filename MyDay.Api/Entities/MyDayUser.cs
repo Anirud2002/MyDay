@@ -8,8 +8,8 @@ namespace MyDay.Api.Entities
 		public string Email { get; set; } = string.Empty;
 		public string FirstName { get; set; } = string.Empty;
 		public string LastName { get; set; } = string.Empty;
-		public byte[]? PasswordHash { get; set; }
-		public byte[]? PasswordSalt { get; set; }
+		public byte[] PasswordHash { get; set; } = new byte[0];
+		public byte[] PasswordSalt { get; set; } = new byte[0];
 		public DateTime Joined { get; set; }
 		public string City { get; set; } = string.Empty;
 		// github, linkedIn, other social media
