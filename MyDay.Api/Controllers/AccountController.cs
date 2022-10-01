@@ -74,7 +74,8 @@ namespace MyDay.Api.Controllers
                 UserName = user.UserName,
                 Email = user.Email,
                 FirstName = user.FirstName,
-                LastName = user.LastName
+                LastName = user.LastName,
+                Token = _tokenService.CreateToken(user),
             });
 
         }
