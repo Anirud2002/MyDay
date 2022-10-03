@@ -27,7 +27,7 @@
             <li [class]="activePage === '/journals' ? 'active' : ''" routerLink="/journals">Journals</li>
             <li [class]="activePage === '/support' ? 'active' : ''" routerLink="/support">Support <span><fa-icon [icon]="faQuestionCircle" size="sm"></fa-icon></span></li>
         </ul>
-        <div class="avatar sm:ml-14 lg:ml-28" routerLink="/profile">
+        <div class="avatar sm:ml-14 lg:ml-28" routerLink="/profile" (click)="checkUser()">
             <fa-icon [icon]="faUserCircle" size="2xl" class="cursor-pointer"></fa-icon>
         </div>
     </div>
