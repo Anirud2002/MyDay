@@ -5,6 +5,7 @@ import { JournalsComponent } from './components/journals/journals.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SupportComponent } from './components/support/support.component';
+import { AuthGuard } from './_guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -20,10 +21,11 @@ const routes: Routes = [
   },
   {
     path: "support", component: SupportComponent
-  }
-  ,
+  },
   {
-    path: "profile", component: ProfileComponent
+    path: "profile", 
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

@@ -1,22 +1,49 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { lastValueFrom, tap } from 'rxjs';
-import { Login } from '../_interfaces/login.modal';
+import { map, ReplaySubject } from 'rxjs';
 import { User } from '../_interfaces/user.modal';
-import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
+  baseUrl = "https://localhost:5001/api/";
+  private currentUserSource = new ReplaySubject<User>(1);
+  currentUser$ = this.currentUserSource.asObservable();
+  isSignedUp: boolean = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
-  headers = new HttpHeaders({
-    'Access-Control-Allow-Origin': "*"
-  })
+  async login(model: any){
+    return await this.http.post(this.baseUrl + "account/login", model).pipe(
+      map((user: User) => {
+        if (user){
+          this.setCurrentUser(user);
+          return user
+        }
+      })
+    )
+  }
 
-  async login(){
-    return this.http.post("https://localhost:5001/api/account/login", {userName: 'Anirud2025', password: '12312312'}, {headers: this.headers}).toPromise();
+  register(model:any){
+    return this.http.post(this.baseUrl + "account/register", model).pipe(
+      map((user: User)  => {
+        if (user){
+          this.setCurrentUser(user)
+        }
+      })
+    )
+  }
+
+  setCurrentUser(user:User){
+    localStorage.setItem('user', JSON.stringify(user))
+    this.currentUserSource.next(user)
+  }
+
+  logout(){
+    localStorage.removeItem('user')
+    this.currentUserSource.next(null);
   }
 }
