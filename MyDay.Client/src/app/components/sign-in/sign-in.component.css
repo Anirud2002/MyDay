@@ -15,3 +15,11 @@ button{
 button:hover{
     background-color: var(--cyan-100);
 }
+
+.create-text{
+    transition: .2s ease;
+}
+
+.create-text:hover{
+    color: var(--cyan);
+}
