@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
     if(this.accountService.isSignedUp){
       return of(true)
     }
-    console.log("Sorry bro, go and sign up first you loser")
+    this.router.navigateByUrl("/signIn")
     return of(false)
     
   }

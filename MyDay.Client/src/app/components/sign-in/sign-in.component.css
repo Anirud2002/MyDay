@@ -1,0 +1,17 @@
+.welcome-text{
+    font-family: 'Playfair Display', serif;
+}
+
+.logo-title{
+    font-family: 'Dancing Script', cursive;
+}
+
+button{
+    background-color: var(--cyan);
+    font-family: "Roboto", sans-serif;
+    transition: .2s ease;
+}
+
+button:hover{
+    background-color: var(--cyan-100);
+}

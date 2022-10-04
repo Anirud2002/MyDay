@@ -4,6 +4,8 @@ import { ExploreComponent } from './components/explore/explore.component';
 import { JournalsComponent } from './components/journals/journals.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SupportComponent } from './components/support/support.component';
 import { AuthGuard } from './_guards/auth.guard';
 
@@ -21,6 +23,12 @@ const routes: Routes = [
   },
   {
     path: "support", component: SupportComponent
+  },
+  {
+    path: "signIn", component: SignInComponent
+  },
+  {
+    path: "signUp", component: SignUpComponent
   },
   {
     path: "profile", 
