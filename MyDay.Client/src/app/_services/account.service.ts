@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, ReplaySubject } from 'rxjs';
+import { Login } from '../_interfaces/login.modal';
 import { User } from '../_interfaces/user.modal';
 
 @Injectable({
@@ -16,10 +17,11 @@ export class AccountService {
     private http: HttpClient
   ) { }
 
-  async login(model: any){
-    return await this.http.post(this.baseUrl + "account/login", model).pipe(
+  async login(options: Login){
+    return this.http.post(this.baseUrl + "account/login", options).pipe(
       map((user: User) => {
         if (user){
+          this.isSignedUp = true;
           this.setCurrentUser(user);
           return user
         }
