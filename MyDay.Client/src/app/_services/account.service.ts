@@ -33,7 +33,9 @@ export class AccountService {
     return this.http.post(this.baseUrl + "account/register", model).pipe(
       map((user: User)  => {
         if (user){
+          this.isSignedUp = true;
           this.setCurrentUser(user)
+          return user;
         }
       })
     )
