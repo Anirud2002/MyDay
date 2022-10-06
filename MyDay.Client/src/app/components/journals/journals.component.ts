@@ -49,7 +49,6 @@ export class JournalsComponent implements OnInit {
   }
 
   toggleDropdown(){
-    console.log( document.querySelector('.dropdown'))
     document.querySelector('.dropdown').classList.toggle('reveal')
     document.querySelector('.down-arrow').classList.toggle('rotate')
   }
