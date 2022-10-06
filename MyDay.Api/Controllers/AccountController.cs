@@ -36,7 +36,7 @@ namespace MyDay.Api.Controllers
                 LastName = registerDTO.LastName,
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDTO.Password)),
                 PasswordSalt = hmac.Key,
-                City = registerDTO.City,
+                City = string.Empty,
                 Description = string.Empty,
                 Joined = DateTime.Now,
                 Links = new List<string>(),
