@@ -29,8 +29,6 @@ namespace MyDay.Api.Service
 			var tokenDescriptor = new SecurityTokenDescriptor
 			{
 				Subject = new ClaimsIdentity(claims),
-				Issuer = _config["Jwt:Issuer"],
-				Audience = _config["Jwt:Audience"],
 				SigningCredentials = creds,
 				Expires = DateTime.Now.AddDays(30)
 			};
