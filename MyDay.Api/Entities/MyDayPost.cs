@@ -4,7 +4,7 @@ using Amazon.DynamoDBv2.DataModel;
 namespace MyDay.Api.Entities
 {
 	[DynamoDBTable("MyDayPost")]
-	public class MyDay
+	public class MyDayPost
 	{
 		[DynamoDBHashKey]
 		public string AppUserID { get; set; } = string.Empty;

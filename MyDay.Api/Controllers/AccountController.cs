@@ -42,7 +42,7 @@ namespace MyDay.Api.Controllers
                 Joined = DateTime.Now,
                 Links = new List<string>(),
             };
-            await _dynamoDBContext.SaveAsync(user);
+            await _dynamoDBContext.SaveAsync<MyDayUser>(user);
 
             return new OkObjectResult(new UserDTO()
             {

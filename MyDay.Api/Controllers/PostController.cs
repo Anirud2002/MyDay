@@ -26,7 +26,23 @@ namespace MyDay.Api.Controllers
             if (string.IsNullOrEmpty(userName))
             {
                 return BadRequest("User not found!");
-            }
+            };
+
+            var user = await _dynamoDBContext.LoadAsync<MyDayUser>(userName);
+
+            var myDayPost = new MyDayPost()
+            {
+                AppUserID = user.AppUserID,
+                PostedOn = DateTime.Now,
+                MyDayPostID = Guid.NewGuid().ToString(),
+                Body = myDayPostDTO.Body,
+                Hastags = myDayPostDTO.Hashtags,
+                Likes = 0,
+                Comments = new ICollection<Comment>(),
+                LikedBy = new List<string>()
+            };
+
+            //_dynamoDBContext.SaveAsync<MyDay>()
 
             return new OkObjectResult(new PostDTO
             {
