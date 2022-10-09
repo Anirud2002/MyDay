@@ -1,6 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 using Amazon.DynamoDBv2.DataModel;
+using Amazon.DynamoDBv2.Model;
 using Microsoft.AspNetCore.Mvc;
 using MyDay.Api.DTOs;
 using MyDay.Api.Entities;
@@ -59,7 +60,7 @@ namespace MyDay.Api.Controllers
             var user = await _dynamoDBContext.LoadAsync<MyDayUser>(loginDTO.UserName);
 
             // check for username if it exists
-            if (user == null) return BadRequest("Username/Passowrd Invalid");
+            if (user == null) return BadRequest("Username/Password Invalid");
 
             using var hmac = new HMACSHA512(user.PasswordSalt);
             var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDTO.Password));
