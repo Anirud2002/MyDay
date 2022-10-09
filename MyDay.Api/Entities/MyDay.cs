@@ -1,11 +1,16 @@
 ﻿using System;
+using Amazon.DynamoDBv2.DataModel;
+
 namespace MyDay.Api.Entities
 {
+	[DynamoDBTable("MyDayPost")]
 	public class MyDay
 	{
+		[DynamoDBHashKey]
 		public string AppUserID { get; set; } = string.Empty;
-		public string MyDayPostID { get; set; } = string.Empty;
+		[DynamoDBRangeKey]
 		public DateTime PostedOn { get; set; }
+		public string MyDayPostID { get; set; } = string.Empty;
 		public string Body { get; set; } = string.Empty;
 		public List<string> Hastags { get; set; } = new List<string>();
 		public int Likes { get; set; }
