@@ -36,8 +36,10 @@ export class LandingPageComponent implements OnInit {
   }
 
   async share(){
-    console.log(this.editorContent)
-    await this.postService.myDayPost({postedOn: new Date().toLocaleString(), body: this.editorContent, hashtags: []});
+    const response = await this.postService.myDayPost({postedOn: new Date().toLocaleString(), body: this.editorContent, hashtags: []});
+      response.subscribe(res => {
+        console.log(res)
+      })
   }
 
   toggleDropdown(){
