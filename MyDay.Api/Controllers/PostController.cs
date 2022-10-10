@@ -38,11 +38,11 @@ namespace MyDay.Api.Controllers
                 Body = myDayPostDTO.Body,
                 Hastags = myDayPostDTO.Hashtags,
                 Likes = 0,
-                Comments = new ICollection<Comment>(),
+                Comments = new List<Comment>(),
                 LikedBy = new List<string>()
             };
 
-            //_dynamoDBContext.SaveAsync<MyDay>()
+            _dynamoDBContext.SaveAsync<MyDayPost>(myDayPost);
 
             return new OkObjectResult(new PostDTO
             {

@@ -14,7 +14,7 @@ namespace MyDay.Api.Entities
 		public string Body { get; set; } = string.Empty;
 		public List<string> Hastags { get; set; } = new List<string>();
 		public int Likes { get; set; }
-		public ICollection<Comment>? Comments { get; set; }
+		public List<Comment>? Comments { get; set; }
 		// stores the liked users AppUserID
 		public List<string> LikedBy { get; set; } = new List<string>();
 	}
