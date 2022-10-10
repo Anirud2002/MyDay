@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as customCkEditor from '../../customCkBuild/build/ckeditor.js';
 import { faPaperPlane, faQuestion, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { PostService } from '../../_services/post.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -17,7 +18,7 @@ export class LandingPageComponent implements OnInit {
   faQuestion = faQuestion;
   faChevronDown= faChevronDown;
   activeAction: string = "";
-  constructor(private router: Router) { 
+  constructor(private router: Router, private postService: PostService) { 
     if(this.router.getCurrentNavigation().extras.state != undefined){
       this.activeAction = this.router.getCurrentNavigation().extras.state['action'];
     }
@@ -34,8 +35,9 @@ export class LandingPageComponent implements OnInit {
     }
   }
 
-  share(){
+  async share(){
     console.log(this.editorContent)
+    await this.postService.myDayPost({postedOn: new Date().toLocaleString(), body: this.editorContent, hashtags: []});
   }
 
   toggleDropdown(){
