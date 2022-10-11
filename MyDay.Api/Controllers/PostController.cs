@@ -18,8 +18,8 @@ namespace MyDay.Api.Controllers
             _dynamoDBContext = dynamoDBContext;
         }
 
-        [HttpPost("myday")]
-        public async Task<ActionResult> CreateMyDayPost([FromBody] MyDayPostDTO myDayPostDTO)
+        [HttpPost]
+        public async Task<ActionResult> CreateMyDayPost([FromBody] PostDTO postDTO)
         {
             var userName = User.GetUserName();
 
@@ -30,28 +30,30 @@ namespace MyDay.Api.Controllers
 
             var user = await _dynamoDBContext.LoadAsync<MyDayUser>(userName);
 
-            var myDayPost = new MyDayPost()
+            var post = new Post()
             {
                 AppUserID = user.AppUserID,
                 PostedOn = DateTime.Now,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                UserName = user.UserName,
                 MyDayPostID = Guid.NewGuid().ToString(),
-                Body = myDayPostDTO.Body,
-                Hastags = myDayPostDTO.Hashtags,
+                Body = postDTO.Body,
+                Hastags = postDTO.Hashtags,
                 Likes = 0,
                 Comments = new List<Comment>(),
                 LikedBy = new List<string>()
             };
 
-            _dynamoDBContext.SaveAsync<MyDayPost>(myDayPost);
+            await _dynamoDBContext.SaveAsync<Post>(post);
 
-            return new OkObjectResult(new PostDTO
+            return new OkObjectResult(new PostViewModelDTO
             {
                 PostID = Guid.NewGuid().ToString(),
                 Category = "MyDay",
                 PostedOn = DateTime.Now,
-                Body = myDayPostDTO.Body,
-                Hashtags = new List<string>() { "day", "myLyf"},
-                
+                Body = postDTO.Body,
+                Hashtags = new List<string>()
             });
         }
     }

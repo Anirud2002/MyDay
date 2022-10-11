@@ -5,10 +5,9 @@ namespace MyDay.Api.DTOs
 {
 	public class PostDTO
 	{
-        public string PostID { get; set; } = string.Empty;
-        public string Category { get; set; } = string.Empty;
-		public DateTime PostedOn { get; set; }
+		public string PostedOn { get; set; } = string.Empty;
 		public string Body { get; set; } = string.Empty;
+		public string Category { get; set; } = string.Empty;
 		public List<string> Hashtags { get; set; } = new List<string>();
 	}
 }
