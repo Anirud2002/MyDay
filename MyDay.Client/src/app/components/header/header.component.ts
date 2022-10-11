@@ -23,20 +23,18 @@ export class HeaderComponent implements OnInit {
     this.getCurrentPageService.getActivePageObservable().subscribe(res => {
       this.activePage = res;
     })
-    this.assignEventListeners()
   }
 
   toggleNav(e:any){
-    e.target.parentElement.classList.toggle('show')
+    const navBurger = document.querySelector('.nav-burger');
+    navBurger.classList.toggle('show')
   }
 
-  assignEventListeners(){
-    const burgerLinks = document.querySelectorAll('.burger-links li')
-    burgerLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        if(document.querySelector('.nav-burger').classList.contains('show')) document.querySelector('.nav-burger').classList.remove('show')
-      })
-    })
+  closeBurger(){
+    const navBurger = document.querySelector('.nav-burger');
+    if(navBurger.classList.contains('show')) {
+      navBurger.classList.remove('show')
+    }
   }
 
 }

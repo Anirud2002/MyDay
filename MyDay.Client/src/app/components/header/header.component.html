@@ -13,10 +13,10 @@
                 <fa-icon [icon]="faUserCircle" size="2xl" class="cursor-pointer text-white"></fa-icon>
             </div>
             <ul class="burger-links flex flex-col justify-center items-center text-white space-y-10 my-10">
-                <li [class]="activePage === '/' ? 'active' : ''" routerLink="/">Share</li>
-                <li [class]="activePage === '/explore' ? 'active' : ''" routerLink="/explore">Explore</li>
-                <li [class]="activePage === '/journals' ? 'active' : ''" routerLink="/journals">Journals</li>
-                <li [class]="activePage === '/support' ? 'active' : ''" routerLink="/support">Support <span><fa-icon [icon]="faQuestionCircle" size="sm"></fa-icon></span></li>
+                <li (click)="closeBurger()" [class]="activePage === '/' ? 'active' : ''" routerLink="/">Share</li>
+                <li (click)="closeBurger()" [class]="activePage === '/explore' ? 'active' : ''" routerLink="/explore">Explore</li>
+                <li (click)="closeBurger()" [class]="activePage === '/journals' ? 'active' : ''" routerLink="/journals">Journals</li>
+                <li (click)="closeBurger()" [class]="activePage === '/support' ? 'active' : ''" routerLink="/support">Support <span><fa-icon [icon]="faQuestionCircle" size="sm"></fa-icon></span></li>
             </ul>
         </div>
     </div>
