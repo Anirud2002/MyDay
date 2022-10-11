@@ -9,6 +9,7 @@ namespace MyDay.Api.Entities
 		public string AppUserID { get; set; } = string.Empty;
 		[DynamoDBRangeKey]
 		public DateTime PostedOn { get; set; }
+		public string Category { get; set; } = string.Empty;
 		public string FirstName { get; set; } = string.Empty;
 		public string LastName { get; set; } = string.Empty;
 		public string UserName { get; set; } = string.Empty;

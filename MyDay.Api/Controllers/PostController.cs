@@ -34,6 +34,7 @@ namespace MyDay.Api.Controllers
             {
                 AppUserID = user.AppUserID,
                 PostedOn = DateTime.Now,
+                Category = postDTO.Category,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 UserName = user.UserName,
@@ -50,10 +51,10 @@ namespace MyDay.Api.Controllers
             return new OkObjectResult(new PostViewModelDTO
             {
                 PostID = Guid.NewGuid().ToString(),
-                Category = "MyDay",
+                Category = postDTO.Category,
                 PostedOn = DateTime.Now,
                 Body = postDTO.Body,
-                Hashtags = new List<string>()
+                Hashtags = postDTO.Hashtags
             });
         }
     }

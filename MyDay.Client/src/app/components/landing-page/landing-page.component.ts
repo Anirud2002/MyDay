@@ -3,6 +3,7 @@ import * as customCkEditor from '../../customCkBuild/build/ckeditor.js';
 import { faPaperPlane, faQuestion, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { PostService } from '../../_services/post.service';
+import { Post } from '../../_interfaces/post.modal.js';
 
 @Component({
   selector: 'app-landing-page',
@@ -18,6 +19,7 @@ export class LandingPageComponent implements OnInit {
   faQuestion = faQuestion;
   faChevronDown= faChevronDown;
   activeAction: string = "";
+  post: Post;
   constructor(private router: Router, private postService: PostService) { 
     if(this.router.getCurrentNavigation().extras.state != undefined){
       this.activeAction = this.router.getCurrentNavigation().extras.state['action'];
@@ -36,7 +38,14 @@ export class LandingPageComponent implements OnInit {
   }
 
   async share(){
-    const response = await this.postService.myDayPost({postedOn: new Date().toLocaleString(), body: this.editorContent, hashtags: []});
+    let post = {
+      postedOn: new Date().toLocaleString(),
+      body: this.editorContent,
+      category: this.activeDropdownItem === "MyDay" ? "MYDAY" : "JOURNAL",
+      // ********** FIX MEEE *****************
+      hashtags: this.activeDropdownItem === "MyDay" ? ["LYF", "SAD"] : []
+    } as Post
+    const response = await this.postService.post(post);
       response.subscribe(res => {
         console.log(res)
       })
