@@ -39,9 +39,19 @@ export class FloatingButtonComponent implements OnInit {
   }
 
   toggleInfoSection(){
-    const infoSection = document.querySelector(".info-section")
+    const infoSection = document.querySelector(".info-section");
+    const backdrop = document.querySelector('.backdrop');
+
     if(infoSection.classList.contains('normal')) infoSection.classList.remove('normal')
     infoSection?.classList.toggle("reveal")
+
+    if(!backdrop.classList.contains('reveal')) backdrop.classList.add('reveal')
+    backdrop.addEventListener('click', () => {
+      console.log("yoo")
+      infoSection.classList.remove('reveal')
+      backdrop.classList.remove('reveal')
+      backdrop.removeAllListeners('click')
+    })
   }
 
   handleClick(activeAction: string){
