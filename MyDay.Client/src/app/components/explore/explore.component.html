@@ -8,7 +8,7 @@
                 <p class="font-bold">Anirud Shrestha</p>
                 <p class="text-xs">Sep 10, 2022 at 10:30 AM</p>
             </div>
-            <div class="post w-full h-96 mt-4 bg-slate-300 relative">
+            <div class="post w-full p-6 pb-16 mt-4 bg-slate-200 relative rounded-lg">
                 <app-comment-dialogue class="comment-dialogue absolute right-6 bottom-14 z-50"></app-comment-dialogue>
                 <div class="reactions absolute flex flex-row justify-around items-center bottom-6 right-6 w-32 h-7 bg-slate-500 rounded-md z-40">
                     <button class="text-center border-r-2 w-1/3 cursor-pointer">
@@ -17,37 +17,14 @@
                     <button class="text-center border-r-2 w-1/3 cursor-pointer" (click)="popCommentDialogue($event)">
                         <fa-icon [icon]="faComment" class="pointer-events-none"></fa-icon>
                     </button>
-                    <button class="text-center border-r-2 w-1/3 cursor-pointer">
+                    <button class="text-center w-1/3 cursor-pointer">
                         <fa-icon [icon]="faShare" class="text-center w-1/3 cursor-pointer"></fa-icon>
                     </button>
                 </div>
+
+                <p class="post-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo quisquam voluptates error nihil omnis facilis iusto architecto, exercitationem dolores! Doloribus veniam quos itaque molestias hic quo voluptatum, corporis nobis excepturi eius dolor quis adipisci repudiandae nemo, explicabo inventore architecto quam vitae sit, optio laborum corrupti consequatur sequi sunt. Distinctio odit cum quaerat assumenda dignissimos porro numquam tenetur, similique perspiciatis sed maiores quis neque quasi modi dolores illo? Expedita esse tenetur harum et odit. Ipsum explicabo quos maiores sit obcaecati incidunt saepe quasi aliquid. Aperiam asperiores voluptate eum voluptas aliquam in officiis saepe rerum exercitationem, dolor commodi neque ratione quo minima?</p>
             </div>
         </div>
     </div>
-    <div class="container flex items-start mb-8">
-        <div class="user">
-            <fa-icon [icon]="faUserCircle" size="2xl"></fa-icon>
-        </div>
-        <div class="user-post ml-4 -mt-2 flex flex-col items-start w-full">
-            <div class="post-detail">
-                <p class="font-bold">Chhimi Sherpa</p>
-                <p class="text-xs">Sep 10, 2022 at 10:30 AM</p>
-            </div>
-            <div class="post w-full h-96 mt-4 bg-slate-300 relative">
-                <app-comment-dialogue class="comment-dialogue absolute right-6 bottom-14 z-50"></app-comment-dialogue>
-                <div class="reactions absolute flex flex-row justify-around items-center bottom-6 right-6 w-32 h-7 bg-slate-500 rounded-md z-40">
-                    <button class="text-center border-r-2 w-1/3 cursor-pointer">
-                        <fa-icon [icon]="faHeart" class=""></fa-icon>
-                    </button>
-                    <button class="text-center border-r-2 w-1/3 cursor-pointer" (click)="popCommentDialogue($event)">
-                        <fa-icon [icon]="faComment" class="pointer-events-none"></fa-icon>
-                    </button>
-                    <button class="text-center border-r-2 w-1/3 cursor-pointer">
-                        <fa-icon [icon]="faShare" class="text-center w-1/3 cursor-pointer"></fa-icon>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    
 <div class="backdrop w-screen h-full absolute top-0 left-0 right-0 bottom-0 z-20"></div>
