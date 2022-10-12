@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using Amazon.DynamoDBv2.DataModel;
+using Amazon.DynamoDBv2.DocumentModel;
 using Microsoft.AspNetCore.Mvc;
 using MyDay.Api.DTOs;
 using MyDay.Api.Entities;
@@ -16,6 +17,16 @@ namespace MyDay.Api.Controllers
         public PostController(IDynamoDBContext dynamoDBContext)
         {
             _dynamoDBContext = dynamoDBContext;
+        }
+
+        [HttpGet("{category}")]
+        public async Task<ActionResult> GetPosts(string category)
+        {
+            var conditions = new List<ScanCondition>();
+            conditions.Add(new ScanCondition("Category", ScanOperator.Contains, category));
+            List<Post> posts = await _dynamoDBContext.ScanAsync<Post>(conditions).GetRemainingAsync();
+
+            return new OkObjectResult(posts);
         }
 
         [HttpPost]
