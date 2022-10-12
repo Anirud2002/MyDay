@@ -23,7 +23,7 @@ namespace MyDay.Api.Controllers
         public async Task<ActionResult> GetPosts(string category)
         {
             var conditions = new List<ScanCondition>();
-            conditions.Add(new ScanCondition("Category", ScanOperator.Contains, category));
+            conditions.Add(new ScanCondition("Category", ScanOperator.Contains, category.ToUpper()));
             List<Post> posts = await _dynamoDBContext.ScanAsync<Post>(conditions).GetRemainingAsync();
 
             return new OkObjectResult(posts);
