@@ -13,7 +13,7 @@ namespace MyDay.Api.Entities
 		public string FirstName { get; set; } = string.Empty;
 		public string LastName { get; set; } = string.Empty;
 		public string UserName { get; set; } = string.Empty;
-		public string MyDayPostID { get; set; } = string.Empty;
+		public string PostID { get; set; } = string.Empty;
 		public string Body { get; set; } = string.Empty;
 		public List<string> Hastags { get; set; } = new List<string>();
 		public int Likes { get; set; }

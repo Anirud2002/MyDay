@@ -3,7 +3,7 @@ import * as customCkEditor from '../../customCkBuild/build/ckeditor.js';
 import { faPaperPlane, faQuestion, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { PostService } from '../../_services/post.service';
-import { Post } from '../../_interfaces/post.modal.js';
+import { CreatePost } from '../../_interfaces/create-post.modal.js';
 
 @Component({
   selector: 'app-landing-page',
@@ -19,7 +19,7 @@ export class LandingPageComponent implements OnInit {
   faQuestion = faQuestion;
   faChevronDown= faChevronDown;
   activeAction: string = "";
-  post: Post;
+  post: CreatePost;
   constructor(private router: Router, private postService: PostService) { 
     if(this.router.getCurrentNavigation().extras.state != undefined){
       this.activeAction = this.router.getCurrentNavigation().extras.state['action'];
@@ -44,11 +44,11 @@ export class LandingPageComponent implements OnInit {
       category: this.activeDropdownItem === "MyDay" ? "MYDAY" : "JOURNAL",
       // ********** FIX MEEE *****************
       hashtags: this.activeDropdownItem === "MyDay" ? ["LYF", "SAD"] : []
-    } as Post
+    } as CreatePost
     const response = await this.postService.post(post);
-      response.subscribe(res => {
-        console.log(res)
-      })
+    response.subscribe(res => {
+      console.log(res)
+    })
   }
 
   toggleDropdown(){

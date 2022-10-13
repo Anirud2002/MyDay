@@ -9,6 +9,7 @@ namespace MyDay.Api.Entities
 		public string AppUserID { get; set; } = string.Empty;
 		public string FirstName { get; set; } = string.Empty;
 		public string LastName { get; set; } = string.Empty;
+		public DateTime CommentedOn { get; set; }
 		public string CommentBody { get; set; } = string.Empty;
 	}
 }

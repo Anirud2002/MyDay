@@ -26,7 +26,27 @@ namespace MyDay.Api.Controllers
             conditions.Add(new ScanCondition("Category", ScanOperator.Contains, category.ToUpper()));
             List<Post> posts = await _dynamoDBContext.ScanAsync<Post>(conditions).GetRemainingAsync();
 
-            return new OkObjectResult(posts);
+            List<PostViewModelDTO> postViewModel = new List<PostViewModelDTO>();
+
+            for(int i = 0; i < posts.Count; i++)
+            {
+                postViewModel.Add(new PostViewModelDTO()
+                {
+                    PostID = posts[i].PostID,
+                    PostedOn = posts[i].PostedOn,
+                    Category = posts[i].Category,
+                    FirstName = posts[i].FirstName,
+                    LastName = posts[i].LastName,
+                    UserName = posts[i].UserName,
+                    Body = posts[i].Body,
+                    Hashtags = posts[i].Hastags,
+                    Likes = posts[i].Likes,
+                    LikedBy = posts[i].LikedBy,
+                    Comments = posts[i].Comments
+                });
+            }
+
+            return new OkObjectResult(postViewModel);
         }
 
         [HttpPost]
@@ -49,7 +69,7 @@ namespace MyDay.Api.Controllers
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 UserName = user.UserName,
-                MyDayPostID = Guid.NewGuid().ToString(),
+                PostID = Guid.NewGuid().ToString(),
                 Body = postDTO.Body,
                 Hastags = postDTO.Hashtags,
                 Likes = 0,
@@ -63,6 +83,9 @@ namespace MyDay.Api.Controllers
             {
                 PostID = Guid.NewGuid().ToString(),
                 Category = postDTO.Category,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                UserName = user.UserName,
                 PostedOn = DateTime.Now,
                 Body = postDTO.Body,
                 Hashtags = postDTO.Hashtags

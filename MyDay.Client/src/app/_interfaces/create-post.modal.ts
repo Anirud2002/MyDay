@@ -1,4 +1,4 @@
-export interface Post{
+export interface CreatePost{
     postedOn: string,
     body: string,
     category: string,
