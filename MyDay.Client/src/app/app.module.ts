@@ -22,6 +22,7 @@ import { DropdownItemsPipe } from './_pipes/dropdown-items.pipe';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { TokenInterceptor } from './_interceptors/token.interceptor';
+import { CacheInterceptor } from './_interceptors/cache.interceptor';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { TokenInterceptor } from './_interceptors/token.interceptor';
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })
