@@ -39,7 +39,6 @@ export class LandingPageComponent implements OnInit {
 
   async share(){
     let post = {
-      postedOn: new Date().toLocaleString(),
       body: this.editorContent,
       category: this.activeDropdownItem === "MyDay" ? "MYDAY" : "JOURNAL",
       // ********** FIX MEEE *****************
