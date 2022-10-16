@@ -16,6 +16,7 @@ namespace MyDay.Api.Entities
 		public byte[] PasswordSalt { get; set; } = new byte[0];
 		public DateTime Joined { get; set; }
 		public string City { get; set; } = string.Empty;
+		public List<string> PostIDs = new List<string>();
 		// github, linkedIn, other social media
 		public List<string> Links { get; set; } = new List<string>();
 		public string Description { get; set; } = string.Empty;

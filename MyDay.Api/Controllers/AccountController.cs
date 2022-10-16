@@ -38,6 +38,7 @@ namespace MyDay.Api.Controllers
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDTO.Password)),
                 PasswordSalt = hmac.Key,
                 City = string.Empty,
+                PostIDs = new List<string>(),
                 Description = string.Empty,
                 Joined = DateTime.Now,
                 Links = new List<string>(),

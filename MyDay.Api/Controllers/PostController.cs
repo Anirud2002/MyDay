@@ -39,7 +39,7 @@ namespace MyDay.Api.Controllers
                     LastName = posts[i].LastName,
                     UserName = posts[i].UserName,
                     Body = posts[i].Body,
-                    Hashtags = posts[i].Hastags,
+                    Hashtags = posts[i].Hashtags,
                     Likes = posts[i].Likes,
                     LikedBy = posts[i].LikedBy,
                     Comments = posts[i].Comments
@@ -63,21 +63,23 @@ namespace MyDay.Api.Controllers
 
             var post = new Post()
             {
-                AppUserID = user.AppUserID,
+                PostID = Guid.NewGuid().ToString(),
                 PostedOn = DateTime.Now,
                 Category = postDTO.Category,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 UserName = user.UserName,
-                PostID = Guid.NewGuid().ToString(),
                 Body = postDTO.Body,
-                Hastags = postDTO.Hashtags,
+                Hashtags = postDTO.Hashtags,
                 Likes = 0,
                 Comments = new List<Comment>(),
                 LikedBy = new List<string>()
             };
 
+            user.PostIDs.Insert(0, post.PostID);
+
             await _dynamoDBContext.SaveAsync<Post>(post);
+            await _dynamoDBContext.SaveAsync<MyDayUser>(user);
 
             return new OkObjectResult(new PostViewModelDTO
             {
