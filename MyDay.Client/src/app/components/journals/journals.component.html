@@ -23,17 +23,7 @@
             <h1 class="journal-type text-2xl italic font-thin">I'm grateful for,</h1>
             <div class="post w-full md:w-11/12 p-6 pb-16 mt-2 bg-slate-200 rounded-lg relative">
                 <app-comment-dialogue class="comment-dialogue absolute right-6 bottom-14 z-40"></app-comment-dialogue>
-                <div class="reactions absolute flex flex-row justify-around items-center bottom-6 right-6 w-32 h-7 bg-slate-500 rounded-md">
-                    <button class="text-center border-r-2 w-1/3 cursor-pointer">
-                        <fa-icon [icon]="faHeart" class=""></fa-icon>
-                    </button>
-                    <button class="text-center border-r-2 w-1/3 cursor-pointer" (click)="popCommentDialogue($event)">
-                        <fa-icon [icon]="faComment" class="pointer-events-none"></fa-icon>
-                    </button>
-                    <button class="text-center w-1/3 cursor-pointer">
-                        <fa-icon [icon]="faShare" class="text-center w-1/3 cursor-pointer"></fa-icon>
-                    </button>
-                </div>
+                <app-reactions></app-reactions>
 
                 <p class="post-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illo quisquam voluptates error nihil omnis facilis iusto architecto, exercitationem dolores! Doloribus veniam quos itaque molestias hic quo voluptatum, corporis nobis excepturi eius dolor quis adipisci repudiandae nemo, explicabo inventore architecto quam vitae sit, optio laborum corrupti consequatur sequi sunt. Distinctio odit cum quaerat assumenda dignissimos porro numquam tenetur, similique perspiciatis sed maiores quis neque quasi modi dolores illo? Expedita esse tenetur harum et odit. Ipsum explicabo quos maiores sit obcaecati incidunt saepe quasi aliquid. Aperiam asperiores voluptate eum voluptas aliquam in officiis saepe rerum exercitationem, dolor commodi neque ratione quo minima?</p>
             </div>
