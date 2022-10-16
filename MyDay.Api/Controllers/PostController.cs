@@ -76,6 +76,7 @@ namespace MyDay.Api.Controllers
                 LikedBy = new List<string>()
             };
 
+            // inserting new PostID for that particular user
             user.PostIDs.Insert(0, post.PostID);
 
             await _dynamoDBContext.SaveAsync<Post>(post);
@@ -83,12 +84,12 @@ namespace MyDay.Api.Controllers
 
             return new OkObjectResult(new PostViewModelDTO
             {
-                PostID = Guid.NewGuid().ToString(),
+                PostID = post.PostID,
                 Category = postDTO.Category,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 UserName = user.UserName,
-                PostedOn = DateTime.Now,
+                PostedOn = post.PostedOn,
                 Body = postDTO.Body,
                 Hashtags = postDTO.Hashtags
             });
