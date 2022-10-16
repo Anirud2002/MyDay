@@ -1,30 +1,18 @@
 <div class="sm:w-11/12 md:w-4/5 lg:w-3/5 w-full mx-auto p-4 md:p-6 flex flex-col justify-center items-center">
-    <div class="container flex items-start mb-8" *ngFor="let post of posts">
-        <div class="user">
-            <fa-icon [icon]="faUserCircle" size="2xl"></fa-icon>
+<div class="container flex items-start mb-8" *ngFor="let post of posts">
+    <div class="user">
+        <fa-icon [icon]="faUserCircle" size="2xl"></fa-icon>
+    </div>
+    <div class="user-post ml-4 -mt-2 flex flex-col items-start w-full">
+        <div class="post-detail">
+            <p class="font-bold">{{post.firstName}} {{post.lastName}}</p>
+            <p class="text-xs">{{post.postedOn | date: 'MMM d, y, h:mm a'}}</p>
         </div>
-        <div class="user-post ml-4 -mt-2 flex flex-col items-start w-full">
-            <div class="post-detail">
-                <p class="font-bold">{{post.firstName}} {{post.lastName}}</p>
-                <p class="text-xs">{{post.postedOn | date: 'MMM d, y, h:mm a'}}</p>
-            </div>
-            <div class="post w-full p-6 pb-16 mt-4 bg-slate-200 relative rounded-lg">
-                <app-comment-dialogue class="comment-dialogue absolute right-6 bottom-14 z-50"></app-comment-dialogue>
-                <div class="reactions absolute flex flex-row justify-around items-center bottom-6 right-6 w-32 h-7 bg-slate-500 rounded-md z-40">
-                    <button class="text-center border-r-2 w-1/3 cursor-pointer">
-                        <fa-icon [icon]="faHeart" class=""></fa-icon>
-                    </button>
-                    <button class="text-center border-r-2 w-1/3 cursor-pointer" (click)="popCommentDialogue($event)">
-                        <fa-icon [icon]="faComment" class="pointer-events-none"></fa-icon>
-                    </button>
-                    <button class="text-center w-1/3 cursor-pointer">
-                        <fa-icon [icon]="faShare" class="text-center w-1/3 cursor-pointer"></fa-icon>
-                    </button>
-                </div>
-
-                <p class="post-content" [innerHTML]="post.body"></p>
-            </div>
+        <div class="post w-full p-6 pb-16 mt-4 bg-slate-200 relative rounded-lg">
+            <app-comment-dialogue class="comment-dialogue absolute right-6 bottom-14 z-50"></app-comment-dialogue>
+            <app-reactions [post]="post" (commentClicked)="popCommentDialogue()"></app-reactions>
+            <p class="post-content" [innerHTML]="post.body"></p>
         </div>
     </div>
-    
+</div>
 <div class="backdrop bg-black w-screen h-full absolute top-0 left-0 right-0 bottom-0 z-20"></div>

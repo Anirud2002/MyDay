@@ -33,14 +33,14 @@ export class ExploreComponent implements OnInit {
     this.posts = await this.postService.getPosts("myday") as PostReponse[];
   }
 
-  popCommentDialogue(e){
-    const cmtBox = e.target.parentElement.parentElement.childNodes[0];
-    if(cmtBox.classList.contains('normal')) cmtBox.classList.remove('normal')
-    cmtBox.classList.toggle('reveal')
+  popCommentDialogue(){
+    const cmntDialogueBox = document.querySelector('.comment-dialogue')
+    if(cmntDialogueBox.classList.contains('normal')) cmntDialogueBox.classList.remove('normal')
+    cmntDialogueBox.classList.toggle('reveal')
     const backdrop = document.querySelector('.backdrop')
     if(!backdrop.classList.contains('reveal')) backdrop.classList.add('reveal')
     backdrop.addEventListener('click', () => {
-      cmtBox.classList.remove('reveal')
+      cmntDialogueBox.classList.remove('reveal')
       backdrop.classList.remove('reveal')
       backdrop.removeAllListeners('click')
     })
