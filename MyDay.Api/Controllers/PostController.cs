@@ -79,8 +79,8 @@ namespace MyDay.Api.Controllers
             // inserting new PostID for that particular user
             user.PostIDs.Insert(0, post.PostID);
 
-            await _dynamoDBContext.SaveAsync<Post>(post);
             await _dynamoDBContext.SaveAsync<MyDayUser>(user);
+            await _dynamoDBContext.SaveAsync<Post>(post);
 
             return new OkObjectResult(new PostViewModelDTO
             {
