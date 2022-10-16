@@ -26,7 +26,6 @@ export class CacheInterceptor implements HttpInterceptor {
         tap(stateEvent => {
           if(stateEvent instanceof HttpResponse){
             this.cache.set(request.url, stateEvent.clone());
-            
           }
         })
       )
