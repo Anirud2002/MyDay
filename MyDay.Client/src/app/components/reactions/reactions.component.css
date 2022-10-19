@@ -1,0 +1,21 @@
+.comment-dialogue{
+    clip-path: circle(0% at right bottom);
+    transition: .8s cubic-bezier(.41,.96,1,1) all;
+ }
+ 
+ .comment-dialogue.reveal{
+     clip-path: circle(100%);
+ }
+ 
+ .comment-dialogue.normal{
+     transition: none;
+ }
+
+ .backdrop{
+    display: none;
+    background: rgba(0, 0, 0, 0);
+}
+
+.backdrop.reveal{
+    display: block;
+}

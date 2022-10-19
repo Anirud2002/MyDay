@@ -9,10 +9,8 @@
             <p class="text-xs">{{post.postedOn | date: 'MMM d, y, h:mm a'}}</p>
         </div>
         <div class="post w-full p-6 pb-16 mt-4 bg-slate-200 relative rounded-lg">
-            <app-comment-dialogue class="comment-dialogue absolute right-6 bottom-14 z-50"></app-comment-dialogue>
-            <app-reactions [post]="post" (commentClicked)="popCommentDialogue()"></app-reactions>
+            <app-reactions [post]="post"></app-reactions>
             <p class="post-content" [innerHTML]="post.body"></p>
         </div>
     </div>
 </div>
-<div class="backdrop bg-black w-screen h-full absolute top-0 left-0 right-0 bottom-0 z-20"></div>
