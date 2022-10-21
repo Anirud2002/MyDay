@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-comment-dialogue',
   templateUrl: './comment-dialogue.component.html',
@@ -7,7 +7,7 @@ import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 })
 export class CommentDialogueComponent implements OnInit {
   faUserCircle = faUserCircle;
-
+  faPaperPlane = faPaperPlane;
   constructor() { }
 
   ngOnInit(): void {

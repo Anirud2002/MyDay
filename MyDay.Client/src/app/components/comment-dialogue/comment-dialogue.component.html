@@ -11,20 +11,10 @@
                 </div>
             </div>
         </div>
-        <div class="comment-body w-full h-24 bg-slate-900 mt-2 rounded-lg"></div>
+        <div class="comment-body w-full h-24 bg-slate-900 mt-2 rounded-3xl"></div>
     </div>
-    <div class="comment w-full">
-        <div class="comment-header flex flex-row items-start">
-            <div class="user">
-                <fa-icon [icon]="faUserCircle" size="2xl"></fa-icon>
-            </div>
-            <div class="user-post ml-4 -mt-1 flex flex-col items-start w-full">
-                <div class="post-detail">
-                    <p class="font-bold text-sm">Anirud Shrestha</p>
-                    <p class="text-xs">Sep 10, 2022 at 10:30 AM</p>
-                </div>
-            </div>
-        </div>
-        <div class="comment-body w-full h-24 bg-slate-900 mt-2 rounded-lg"></div>
+    <div class="send-msg w-full flex flex-row justify-center items-center">
+        <textarea type="text" class=" w-full text-sm rounded-lg p-2 outline-none h-9 resize-none" placeholder="Appreciate..."></textarea>
+        <fa-icon [icon]="faPaperPlane" size="lg" class="ml-1 cursor-pointer"></fa-icon>
     </div>
 </div>
