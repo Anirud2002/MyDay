@@ -85,8 +85,8 @@ namespace MyDay.Api.Controllers
                     });
                 }
             }
-                
 
+            myDayPosts.OrderByDescending(x => x.PostedOn).ToList();
             return new OkObjectResult(myDayPosts);
         }
 
