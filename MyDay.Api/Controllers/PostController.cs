@@ -28,22 +28,9 @@ namespace MyDay.Api.Controllers
 
             List<PostViewModelDTO> postViewModel = new List<PostViewModelDTO>();
 
-            for(int i = 0; i < posts.Count; i++)
+            for (int i = 0; i < posts.Count; i++)
             {
-                postViewModel.Add(new PostViewModelDTO()
-                {
-                    PostID = posts[i].PostID,
-                    PostedOn = posts[i].PostedOn,
-                    Category = posts[i].Category,
-                    FirstName = posts[i].FirstName,
-                    LastName = posts[i].LastName,
-                    UserName = posts[i].UserName,
-                    Body = posts[i].Body,
-                    Hashtags = posts[i].Hashtags,
-                    Likes = posts[i].Likes,
-                    LikedBy = posts[i].LikedBy,
-                    Comments = posts[i].Comments
-                });
+                postViewModel.Add(new PostViewModelDTO().toViewModel(posts[i]));
             }
 
             return new OkObjectResult(postViewModel);
@@ -67,22 +54,9 @@ namespace MyDay.Api.Controllers
             foreach (String id in user.PostIDs)
             {
                 var post = await _dynamoDBContext.QueryAsync<Post>(id, config).GetRemainingAsync();
-                if(post.Count > 0)
+                if (post.Count > 0)
                 {
-                    myDayPosts.Add(new PostViewModelDTO()
-                    {
-                        PostID = post[0].PostID,
-                        Category = post[0].Category,
-                        FirstName = post[0].FirstName,
-                        LastName = post[0].LastName,
-                        UserName = post[0].UserName,
-                        PostedOn = post[0].PostedOn,
-                        Body = post[0].Body,
-                        Hashtags = post[0].Hashtags,
-                        Likes = post[0].Likes,
-                        LikedBy = post[0].LikedBy,
-                        Comments = post[0].Comments
-                    });
+                    myDayPosts.Add(new PostViewModelDTO().toViewModel(post[0]));
                 }
             }
 
@@ -123,20 +97,10 @@ namespace MyDay.Api.Controllers
             await _dynamoDBContext.SaveAsync<MyDayUser>(user);
             await _dynamoDBContext.SaveAsync<Post>(post);
 
-            return new OkObjectResult(new PostViewModelDTO
-            {
-                PostID = post.PostID,
-                Category = postDTO.Category,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                UserName = user.UserName,
-                PostedOn = post.PostedOn,
-                Body = postDTO.Body,
-                Hashtags = postDTO.Hashtags
-            });
+            return new OkObjectResult(new PostViewModelDTO().toViewModel(post));
         }
     }
 
-    
+
 }
 
