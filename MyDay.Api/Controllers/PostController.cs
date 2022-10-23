@@ -49,6 +49,47 @@ namespace MyDay.Api.Controllers
             return new OkObjectResult(postViewModel);
         }
 
+        [HttpGet("userposts/{category}")]
+        public async Task<ActionResult> GetUserMyDayPost(string category)
+        {
+            var userName = User.GetUserName();
+            var user = await _dynamoDBContext.LoadAsync<MyDayUser>(userName);
+            List<PostViewModelDTO> myDayPosts = new List<PostViewModelDTO>();
+
+            var config = new DynamoDBOperationConfig
+            {
+                QueryFilter = new List<ScanCondition>() {
+                new ScanCondition("Category", ScanOperator.Equal, category.ToUpper())
+            }
+            };
+
+
+            foreach (String id in user.PostIDs)
+            {
+                var post = await _dynamoDBContext.QueryAsync<Post>(id, config).GetRemainingAsync();
+                if(post.Count > 0)
+                {
+                    myDayPosts.Add(new PostViewModelDTO()
+                    {
+                        PostID = post[0].PostID,
+                        Category = post[0].Category,
+                        FirstName = post[0].FirstName,
+                        LastName = post[0].LastName,
+                        UserName = post[0].UserName,
+                        PostedOn = post[0].PostedOn,
+                        Body = post[0].Body,
+                        Hashtags = post[0].Hashtags,
+                        Likes = post[0].Likes,
+                        LikedBy = post[0].LikedBy,
+                        Comments = post[0].Comments
+                    });
+                }
+            }
+                
+
+            return new OkObjectResult(myDayPosts);
+        }
+
         [HttpPost]
         public async Task<ActionResult> CreateMyDayPost([FromBody] PostDTO postDTO)
         {
