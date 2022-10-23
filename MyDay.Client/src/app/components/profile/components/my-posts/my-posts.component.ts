@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faUserCircle, faShare, faHeart, faComment} from '@fortawesome/free-solid-svg-icons';
+import { PostReponse } from '../../../../_interfaces/post-response.modal';
+import { PostService } from '../../../../_services/post.service';
 
 @Component({
   selector: 'app-my-posts',
@@ -11,9 +13,15 @@ export class MyPostsComponent implements OnInit {
   faShare = faShare;
   faHeart = faHeart;
   faComment = faComment;
-  constructor() { }
+  posts: PostReponse[] = [];
+  constructor(private postService: PostService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(){
+    await this.getUserPosts()
+  }
+
+  async getUserPosts(){
+    this.posts = await this.postService.getUserPosts("myday") as PostReponse[];
   }
 
 }

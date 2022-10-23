@@ -15,6 +15,10 @@ export class PostService {
     return this.http.get(this.baseUrl + "post/" + category.toUpperCase()).toPromise();
   }
 
+  async getUserPosts(category: string){
+    return this.http.get(this.baseUrl + "post/userposts/" + category.toUpperCase()).toPromise();
+  }
+
   async post(value: CreatePost){
     return this.http.post(this.baseUrl + "post", value).pipe(
       map(post => {
