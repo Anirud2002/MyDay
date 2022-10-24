@@ -59,9 +59,7 @@ namespace MyDay.Api.Controllers
                     myDayPosts.Add(new PostViewModelDTO().toViewModel(post[0]));
                 }
             }
-
-            myDayPosts.OrderByDescending(x => x.PostedOn).ToList();
-            return new OkObjectResult(myDayPosts);
+            return new OkObjectResult(myDayPosts.OrderByDescending(x => x.PostedOn).ToList());
         }
 
         [HttpPost]
