@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { AccountService } from '../../../../_services/account.service';
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InfoComponent implements OnInit {
 
-  constructor() { }
+  faArrowRightFromBracket = faArrowRightFromBracket;
+  constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
+  }
+
+  logout(){
+    this.accountService.logout();
   }
 
 }

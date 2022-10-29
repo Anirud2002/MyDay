@@ -1,0 +1,8 @@
+button{
+    color: var(--cyan);
+    transition: .2s ease;
+}
+
+button:hover{
+    color: var(--cyan-100);
+}

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { map, ReplaySubject } from 'rxjs';
 import { Login } from '../_interfaces/login.modal';
 import { User } from '../_interfaces/user.modal';
@@ -14,7 +15,8 @@ export class AccountService {
   isSignedUp: boolean = false;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   async login(options: Login){
@@ -52,7 +54,10 @@ export class AccountService {
   }
 
   logout(){
-    localStorage.removeItem('user')
+    localStorage.removeItem('user');
     this.currentUserSource.next(null);
+    this.isSignedUp = false;
+
+    this.router.navigateByUrl("/signIn");
   }
 }
