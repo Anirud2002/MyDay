@@ -46,6 +46,11 @@ export class AccountService {
     this.currentUserSource.next(user)
   }
 
+  updateUserFromLocalStorage(){
+    this.currentUserSource.next(JSON.parse(localStorage.getItem("user")));
+    this.isSignedUp = true;
+  }
+
   logout(){
     localStorage.removeItem('user')
     this.currentUserSource.next(null);
