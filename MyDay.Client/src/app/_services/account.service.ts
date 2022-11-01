@@ -10,6 +10,7 @@ import { User } from '../_interfaces/user.modal';
 })
 export class AccountService {
   baseUrl = "https://localhost:5001/api/";
+  user:User;
   private currentUserSource = new ReplaySubject<User>(1);
   currentUser$ = this.currentUserSource.asObservable();
   isSignedUp: boolean = false;
@@ -19,7 +20,7 @@ export class AccountService {
     private router: Router
   ) { }
 
-  async login(options: Login){
+  login(options: Login){
     return this.http.post(this.baseUrl + "account/login", options).pipe(
       map((user: User) => {
         if (user){
@@ -43,7 +44,16 @@ export class AccountService {
     )
   }
 
+  getUser(){
+    return this.user;
+  }
+
+  getUserDetails(userName: string){
+    return this.http.get(this.baseUrl + "user/" + userName).toPromise()
+  }
+
   setCurrentUser(user:User){
+    this.user = user;
     localStorage.setItem('user', JSON.stringify(user))
     this.currentUserSource.next(user)
   }

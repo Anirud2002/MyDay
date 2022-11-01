@@ -15,7 +15,7 @@ namespace MyDay.Api.Controllers
         {
             _dynamoDBContext = dynamoDBContext;
         }
-        [HttpGet("/{username}")]
+        [HttpGet("{username}")]
         public async Task<ActionResult> GetUserDetails(string userName)
         {
             var user = await _dynamoDBContext.LoadAsync<MyDayUser>(userName);

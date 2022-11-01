@@ -1,27 +1,19 @@
 <div class="mt-4 p-6 space-y-3">
     <div class="field flex flex-row justify-start items-center">
         <p class="key w-1/2"><span class="text-neutral-400 font-normal">Name:</span></p>
-        <p class="font-medium w-1/2">Anirud Shrestha</p>
+        <p class="font-medium w-1/2">{{userDetails.firstName}} {{userDetails.lastName}}</p>
     </div>
     <div class="field flex flex-row justify-start items-center">
         <p class="key w-1/2"><span class="text-neutral-400 font-normal">City:</span></p>
-        <p class="font-medium w-1/2">Boise, Idaho</p>
-    </div>
-    <div class="field flex flex-row justify-start items-center">
-        <p class="key w-1/2"><span class="text-neutral-400 font-normal">MyDay Posts:</span></p>
-        <p class="font-medium w-1/2">10</p>
-    </div>
-    <div class="field flex flex-row justify-start items-center">
-        <p class="key w-1/2"><span class="text-neutral-400 font-normal">Journals:</span></p>
-        <p class="font-medium w-1/2">5</p>
+        <p class="font-medium w-1/2">{{userDetails.city}}</p>
     </div>
     <div class="field flex flex-row justify-start items-center">
         <p class="key w-1/2"><span class="text-neutral-400 font-normal">Description:</span></p>
-        <p class="font-medium w-1/2"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe facere blanditiis iusto expedita consequatur architecto inventore optio quisquam debitis nostrum!</p>
+        <p class="font-medium w-1/2">{{userDetails.description}}</p>
     </div>
     <div class="field flex flex-row justify-start items-center">
         <p class="key w-1/2"><span class="text-neutral-400 font-normal">Joined:</span></p>
-        <p class="font-medium w-1/2"> September 1, 2022</p>
+        <p class="font-medium w-1/2"> {{userDetails.joined | date: "MMMM d, y"}}</p>
     </div>
 </div>
 <button class="sign-out flex flex-row w-full space-x-3 items-center justify-center cursor-pointer mt-4" (click)="logout()">

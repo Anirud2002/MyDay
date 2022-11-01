@@ -14,7 +14,6 @@ namespace MyDay.Api.DTOs
         public string LastName { get; set; } = string.Empty;
         public DateTime Joined { get; set; }
         public string City { get; set; } = string.Empty;
-        public List<string> PostIDs = new List<string>();
         public List<string> Links { get; set; } = new List<string>();
         public string Description { get; set; } = string.Empty;
 
@@ -28,7 +27,6 @@ namespace MyDay.Api.DTOs
                 LastName = user.LastName,
                 Joined = user.Joined,
                 City = user.City,
-                PostIDs = user.PostIDs,
                 Links = user.Links,
                 Description = user.Description
             };
