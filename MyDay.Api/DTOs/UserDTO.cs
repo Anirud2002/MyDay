@@ -1,5 +1,4 @@
-﻿using System;
-namespace MyDay.Api.DTOs
+﻿namespace MyDay.Api.DTOs
 {
     public class UserDTO
     {
