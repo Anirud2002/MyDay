@@ -30,7 +30,7 @@ namespace MyDay.Api.Service
             {
                 Subject = new ClaimsIdentity(claims),
                 SigningCredentials = creds,
-                Expires = DateTime.Now.AddHours(5)
+                Expires = DateTime.Now.AddDays(0.4167) // 0.4167 days = 5 hours
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();
