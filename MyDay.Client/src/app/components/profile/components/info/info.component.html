@@ -1,21 +1,38 @@
-<div class="mt-4 p-6 space-y-3">
+<form [formGroup]="profileForm" class="mt-4 p-6 space-y-3">
+
     <div class="field flex flex-row justify-start items-center">
         <p class="key w-1/2"><span class="text-neutral-400 font-normal">Name:</span></p>
-        <p class="font-medium w-1/2">{{userDetails.firstName}} {{userDetails.lastName}}</p>
+        <div class="font-medium w-1/2 flex justify-between" (mouseover)="showEditBtn = true" (mouseleave)="showEditBtn = false">
+            <p>{{userDetails.firstName}} {{userDetails.lastName}}</p>
+            <button *ngIf="showEditBtn"> <fa-icon [icon]="faPencil"></fa-icon></button>
+        </div>
     </div>
+
     <div class="field flex flex-row justify-start items-center">
         <p class="key w-1/2"><span class="text-neutral-400 font-normal">City:</span></p>
-        <p class="font-medium w-1/2">{{userDetails.city}}</p>
+        <div class="font-medium w-1/2 flex justify-between" *ngIf="userDetails.city" (mouseover)="showEditBtn = true" (mouseleave)="showEditBtn = false">
+            <p>{{userDetails.city}}</p>
+            <button *ngIf="showEditBtn"> <fa-icon [icon]="faPencil"></fa-icon></button>
+        </div>
+        <input class="w-1/2 outline-none hover:border-b-2" *ngIf="!userDetails.city" placeholder="Please enter your city..." formControlName="city">
     </div>
+
     <div class="field flex flex-row justify-start items-center">
         <p class="key w-1/2"><span class="text-neutral-400 font-normal">Description:</span></p>
-        <p class="font-medium w-1/2">{{userDetails.description}}</p>
+        <div class="font-medium w-1/2 flex justify-between" *ngIf="userDetails.description" (mouseover)="showEditBtn = true" (mouseleave)="showEditBtn = false">
+            <p>{{userDetails.description}}</p>
+            <button *ngIf="showEditBtn"> <fa-icon [icon]="faPencil"></fa-icon></button>
+        </div>
+        <textarea class="w-1/2 outline-none hover:border-b-2" *ngIf="!userDetails.description" placeholder="Say something about yourself..." formControlName="description"></textarea>
     </div>
+
     <div class="field flex flex-row justify-start items-center">
         <p class="key w-1/2"><span class="text-neutral-400 font-normal">Joined:</span></p>
         <p class="font-medium w-1/2"> {{userDetails.joined | date: "MMMM d, y"}}</p>
     </div>
-</div>
+
+</form>
+
 <button class="sign-out flex flex-row w-full space-x-3 items-center justify-center cursor-pointer mt-4" (click)="logout()">
     <p>Sign out</p>
     <fa-icon [icon]="faArrowRightFromBracket"></fa-icon>

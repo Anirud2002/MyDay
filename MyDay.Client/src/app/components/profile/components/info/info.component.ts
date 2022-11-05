@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightFromBracket, faPencil } from '@fortawesome/free-solid-svg-icons';
 import { UserDetails } from '../../../../_interfaces/user-details.modal';
 import { User } from '../../../../_interfaces/user.modal';
 import { AccountService } from '../../../../_services/account.service';
+import { FormGroup, FormBuilder } from  '@angular/forms';
+
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',
@@ -12,10 +14,21 @@ export class InfoComponent implements OnInit {
   user:User;
   userDetails: UserDetails;
   faArrowRightFromBracket = faArrowRightFromBracket;
-  constructor(private accountService: AccountService) { }
+  faPencil = faPencil;
+  
+  // boolean to check if user has hovered over the input and show the edit button
+  showEditBtn: boolean = false;
+
+  profileForm: FormGroup;
+  constructor(private accountService: AccountService, private fb: FormBuilder) { }
 
   async ngOnInit() {
     await this.getUserDetails();
+    this.profileForm = this.fb.group({
+      fullName: [''],
+      city: [''],
+      description: [''],
+    })
   }
 
   async getUserDetails(){
@@ -28,5 +41,4 @@ export class InfoComponent implements OnInit {
   logout(){
     this.accountService.logout();
   }
-
 }
