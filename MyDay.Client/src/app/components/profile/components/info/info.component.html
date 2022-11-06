@@ -2,29 +2,29 @@
 
     <div class="field flex flex-row justify-center items-center">
         <p class="key w-2/5"><span class="text-neutral-400 font-normal">Name:</span></p>
-        <div class="font-medium w-3/5 flex justify-between" (mouseover)="showEditBtn = true" (mouseleave)="showEditBtn = false">
+        <div class="font-medium w-3/5 flex justify-between"  *ngIf="!nameEdit" (mouseover)="showEditBtn = true" (mouseleave)="showEditBtn = false">
             <p>{{userDetails.firstName}} {{userDetails.lastName}}</p>
-            <button *ngIf="showEditBtn"> <fa-icon [icon]="faPencil"></fa-icon></button>
+            <button *ngIf="showEditBtn" (click)="handleInputEdit('name')"> <fa-icon [icon]="faPencil"></fa-icon></button>
         </div>
-        <!-- <input class="w-3/5 outline-none hover:border-b-2" placeholder="Enter your full name..." *ngIf="expression"/> -->
+        <input class="w-3/5 outline-none hover:border-b-2" placeholder="Enter your full name..." formControl="fullName" *ngIf="nameEdit"/>
     </div>
 
     <div class="field flex flex-row justify-start items-center">
         <p class="key w-2/5"><span class="text-neutral-400 font-normal">City:</span></p>
-        <div class="font-medium w-1/2 flex justify-between" *ngIf="userDetails.city" (mouseover)="showEditBtn = true" (mouseleave)="showEditBtn = false">
+        <div class="font-medium w-1/2 flex justify-between" *ngIf="userDetails.city && !cityEdit" (mouseover)="showEditBtn = true" (mouseleave)="showEditBtn = false">
             <p>{{userDetails.city}}</p>
-            <button *ngIf="showEditBtn"> <fa-icon [icon]="faPencil"></fa-icon></button>
+            <button *ngIf="showEditBtn" (click)="handleInputEdit('city')"> <fa-icon [icon]="faPencil"></fa-icon></button>
         </div>
-        <input class="w-1/2 outline-none hover:border-b-2" *ngIf="!userDetails.city" placeholder="Please enter your city..." formControlName="city">
+        <input class="w-1/2 outline-none hover:border-b-2" *ngIf="!userDetails.city || cityEdit" placeholder="Please enter your city..." formControlName="city">
     </div>
 
     <div class="field flex flex-row justify-start items-center">
         <p class="key w-2/5"><span class="text-neutral-400 font-normal">Description:</span></p>
-        <div class="font-medium w-3/5 flex justify-between" *ngIf="userDetails.description" (mouseover)="showEditBtn = true" (mouseleave)="showEditBtn = false">
+        <div class="font-medium w-3/5 flex justify-between" *ngIf="userDetails.description && !descEdit" (mouseover)="showEditBtn = true" (mouseleave)="showEditBtn = false">
             <p>{{userDetails.description}}</p>
-            <button *ngIf="showEditBtn"> <fa-icon [icon]="faPencil"></fa-icon></button>
+            <button *ngIf="showEditBtn" (click)="handleInputEdit('desc')"> <fa-icon [icon]="faPencil"></fa-icon></button>
         </div>
-        <textarea class="w-3/5 outline-none hover:border-b-2" *ngIf="!userDetails.description" placeholder="Say something about yourself..." formControlName="description"></textarea>
+        <textarea class="w-3/5 outline-none hover:border-b-2" *ngIf="!userDetails.description || descEdit" placeholder="Say something about yourself..." formControlName="description"></textarea>
     </div>
 
     <div class="field flex flex-row justify-start items-center">

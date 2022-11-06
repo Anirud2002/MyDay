@@ -19,6 +19,10 @@ export class InfoComponent implements OnInit {
   // boolean to check if user has hovered over the input and show the edit button
   showEditBtn: boolean = false;
 
+  nameEdit: boolean = false;
+  cityEdit: boolean = false;
+  descEdit: boolean = false;
+
   profileForm: FormGroup;
   constructor(private accountService: AccountService, private fb: FormBuilder) { }
 
@@ -36,6 +40,23 @@ export class InfoComponent implements OnInit {
       this.user = user;
     })
     this.userDetails = await this.accountService.getUserDetails(this.user.userName) as UserDetails;
+  }
+
+  handleInputEdit(type: string){
+    switch(type){
+      case "name": {
+        this.nameEdit = true;
+        break;
+      }
+      case "city": {
+        this.cityEdit = true;
+        break;
+      }
+      case "desc": {
+        this.descEdit = true;
+        break;
+      }
+    }
   }
 
   logout(){
