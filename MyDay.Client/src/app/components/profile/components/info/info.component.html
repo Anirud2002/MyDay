@@ -30,7 +30,7 @@
         </div>
         <div class="w-3/5 hover:border-b-2 flex justify-between" *ngIf="!userDetails.city || cityEdit">
 
-            <input class="outline-none" placeholder="Please enter your city..." formControlName="city">
+            <input class="outline-none w-full" placeholder="Please enter your city..." formControlName="city">
             <button (click)="handleClearInput('city')"> <fa-icon [icon]="faXmark" class="text-gray-500 dark:text-gray-400 dark:border-gray-700"></fa-icon></button>
 
         </div>
@@ -47,7 +47,7 @@
         </div>
         <div class="w-3/5 hover:border-b-2 flex justify-between" *ngIf="!userDetails.description || descEdit">
             
-            <textarea class="outline-none" placeholder="Say something about yourself..." formControlName="description"></textarea>
+            <textarea class="outline-none w-full" placeholder="Say something about yourself..." formControlName="description"></textarea>
             <button (click)="handleClearInput('desc')"> <fa-icon [icon]="faXmark" class="text-gray-500 dark:text-gray-400 dark:border-gray-700"></fa-icon></button>
 
         </div>
