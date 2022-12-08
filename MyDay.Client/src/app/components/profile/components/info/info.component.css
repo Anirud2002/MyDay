@@ -1,8 +1,13 @@
-button{
+.sign-out{
     color: var(--cyan);
     transition: .2s ease;
 }
 
-button:hover{
+.sign-out{
     color: var(--cyan-100);
+}
+
+.save{
+    background-color: var(--cyan);
+    color: white;
 }
