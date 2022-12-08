@@ -5,6 +5,11 @@
         <input class="w-3/5 hover:border-b-2 flex justify-between outline-none" type="text" name="name" [value]="name" [(ngModel)]="name">
     </div>
 
+    <div class="flex flex-row justify-center items-center">
+        <p class="key w-2/5"><span class="text-neutral-400 font-normal">Username:</span></p>
+        <input class="w-3/5 hover:border-b-2 flex justify-between outline-none" type="text" name="userName" [value]="userName" [(ngModel)]="userName">
+    </div>
+
     <div class="flex flex-row justify-start items-center">
         <p class="key w-2/5"><span class="text-neutral-400 font-normal">City:</span></p>
         <input class="w-3/5 hover:border-b-2 flex justify-between outline-none" placeholder="Please enter your city..." name="city" [value]="city" [(ngModel)]="city">
@@ -22,7 +27,7 @@
 
 </form>
 
-<button class="flex justify-center items-center cursor-pointer mt-4 mx-auto">
+<button class="flex justify-center items-center cursor-pointer mt-4 mx-auto" (click)="validateAndSave()">
     <p class="save py-1 px-2 rounded-md">Save</p>
 </button>
 
