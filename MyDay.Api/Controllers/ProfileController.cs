@@ -22,7 +22,8 @@ namespace MyDay.Api.Controllers
         [HttpPost]
         public async Task<ActionResult> UpdateProfile([FromBody] ProfileDTO profileDTO)
         {
-            if (!String.IsNullOrEmpty(profileDTO.userName))
+            var userName = User.GetUserName();
+            if (!userName.Equals(profileDTO.userName))
             {
                 if (await UserExists(profileDTO.userName))
                 {
@@ -30,17 +31,16 @@ namespace MyDay.Api.Controllers
                 }
             }
 
-            var userName = User.GetUserName();
             var user = await _context.LoadAsync<MyDayUser>(userName);
 
-            user.UserName = profileDTO.userName ?? user.UserName;
-            user.FirstName = profileDTO.name.Trim().Split(" ")[0];
-            user.LastName = profileDTO.name.Trim().Split(" ").Length > 1 ? profileDTO.name.Trim().Split(" ")[1] : " ";
+            user.UserName = profileDTO.userName;
+            user.FirstName = profileDTO.fullName.Trim().Split(" ")[0];
+            user.LastName = profileDTO.fullName.Trim().Split(" ").Length > 1 ? profileDTO.fullName.Trim().Split(" ")[1] : " ";
             user.City = profileDTO.city;
-            user.Description = profileDTO.city;
+            user.Description = profileDTO.description;
 
             await _context.SaveAsync<MyDayUser>(user);
-            return new OkObjectResult(user);
+            return new OkObjectResult(new UserDetailsDTO().toViewModel(user));
         }
 
         public async Task<bool> UserExists(string userName)
