@@ -2,22 +2,22 @@
 
     <div class="flex flex-row justify-center items-center">
         <p class="key w-2/5"><span class="text-neutral-400 font-normal">Name:</span></p>
-        <input class="w-3/5 hover:border-b-2 flex justify-between outline-none" type="text" name="name" [value]="name" [(ngModel)]="name">
+        <input class="w-3/5 hover:border-b-2 flex justify-between outline-none" type="text" name="name" [(ngModel)]="fullName">
     </div>
 
     <div class="flex flex-row justify-center items-center">
         <p class="key w-2/5"><span class="text-neutral-400 font-normal">Username:</span></p>
-        <input class="w-3/5 hover:border-b-2 flex justify-between outline-none" type="text" name="userName" [value]="userName" [(ngModel)]="userName">
+        <input class="w-3/5 hover:border-b-2 flex justify-between outline-none" type="text" name="userName" [(ngModel)]="userName">
     </div>
 
     <div class="flex flex-row justify-start items-center">
         <p class="key w-2/5"><span class="text-neutral-400 font-normal">City:</span></p>
-        <input class="w-3/5 hover:border-b-2 flex justify-between outline-none" placeholder="Please enter your city..." name="city" [value]="city" [(ngModel)]="city">
+        <input class="w-3/5 hover:border-b-2 flex justify-between outline-none" placeholder="Please enter your city..." name="city" [(ngModel)]="city">
     </div>
 
     <div class="flex flex-row justify-start items-center">
         <p class="key w-2/5"><span class="text-neutral-400 font-normal">Description:</span></p>
-        <textarea class="w-3/5 hover:border-b-2 flex justify-between outline-none" placeholder="Say something about yourself..." name="description"  [value]="description"></textarea>
+        <textarea class="w-3/5 hover:border-b-2 flex justify-between outline-none" placeholder="Say something about yourself..." name="description" [(ngModel)]="description"></textarea>
     </div>
 
     <div class="flex flex-row justify-start items-center">

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs';
 import { Info } from '../_interfaces/info.modal';
 
 @Injectable({
@@ -10,6 +11,8 @@ export class ProfileService {
   constructor(private http: HttpClient) { }
 
   async saveInfo(info: Info){
-      return this.http.post(`${this.baseUrl}/api/info`, info);
+      return this.http.post(`${this.baseUrl}profile`, info).pipe(map(user => {
+        return user;
+      }));
   }
 }

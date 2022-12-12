@@ -17,7 +17,7 @@ export class InfoComponent implements OnInit {
   faArrowRightFromBracket = faArrowRightFromBracket;
   faPencil = faPencil;
   faXmark = faXmark;
-  name: string;
+  fullName: string;
   userName: string;
   city: string;
   description: string;
@@ -27,7 +27,7 @@ export class InfoComponent implements OnInit {
 
   async ngOnInit() {
     this.userDetails = await this.getUserDetails();
-    this.name = this.userDetails.firstName + " " + this.userDetails.lastName;
+    this.fullName = this.userDetails.firstName + " " + this.userDetails.lastName;
     this.userName = this.userDetails.userName;
     this.city = this.userDetails.city;
     this.description = this.userDetails.description;
@@ -42,18 +42,30 @@ export class InfoComponent implements OnInit {
   }
 
   async validateAndSave(){
-    if(!this.name || !this.userName){
+    if(!this.fullName || !this.userName){
       return;
     }
 
-    let info = {fullName: this.name, userName: this.userName, city: this.city, description: this.description} as Info
+    let info = {fullName: this.fullName, userName: this.userName, city: this.city, description: this.description} as Info
     try {
       const res = await this.profileService.saveInfo(info);
-      // update the value from the response in the UI
+      res.subscribe(r => {
+        if (r){
+          this.updateValues(r);
+        }
+      })
     } catch (error) {
       // handle any server error
+      console.log("Coudldn't update!")
     }
    
+  }
+
+  updateValues(val){
+    this.fullName = val.firstName + " " + val.lastName;
+    this.userName = val.userName;
+    this.city = val.city;
+    this.description = val.description;
   }
 
 
