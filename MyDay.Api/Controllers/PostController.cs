@@ -23,6 +23,7 @@ namespace MyDay.Api.Controllers
         public async Task<ActionResult> GetPosts(string category)
         {
             var conditions = new List<ScanCondition>();
+            // using scan condition because every post was different partition key
             conditions.Add(new ScanCondition("Category", ScanOperator.Contains, category.ToUpper()));
             List<Post> posts = await _dynamoDBContext.ScanAsync<Post>(conditions).GetRemainingAsync();
 
@@ -78,7 +79,7 @@ namespace MyDay.Api.Controllers
             {
                 PostID = Guid.NewGuid().ToString(),
                 PostedOn = DateTime.Now,
-                Category = postDTO.Category,
+                Category = postDTO.Category.ToUpper(),
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 UserName = user.UserName,
