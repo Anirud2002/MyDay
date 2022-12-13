@@ -4,6 +4,7 @@ import { faPaperPlane, faQuestion, faChevronDown } from '@fortawesome/free-solid
 import { Router } from '@angular/router';
 import { PostService } from '../../_services/post.service';
 import { CreatePost } from '../../_interfaces/create-post.modal.js';
+import { AccountService } from '../../_services/account.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -20,7 +21,7 @@ export class LandingPageComponent implements OnInit {
   faChevronDown= faChevronDown;
   activeAction: string = "";
   post: CreatePost;
-  constructor(private router: Router, private postService: PostService) { 
+  constructor(private router: Router, private postService: PostService, private accountService: AccountService) { 
     if(this.router.getCurrentNavigation().extras.state != undefined){
       this.activeAction = this.router.getCurrentNavigation().extras.state['action'];
     }
@@ -38,15 +39,20 @@ export class LandingPageComponent implements OnInit {
   }
 
   async share(){
+    // if not signed in, go the the signIn page
+    if(!this.accountService.isSignedUp){
+      this.router.navigateByUrl("/signIn");
+      return;
+    }
     let post = {
       body: this.editorContent,
-      category: this.activeDropdownItem === "MyDay" ? "MYDAY" : "JOURNAL",
+      category: this.activeDropdownItem.toUpperCase(),
       // ********** FIX MEEE *****************
       hashtags: this.activeDropdownItem === "MyDay" ? ["LYF", "SAD"] : []
     } as CreatePost
     const response = await this.postService.post(post);
     response.subscribe(res => {
-      console.log(res)
+      // do nothing
     })
   }
 
