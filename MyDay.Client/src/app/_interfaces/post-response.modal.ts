@@ -5,7 +5,7 @@ export interface PostReponse{
     firstName: string,
     lastName: string,
     userName: string,
-    postedOn: string,
+    postedOn: number,
     body: string,
     category: string,
     hashtags: string[],
