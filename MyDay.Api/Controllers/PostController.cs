@@ -52,7 +52,7 @@ namespace MyDay.Api.Controllers
             };
 
 
-            foreach (String id in user.PostIDs)
+            foreach (string id in user.PostIDs)
             {
                 var post = await _dynamoDBContext.QueryAsync<Post>(id, config).GetRemainingAsync();
                 if (post.Count > 0)
@@ -98,7 +98,31 @@ namespace MyDay.Api.Controllers
 
             return new OkObjectResult(new PostViewModelDTO().toViewModel(post));
         }
+
+        [HttpDelete("{postID}/{date}")]
+        public async Task<ActionResult> DeletePost(string postID, long date)
+        {
+            var user = await _dynamoDBContext.LoadAsync<MyDayUser>(User.GetUserName());
+            var idxToRemove = user.PostIDs.FindIndex(id => id.Contains(postID));
+            // getting rid of the particular post id from the user table as well
+            if(idxToRemove >= 0)
+            {
+                user.PostIDs.RemoveAt(idxToRemove);
+                if(user.PostIDs.Count == 0)
+                {
+                    user.PostIDs = null;
+                }
+                await _dynamoDBContext.SaveAsync<MyDayUser>(user);
+            }
+
+            var post = await _dynamoDBContext.LoadAsync<Post>(postID, date);
+
+            
+            await _dynamoDBContext.DeleteAsync<Post>(post);
+            return new OkResult();
+        }
     }
+
 
 
 }
