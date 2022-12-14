@@ -78,7 +78,7 @@ namespace MyDay.Api.Controllers
             var post = new Post()
             {
                 PostID = Guid.NewGuid().ToString(),
-                PostedOn = DateTime.Now,
+                PostedOn = ((DateTimeOffset)DateTime.Now).ToUnixTimeSeconds(),
                 Category = postDTO.Category.ToUpper(),
                 FirstName = user.FirstName,
                 LastName = user.LastName,

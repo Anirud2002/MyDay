@@ -8,7 +8,7 @@ namespace MyDay.Api.Entities
 		[DynamoDBHashKey]
 		public string PostID { get; set; } = string.Empty;
 		[DynamoDBRangeKey]
-		public DateTime PostedOn { get; set; }
+		public long PostedOn { get; set; }
 		public string Category { get; set; } = string.Empty;
 		public string FirstName { get; set; } = string.Empty;
 		public string LastName { get; set; } = string.Empty;
