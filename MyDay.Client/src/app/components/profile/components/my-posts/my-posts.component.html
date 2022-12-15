@@ -11,6 +11,13 @@
             <div class="post w-full p-6 pb-16 mt-4 bg-slate-200 relative rounded-lg">
                 <app-reactions [post]="post"></app-reactions>
                 <p class="post-content" [innerHTML]="post.body"></p>
+
+                <div class="option absolute flex flex-col justify-center items-center translate-y-1/2 right-1 space-y-0.5 top-0 cursor-pointer w-6 h-6 z-40" (click)="toggleOptions($event)">
+                    <div class="dot bg-black rounded-full w-1 h-1 pointer-events-none"></div>
+                    <div class="dot bg-black rounded-full w-1 h-1 pointer-events-none"></div>
+                    <div class="dot bg-black rounded-full w-1 h-1 pointer-events-none"></div>
+                </div>
+                <app-post-options class="opts" [post]="post"></app-post-options>
             </div>
         </div>
     </div>

@@ -11,9 +11,8 @@
      transition: none;
  }
 
- .backdrop{
+.backdrop{
     display: none;
-    background: rgba(0, 0, 0, 0);
 }
 
 .backdrop.reveal{

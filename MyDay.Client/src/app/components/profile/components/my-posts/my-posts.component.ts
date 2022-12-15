@@ -14,6 +14,7 @@ export class MyPostsComponent implements OnInit {
   faHeart = faHeart;
   faComment = faComment;
   posts: PostReponse[] = [];
+  optionHidden: boolean = true;
   constructor(private postService: PostService) { }
 
   async ngOnInit(){
@@ -24,4 +25,16 @@ export class MyPostsComponent implements OnInit {
     this.posts = await this.postService.getUserPosts("myday") as PostReponse[];
   }
 
+  toggleOptions(e){
+    const optionsBox = e.target.parentElement.childNodes[3];
+    if(optionsBox.classList.contains('normal')) optionsBox.classList.remove('normal')
+    optionsBox.classList.toggle('reveal');
+    const backdrop = document.querySelector('.backdrop')
+    if(!backdrop.classList.contains('reveal')) backdrop.classList.add('reveal')
+    backdrop.addEventListener('click', () => {
+      optionsBox.classList.remove('reveal')
+      backdrop.classList.remove('reveal')
+      backdrop.removeAllListeners('click')
+    })
+  }
 }

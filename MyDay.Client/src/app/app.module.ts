@@ -24,6 +24,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { TokenInterceptor } from './_interceptors/token.interceptor';
 import { CacheInterceptor } from './_interceptors/cache.interceptor';
 import { ReactionsComponent } from './components/reactions/reactions.component';
+import { PostOptionsComponent } from './components/post-options/post-options.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ReactionsComponent } from './components/reactions/reactions.component';
     DropdownItemsPipe,
     SignInComponent,
     SignUpComponent,
-    ReactionsComponent
+    ReactionsComponent,
+    PostOptionsComponent
   ],
   imports: [
     BrowserModule,

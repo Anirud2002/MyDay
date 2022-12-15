@@ -1,0 +1,11 @@
+.opts{
+    display: none;
+ }
+ 
+ .opts.reveal{
+    display: block;
+ }
+ 
+ .opts.normal{
+     transition: none;
+ }
