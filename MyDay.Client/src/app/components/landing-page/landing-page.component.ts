@@ -53,6 +53,7 @@ export class LandingPageComponent implements OnInit {
     const response = await this.postService.post(post);
     response.subscribe(res => {
       // do nothing
+      this.editorContent = "";
     })
   }
 
