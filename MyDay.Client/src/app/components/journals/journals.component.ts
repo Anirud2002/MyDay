@@ -18,6 +18,8 @@ export class JournalsComponent implements OnInit {
   posts: PostReponse[] = [];
   activeJournalCategory: string = 'Motivating';
   journalCategories: string[] = ['Motivating', 'Grateful', 'Sad']
+  dataLoaded: boolean = false;
+
   constructor(private router:Router, private postService: PostService) { }
 
   async ngOnInit() {
@@ -25,7 +27,10 @@ export class JournalsComponent implements OnInit {
   }
 
   async getPosts(){
-    this.posts = await this.postService.getPosts("journal") as PostReponse[];
+    this.posts = await this.postService.getPosts("journal").then((res) => {
+      this.dataLoaded = true;
+      if(res) return res;
+    }) as PostReponse[];
   }
 
   toggleDropdown(){

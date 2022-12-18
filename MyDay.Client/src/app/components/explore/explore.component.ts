@@ -14,6 +14,8 @@ export class ExploreComponent implements OnInit {
   faHeart = faHeart;
   faComment = faComment;
   posts: PostReponse[] = [];
+  dataLoaded: boolean = false;
+
   constructor(private router: Router, private postService: PostService) { }
 
   async ngOnInit(){
@@ -21,7 +23,11 @@ export class ExploreComponent implements OnInit {
   }
 
   async getPosts(){
-    this.posts = await this.postService.getPosts("myday") as PostReponse[];
+    this.dataLoaded = false;
+    this.posts = await this.postService.getPosts("myday").then((res) => {
+      this.dataLoaded = true;
+      if(res) return res;
+    }) as PostReponse[];
   }
 
 }
