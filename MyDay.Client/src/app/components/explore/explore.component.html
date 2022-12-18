@@ -1,16 +1,23 @@
 <div class="sm:w-11/12 md:w-4/5 lg:w-3/5 w-full mx-auto p-4 md:p-6 flex flex-col justify-center items-center">
-<div class="container flex items-start mb-8" *ngFor="let post of posts">
-    <div class="user">
-        <fa-icon [icon]="faUserCircle" size="2xl"></fa-icon>
-    </div>
-    <div class="user-post ml-4 -mt-2 flex flex-col items-start w-full">
-        <div class="post-detail">
-            <p class="font-bold">{{post.firstName}} {{post.lastName}}</p>
-            <p class="text-xs">{{post.postedOn | date: 'MMM d, y, h:mm a'}}</p>
+    
+    <div class="container flex items-start mb-8" *ngFor="let post of posts">
+        <div class="user">
+            <fa-icon [icon]="faUserCircle" size="2xl"></fa-icon>
         </div>
-        <div class="post w-full p-6 pb-16 mt-4 bg-slate-200 relative rounded-lg">
-            <app-reactions [post]="post"></app-reactions>
-            <p class="post-content" [innerHTML]="post.body"></p>
+        <div class="user-post ml-4 -mt-2 flex flex-col items-start w-full">
+            <div class="post-detail">
+                <p class="font-bold">{{post.firstName}} {{post.lastName}}</p>
+                <p class="text-xs">{{post.postedOn | date: 'MMM d, y, h:mm a'}}</p>
+            </div>
+            <div class="post w-full p-6 pb-16 mt-4 bg-slate-200 relative rounded-lg">
+                <app-reactions [post]="post"></app-reactions>
+                <p class="post-content" [innerHTML]="post.body"></p>
+            </div>
         </div>
     </div>
 </div>
+<div class="flex justify-center items-center">
+    <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
