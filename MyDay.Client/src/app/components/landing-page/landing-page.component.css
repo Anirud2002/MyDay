@@ -21,14 +21,17 @@
     list-style: disc;
 }
 
+.category-list{
+    list-style: none;
+}
 
-button{
+.share-btn{
     background-color: var(--cyan);
     font-family: "Roboto", sans-serif;
     transition: .2s ease;
 }
 
-button:hover{
+.share-btn:hover{
     background-color: var(--cyan-100);
 }
 

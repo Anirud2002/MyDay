@@ -1,16 +1,12 @@
 <div class="container mx-auto relative">
     <div class="sm:w-11/12 md:w-5/6 lg:w-4/5 w-full mx-auto p-6 flex flex-col justify-center items-center -mt-8">
-        <div class="overflow-hidden">
-            <div (click)="toggleDropdown()" class=" cursor-pointer flex items-center justify-around">
-                <p> {{activeDropdownItem}}</p>
-                <fa-icon [icon]="faChevronDown" class="down-arrow cursor-pointer ml-2 inline-block"></fa-icon>
-            </div>
-
-            <div class="dropdown z-10 w-auto border-2 flex items-center justify-center rounded-md">
-                <p class="cursor-pointer text-sm" *ngFor="let category of dropDownItems | dropdownItems: activeDropdownItem : dropDownItems" (click)="changeActiveDropdownItem(category)">
-                   {{category}}
-                </p>
-            </div>
+        <button (click)="toggleDropdown()" class="z-20  focus:ring-4 focus:outline-none font-medium rounded-lg text-lg px-4 py-2.5 text-center inline-flex items-center" type="button">{{activeDropdownItem}} <fa-icon [icon]="faChevronDown" class="down-arrow ml-2 inline-block"></fa-icon></button>
+        <div class="dropdown z-10 w-36 rounded divide-y shadow">
+            <ul class="category-list p-2 text-sm text-gray-700 flex flex-col items-center justify-center" aria-labelledby="dropdownDefault">
+                <li class="text-base cursor-pointer" *ngFor="let category of dropDownItems | dropdownItems: activeDropdownItem : dropDownItems" (click)="changeActiveDropdownItem(category)">
+                    {{category}}
+                </li>
+            </ul>
         </div>
 
         <ckeditor
@@ -23,7 +19,7 @@
         >
         </ckeditor>
 
-        <button class="mt-6 text-white px-4 py-1 rounded-md" (click)="share()">
+        <button class="share-btn mt-6 text-white px-4 py-1 rounded-md" (click)="share()">
             Share <fa-icon [icon]="faPaperPlane" class="ml-2"></fa-icon>
         </button>
     </div>

@@ -34,7 +34,7 @@
 }
 
 .dropdown{
-    transform: translateY(-90px);
+    transform: translateY(-70px);
     opacity: 0;
     transition: .3s ease-in all;
 }

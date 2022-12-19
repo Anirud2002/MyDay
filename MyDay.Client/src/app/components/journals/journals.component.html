@@ -5,18 +5,17 @@
           <span class="sr-only">Loading...</span>
         </div>
     </div>
-    <div class="overflow-hidden">
-        <div (click)="toggleDropdown()" class=" cursor-pointer flex items-center justify-around">
-            <p> {{activeJournalCategory}}</p>
-            <fa-icon [icon]="faChevronDown" class="down-arrow ml-2 inline-block"></fa-icon>
-        </div>
 
-        <div class="dropdown z-10 w-auto border-2 flex flex-col items-center justify-center rounded-md">
-            <p class="cursor-pointer text-sm" *ngFor="let category of journalCategories | dropdownItems: activeJournalCategory : journalCategories" (click)="changeActiveDropdownItem(category)">
-               {{category}}
-            </p>
-        </div>
+    <button id="dropdownDefault" (click)="toggleDropdown()" data-dropdown-toggle="dropdown" class="z-20 bg-white focus:ring-4 focus:outline-none font-medium rounded-lg text-lg px-4 py-2.5 text-center inline-flex items-center" type="button">{{activeJournalCategory}} <fa-icon [icon]="faChevronDown" class="down-arrow ml-2 inline-block"></fa-icon></button>
+    <div class="dropdown z-10 w-36 rounded divide-y shadow">
+        <ul class="p-2 text-sm text-gray-700 flex flex-col items-center justify-center" aria-labelledby="dropdownDefault">
+            <li class="text-base cursor-pointer" *ngFor="let category of journalCategories | dropdownItems: activeJournalCategory : journalCategories" (click)="changeActiveDropdownItem(category)">
+                {{category}}
+            </li>
+        </ul>
     </div>
+
+      
     <div class="container flex flex-col items-center justify-center mb-8" *ngFor="let post of posts">
         <div class="user flex items-center">
             <fa-icon [icon]="faUserCircle" size="2xl"></fa-icon>
