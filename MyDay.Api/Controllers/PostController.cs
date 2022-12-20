@@ -60,7 +60,7 @@ namespace MyDay.Api.Controllers
                     myDayPosts.Add(new PostViewModelDTO().toViewModel(post[0]));
                 }
             }
-            return new OkObjectResult(myDayPosts.OrderByDescending(x => x.PostedOn).ToList());
+            return new OkObjectResult(myDayPosts);
         }
 
         [HttpPost]
