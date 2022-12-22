@@ -105,19 +105,19 @@ namespace MyDay.Api.Controllers
             var user = await _dynamoDBContext.LoadAsync<MyDayUser>(User.GetUserName());
             var idxToRemove = user.PostIDs.FindIndex(id => id.Contains(postID));
             // getting rid of the particular post id from the user table as well
-            if(idxToRemove >= 0)
+            if (idxToRemove >= 0)
             {
                 user.PostIDs.RemoveAt(idxToRemove);
-                if(user.PostIDs.Count == 0)
+                if (user.PostIDs.Count == 0)
                 {
-                    user.PostIDs = null;
+                    user.PostIDs = new List<string>(); // if not working, set the value to "null"
                 }
                 await _dynamoDBContext.SaveAsync<MyDayUser>(user);
             }
 
             var post = await _dynamoDBContext.LoadAsync<Post>(postID, date);
 
-            
+
             await _dynamoDBContext.DeleteAsync<Post>(post);
             return new OkResult();
         }
