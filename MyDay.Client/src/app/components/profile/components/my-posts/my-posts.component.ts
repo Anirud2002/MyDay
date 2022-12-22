@@ -37,4 +37,8 @@ export class MyPostsComponent implements OnInit {
       backdrop.removeAllListeners('click')
     })
   }
+
+  deletePost(id){
+    this.posts = this.posts.filter(post => post.postID != id);
+  }
 }

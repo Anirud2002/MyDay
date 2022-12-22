@@ -26,4 +26,8 @@ export class PostService {
       })
     )
   }
+
+  async deletePost(postID: string, date: number){
+    return this.http.delete(this.baseUrl + `post/${postID}/${date}`);
+  }
 }

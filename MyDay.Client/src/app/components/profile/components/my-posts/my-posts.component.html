@@ -17,7 +17,7 @@
                     <div class="dot bg-black rounded-full w-1 h-1 pointer-events-none"></div>
                     <div class="dot bg-black rounded-full w-1 h-1 pointer-events-none"></div>
                 </div>
-                <app-post-options class="opts" [post]="post"></app-post-options>
+                <app-post-options class="opts" (postDeleteEvent)="deletePost($event)" [post]="post"></app-post-options>
             </div>
         </div>
     </div>

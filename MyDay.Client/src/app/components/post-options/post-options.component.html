@@ -2,7 +2,7 @@
     <li class="cursor-pointer">
         Edit <fa-icon class="ml-4" [icon]="faPencil"></fa-icon>
     </li>
-    <li class="cursor-pointer">
+    <li class="cursor-pointer" (click)="deletePost(post)">
         Delete <fa-icon class="ml-4" [icon]="faTrash"></fa-icon>
     </li>
 </ul>
