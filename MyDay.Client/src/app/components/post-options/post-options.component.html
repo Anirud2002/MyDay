@@ -1,9 +1,11 @@
-<ul class="absolute rounded-md flex flex-col content-around items-start p-4 bg-slate-500 right-6 top-6 w-32 text-white z-40">
-    <li class="cursor-pointer">
-        Edit <fa-icon class="ml-4" [icon]="faPencil"></fa-icon>
+<ul class="absolute rounded-md p-2 bg-slate-800 right-6 top-6 text-white z-40">
+    <li class="cursor-pointer space-x-4 hover:bg-slate-400 duration-300 w-full px-2 rounded-sm">
+        <fa-icon class="ml-4" [icon]="faPencil"></fa-icon>
+        <span>Edit</span> 
     </li>
-    <li class="cursor-pointer" (click)="deletePost(post)">
-        Delete <fa-icon class="ml-4" [icon]="faTrash"></fa-icon>
+    <li class="cursor-pointer space-x-4 hover:bg-slate-400 duration-300 w-full px-2 rounded-sm" (click)="deletePost(post)">
+        <fa-icon class="ml-4" [icon]="faTrash"></fa-icon>
+        <span>Delete</span> 
     </li>
 </ul>
 <div class="backdrop fixed top-0 left-0 right-0 bottom-0 z-20"></div>
