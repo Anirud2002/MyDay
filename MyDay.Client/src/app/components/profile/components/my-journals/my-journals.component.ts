@@ -14,6 +14,7 @@ export class MyJournalsComponent implements OnInit {
   faHeart = faHeart;
   faComment = faComment;
   posts: PostReponse[] = [];
+  dataLoaded: boolean = false;
   constructor(private postService: PostService) { }
 
   async ngOnInit(){
@@ -21,7 +22,10 @@ export class MyJournalsComponent implements OnInit {
   }
 
   async getUserPosts(){
-    this.posts = await this.postService.getUserPosts("journal") as PostReponse[];
+    this.posts = await this.postService.getUserPosts("journal").then(res => {
+      this.dataLoaded = true;
+      if(res) return res;
+    }) as PostReponse[];
   }
 
 }

@@ -15,6 +15,7 @@ export class MyPostsComponent implements OnInit {
   faComment = faComment;
   posts: PostReponse[] = [];
   optionHidden: boolean = true;
+  dataLoaded: boolean = false;
   constructor(private postService: PostService) { }
 
   async ngOnInit(){
@@ -22,7 +23,10 @@ export class MyPostsComponent implements OnInit {
   }
 
   async getUserPosts(){
-    this.posts = await this.postService.getUserPosts("myday") as PostReponse[];
+    this.posts = await this.postService.getUserPosts("myday").then((res) => {
+      this.dataLoaded = true;
+      if(res) return res
+    }) as PostReponse[];
   }
 
   toggleOptions(e){

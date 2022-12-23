@@ -1,4 +1,5 @@
 <div class="sm:w-11/12 md:w-10/12 lg:w-full w-full mx-auto flex flex-col justify-center items-center mt-4">
+    <app-loader [dataLoaded]="dataLoaded"></app-loader>
     <div class="container flex flex-col items-center justify-center mb-8" *ngFor="let post of posts">
         <div class="user flex items-center">
             <fa-icon [icon]="faUserCircle" size="2xl"></fa-icon>
