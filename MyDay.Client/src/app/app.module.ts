@@ -25,6 +25,7 @@ import { TokenInterceptor } from './_interceptors/token.interceptor';
 import { CacheInterceptor } from './_interceptors/cache.interceptor';
 import { ReactionsComponent } from './components/reactions/reactions.component';
 import { PostOptionsComponent } from './components/post-options/post-options.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { PostOptionsComponent } from './components/post-options/post-options.com
     SignInComponent,
     SignUpComponent,
     ReactionsComponent,
-    PostOptionsComponent
+    PostOptionsComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
