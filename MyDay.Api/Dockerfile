@@ -12,5 +12,5 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
 COPY --from=dotnet-img /app/out ./
-EXPOSE 5000
+EXPOSE 5001
 ENTRYPOINT ["dotnet", "MyDay.Api.dll"]
