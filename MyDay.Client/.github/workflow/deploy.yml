@@ -11,7 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - working-directory: ./MyDay.Client
+
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            MyDay.Client:
+              - 'MyDay.Client/**'
+      - working-directory: MyDay.Client
       - run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker build -t aniruddocyard/myday-client -f Dockerfile.dev .
