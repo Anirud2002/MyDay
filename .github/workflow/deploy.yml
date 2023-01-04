@@ -7,6 +7,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: MyDay.Client
     steps:
       - uses: actions/checkout@v2
 
@@ -16,8 +19,10 @@ jobs:
           filters: |
             MyDay.Client:
               - 'MyDay.Client/**'
-      - working-directory: MyDay.Client
-      - run: |
+
+      - name: Running the container
+
+        run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker build -t aniruddocyard/myday-client -f Dockerfile.dev .
           docker run -e CI=true aniruddocyard/myday-client npm run test
