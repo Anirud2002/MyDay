@@ -34,6 +34,7 @@ jobs:
           application_name: myday
           environment_name: Myday-env
           existing_bucket_name: elasticbeanstalk-us-west-2-901468922895
+          use_existing_version_if_available: true
           region: us-west-2
           version_label: ${{ github.sha }}
           deployment_package: deploy.zip
