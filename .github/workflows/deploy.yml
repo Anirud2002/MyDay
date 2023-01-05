@@ -7,9 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: MyDay.Client
     steps:
       - uses: actions/checkout@v2
 
@@ -20,13 +17,16 @@ jobs:
       #       MyDay.Client:
       #         - 'MyDay.Client/**'
       - name: Running the container
+        working-directory: MyDay.Client
         run: |
+          pwd
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker build -t aniruddocyard/myday-client -f Dockerfile.dev .
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
 
       - name: Deploy to ElasticBeanStalk
+
         uses: einaregilsson/beanstalk-deploy@v18
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
