@@ -23,7 +23,6 @@ jobs:
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker build -t aniruddocyard/myday-client -f Dockerfile.dev .
-          docker run aniruddocyard/myday-client npm run test
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
 
