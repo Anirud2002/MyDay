@@ -28,8 +28,8 @@ jobs:
           zip -r deploy.zip . -x '*.git*'
 
       - name: Deploy to ElasticBeanStalk
-        working-directory: MyDay.Client
         uses: einaregilsson/beanstalk-deploy@v18
+        working-directory: MyDay.Client
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
