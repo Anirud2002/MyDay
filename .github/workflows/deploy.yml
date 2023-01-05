@@ -21,10 +21,9 @@ jobs:
       #         - 'MyDay.Client/**'
       - name: Running the container
         run: |
-          pwd
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker build -t aniruddocyard/myday-client -f Dockerfile.dev .
-          docker run  aniruddocyard/myday-client npm run test
+          docker run --env-file ./.env aniruddocyard/myday-client npm run test
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
 
