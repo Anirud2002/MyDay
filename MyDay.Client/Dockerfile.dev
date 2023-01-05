@@ -1,8 +1,8 @@
 FROM node:18-alpine
 
 WORKDIR /app
-
+ENV CHROME_BIN=/usr/bin/google-chrome
 COPY package.json .
 RUN npm install
 COPY . .
-CMD npm start
+CMD npm start 
