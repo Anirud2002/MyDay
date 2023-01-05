@@ -23,6 +23,7 @@ jobs:
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker build -t aniruddocyard/myday-client -f Dockerfile.dev .
       - name: Generate deployment package
+        run: pwd
         run: zip -r deploy.zip . -x '*.git*'
 
       - name: Deploy to ElasticBeanStalk
