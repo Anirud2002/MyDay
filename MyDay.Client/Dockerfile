@@ -8,4 +8,5 @@ RUN npm run build
 
 # Stage 2
 FROM nginx:alpine
+EXPOSE 80
 COPY --from=node /app/dist/my-day.client /usr/share/nginx/html
