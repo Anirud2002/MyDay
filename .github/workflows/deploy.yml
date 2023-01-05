@@ -19,17 +19,14 @@ jobs:
       - name: Running the container
         working-directory: MyDay.Client
         run: |
-          pwd
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker build -t aniruddocyard/myday-client .
       - name: Generate deployment package
         run: |
-          pwd
           zip -r deploy.zip . -x '*.git*'
 
       - name: Deploy to ElasticBeanStalk
         uses: einaregilsson/beanstalk-deploy@v18
-        working-directory: MyDay.Client
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
@@ -40,3 +37,4 @@ jobs:
           region: us-west-2
           version_label: ${{ github.sha }}
           deployment_package: deploy.zip
+        working-directory: MyDay.Client
