@@ -21,7 +21,7 @@ jobs:
         run: |
           pwd
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker build -t aniruddocyard/myday-client -f Dockerfile.dev .
+          docker build -t aniruddocyard/myday-client .
       - name: Generate deployment package
         run: |
           pwd
