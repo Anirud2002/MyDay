@@ -27,6 +27,7 @@ jobs:
 
       - name: Deploy to ElasticBeanStalk
         uses: einaregilsson/beanstalk-deploy@v18
+        run: cd ./MyDay.Client
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
@@ -37,4 +38,3 @@ jobs:
           region: us-west-2
           version_label: ${{ github.sha }}
           deployment_package: deploy.zip
-        working-directory: MyDay.Client
