@@ -7,6 +7,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
     steps:
       - uses: actions/checkout@v2
 
@@ -25,6 +28,7 @@ jobs:
         working-directory: MyDay.Client
         run: |
           zip -r deploy.zip . -x '*.git*'
+          pwd
 
       - name: Deploy to ElasticBeanStalk
         uses: einaregilsson/beanstalk-deploy@v18
@@ -37,4 +41,4 @@ jobs:
           use_existing_version_if_available: true
           region: us-west-2
           version_label: ${{ github.sha }}
-          deployment_package: MyDay.Client/deploy.zip
+          deployment_package: /MyDay.Client/deploy.zip
