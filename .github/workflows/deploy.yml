@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
+        node-version: [18.x]
     steps:
       - uses: actions/checkout@v2
 
@@ -42,4 +42,4 @@ jobs:
           use_existing_version_if_available: true
           region: us-west-2
           version_label: ${{ github.sha }}
-          deployment_package: deploy.zip
+          deployment_package: MyDay.Client/deploy.zip
