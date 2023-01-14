@@ -23,7 +23,7 @@ jobs:
         working-directory: MyDay.Client
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker build -t aniruddocyard/myday-client -f Dockerfile.dev .
+          docker build -t aniruddocyard/myday-client -f ./MyDay.Client/Dockerfile.dev .
       - name: Generate deployment package
         working-directory: MyDay.Client
         run: |
@@ -37,7 +37,7 @@ jobs:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
           application_name: myday
-          environment_name: Myday-env
+          environment_name: Myday-env-1
           existing_bucket_name: elasticbeanstalk-us-west-2-901468922895
           use_existing_version_if_available: true
           region: us-west-2
