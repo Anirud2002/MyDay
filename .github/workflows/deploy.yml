@@ -17,7 +17,7 @@ jobs:
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           ls
-          docker build -t aniruddocyard/myday-client -f ./MyDay-Client/Dockerfile.dev .
+          docker build -t aniruddocyard/myday-client -f ./MyDay-Client/Dockerfile.dev ./MyDay-Client
       - name: Generate deployment package
         working-directory: MyDay.Client
         run: |
