@@ -19,9 +19,8 @@ jobs:
           ls
           docker build -t aniruddocyard/myday-client -f ./MyDay-Client/Dockerfile.dev ./MyDay-Client
       - name: Generate deployment package
-        working-directory: MyDay.Client
         run: |
-          zip -r ./MyDay.Client/deploy.zip . -x '*.git*'
+          zip -r ./MyDay-Client/deploy.zip . -x '*.git*'
           pwd
           ls
 
@@ -36,4 +35,4 @@ jobs:
           use_existing_version_if_available: true
           region: us-west-2
           version_label: ${{ github.sha }}
-          deployment_package: ./MyDay.Client/deploy.zip
+          deployment_package: ./MyDay-Client/deploy.zip
