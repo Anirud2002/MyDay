@@ -13,21 +13,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # - uses: dorny/paths-filter@v2
-      #   id: filter
-      #   with:
-      #     filters: |
-      #       MyDay.Client:
-      #         - 'MyDay.Client/**'
       - name: Running the container
-        working-directory: MyDay.Client
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
           docker build -t aniruddocyard/myday-client -f ./MyDay.Client/Dockerfile.dev .
       - name: Generate deployment package
         working-directory: MyDay.Client
         run: |
-          zip -r deploy.zip . -x '*.git*'
+          zip -r ./MyDay.Client/deploy.zip . -x '*.git*'
           pwd
           ls
 
@@ -42,4 +35,4 @@ jobs:
           use_existing_version_if_available: true
           region: us-west-2
           version_label: ${{ github.sha }}
-          deployment_package: MyDay.Client/deploy.zip
+          deployment_package: ./MyDay.Client/deploy.zip
