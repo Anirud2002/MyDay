@@ -21,6 +21,7 @@ jobs:
       - name: Generate deployment package
         run: |
           zip -r ./MyDay-Client/deploy.zip . -x '*.git*'
+          cd ..
           pwd
           ls
 
