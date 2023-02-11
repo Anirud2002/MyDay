@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDay.Api", "MyDay.Api\MyDay.Api.csproj", "{4125FC0C-8364-4560-95F6-67EB9D567257}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDay-Api", "MyDay-Api\MyDay-Api.csproj", "{4125FC0C-8364-4560-95F6-67EB9D567257}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDay.Tests", "MyDay.Tests\MyDay.Tests.csproj", "{CD7F0F54-0E68-429C-8938-AD4204C24F74}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyDay-Tests", "MyDay-Tests\MyDay-Tests.csproj", "{CD7F0F54-0E68-429C-8938-AD4204C24F74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

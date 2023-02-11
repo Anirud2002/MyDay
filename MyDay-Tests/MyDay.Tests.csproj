@@ -32,5 +32,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyDay.Api\MyDay.Api.csproj" />
+    <ProjectReference Include="..\MyDay-Api\MyDay-Api.csproj" />
   </ItemGroup>
 </Project>
