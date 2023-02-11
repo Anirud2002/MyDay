@@ -23,8 +23,12 @@ namespace MyDay.Api.Service
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.NameId, user.UserName),
-                new Claim(ClaimTypes.Role, "MYDAY_ADMIN")
             };
+
+            foreach (string role in user.Roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
 
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
             var tokenDescriptor = new SecurityTokenDescriptor

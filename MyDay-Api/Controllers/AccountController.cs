@@ -36,6 +36,7 @@ namespace MyDay.Api.Controllers
                 Email = registerDTO.Email,
                 LastName = registerDTO.LastName,
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDTO.Password)),
+                Roles = new List<string> { "USER" },
                 PasswordSalt = hmac.Key,
                 City = string.Empty,
                 PostIDs = new List<string>(),
