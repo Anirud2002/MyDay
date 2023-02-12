@@ -1,13 +1,14 @@
 <div class="w-72 h-auto rounded-md bg-slate-400 p-3 flex flex-col space-y-3">
-    <div class="comment w-full">
+    <p *ngIf="comments.length === 0 || !comments" class="font-medium">No comments! Be the first one.</p>
+    <div class="comment w-full" *ngFor="let comment of comments">
         <div class="comment-header flex flex-row items-start">
             <div class="user">
                 <fa-icon [icon]="faUserCircle" size="2xl"></fa-icon>
             </div>
             <div class="user-post ml-4 -mt-1 flex flex-col items-start w-full">
                 <div class="post-detail">
-                    <p class="font-bold text-sm">Anirud Shrestha</p>
-                    <p class="text-xs">Sep 10, 2022 at 10:30 AM</p>
+                    <p class="font-bold text-sm">{{comment.firstName}} {{comment.lastName}}</p>
+                    <p class="text-xs">{{comment.commentedOn | date: 'MMM d, y, h:mm a'}}</p>
                 </div>
             </div>
         </div>

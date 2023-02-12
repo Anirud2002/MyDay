@@ -9,7 +9,7 @@ export interface PostReponse{
     body: string,
     category: string,
     hashtags: string[],
-    Likes: number,
-    Comments: Comments[],
-    LikedBy: string[]
+    likes: number,
+    comments: Comments[],
+    likedBy: string[]
 }

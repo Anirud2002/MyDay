@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { faUserCircle, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-comment-dialogue',
@@ -6,6 +6,7 @@ import { faUserCircle, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./comment-dialogue.component.css']
 })
 export class CommentDialogueComponent implements OnInit {
+  @Input() comments: Comment
   faUserCircle = faUserCircle;
   faPaperPlane = faPaperPlane;
   constructor() { }
