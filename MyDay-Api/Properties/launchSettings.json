@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "MyDay.Api": {
+    "MyDay-Api": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,
