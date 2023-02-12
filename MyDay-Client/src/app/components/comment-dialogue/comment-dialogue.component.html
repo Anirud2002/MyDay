@@ -1,6 +1,6 @@
-<div class="w-72 h-auto rounded-md bg-slate-400 p-3 flex flex-col space-y-3">
+<div class="w-72rounded-md bg-slate-400 p-3 flex flex-col space-y-3">
     <p *ngIf="comments.length === 0 || !comments" class="font-medium">No comments! Be the first one.</p>
-    <div class="comment w-full" *ngFor="let comment of comments">
+    <div class="comment w-full my-2" *ngFor="let comment of comments">
         <div class="comment-header flex flex-row items-start">
             <div class="user">
                 <fa-icon [icon]="faUserCircle" size="2xl"></fa-icon>
@@ -12,7 +12,9 @@
                 </div>
             </div>
         </div>
-        <div class="comment-body w-full h-24 bg-slate-900 mt-2 rounded-3xl"></div>
+        <div class="comment-body w-full bg-slate-100 mt-2 rounded-md p-2">
+            {{comment.commentBody}}
+        </div>
     </div>
     <div class="send-msg w-full flex flex-row justify-center items-center">
         <textarea type="text" class=" w-full text-sm rounded-lg p-2 outline-none h-9 resize-none" placeholder="Appreciate..."></textarea>
