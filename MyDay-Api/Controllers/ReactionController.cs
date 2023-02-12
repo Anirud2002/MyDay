@@ -47,6 +47,8 @@ namespace MyDay.Api.Controllers
                 }
             );
 
+            await _dynamoDBContext.SaveAsync<Post>(post);
+
             return new OkResult();
         }
     }
