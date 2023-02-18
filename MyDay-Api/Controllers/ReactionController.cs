@@ -38,7 +38,6 @@ namespace MyDay.Api.Controllers
             post.Comments.Add(
                 new Comment
                 {
-                    AppUserID = user.AppUserID,
                     UserName = user.UserName,
                     FirstName = user.FirstName,
                     LastName = user.LastName,
