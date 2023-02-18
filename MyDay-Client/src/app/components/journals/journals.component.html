@@ -19,13 +19,6 @@
                 <p class="text-xs">{{post.postedOn | date: 'MMM d, y, h:mm a'}}</p>
             </div>
         </div>
-        <div class="user-post ml-4 mt-4 flex flex-col items-center w-full">
-            <h1 class="journal-type text-xl md:text-2xl italic font-thin">I'm grateful for,</h1>
-            <div class="post w-full md:w-11/12 p-6 pb-16 mt-2 bg-slate-200 rounded-lg relative">
-                <app-reactions [post]="post"></app-reactions>
-
-                <p class="post-content" [innerHTML]="post.body"></p>
-            </div>
-        </div>
+        <app-post class="w-full" [post]="post"></app-post>
     </div>
 </div>

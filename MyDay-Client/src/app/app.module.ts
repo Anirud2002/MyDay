@@ -17,15 +17,16 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { InfoComponent } from './components/profile/components/info/info.component';
 import { MyPostsComponent } from './components/profile/components/my-posts/my-posts.component';
 import { MyJournalsComponent } from './components/profile/components/my-journals/my-journals.component';
-import { CommentDialogueComponent } from './components/comment-dialogue/comment-dialogue.component';
+import { CommentDialogueComponent } from './components/post/components/comment-dialogue/comment-dialogue.component';
 import { DropdownItemsPipe } from './_pipes/dropdown-items.pipe';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { TokenInterceptor } from './_interceptors/token.interceptor';
 import { CacheInterceptor } from './_interceptors/cache.interceptor';
-import { ReactionsComponent } from './components/reactions/reactions.component';
+import { ReactionsComponent } from './components/post/components/reactions/reactions.component';
 import { PostOptionsComponent } from './components/post-options/post-options.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { PostComponent } from './components/post/post.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { LoaderComponent } from './components/loader/loader.component';
     SignUpComponent,
     ReactionsComponent,
     PostOptionsComponent,
-    LoaderComponent
+    LoaderComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

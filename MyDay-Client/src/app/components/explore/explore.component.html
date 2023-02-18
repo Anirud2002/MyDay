@@ -9,10 +9,7 @@
                 <p class="font-bold">{{post.firstName}} {{post.lastName}}</p>
                 <p class="text-xs">{{post.postedOn | date: 'MMM d, y, h:mm a'}}</p>
             </div>
-            <div class="post w-full p-6 pb-16 mt-4 bg-slate-200 relative rounded-lg">
-                <app-reactions [post]="post"></app-reactions>
-                <p class="post-content" [innerHTML]="post.body"></p>
-            </div>
+            <app-post [post]="post" class="w-full"></app-post>
         </div>
     </div>
 </div>

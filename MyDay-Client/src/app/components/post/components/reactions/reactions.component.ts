@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faUserCircle, faShare, faHeart, faComment} from '@fortawesome/free-solid-svg-icons';
-import { PostReponse } from '../../_interfaces/post-response.modal';
+import { PostReponse } from '../../../../_interfaces/post-response.modal';
 @Component({
   selector: 'app-reactions',
   templateUrl: './reactions.component.html',
