@@ -1,4 +1,4 @@
-import { Comments } from "./comments.modal";
+import { Comment } from "./comment.modal";
 
 export interface PostReponse{
     postID: string,
@@ -10,6 +10,6 @@ export interface PostReponse{
     category: string,
     hashtags: string[],
     likes: number,
-    comments: Comments[],
+    comments: Comment[],
     likedBy: string[]
 }

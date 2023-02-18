@@ -1,4 +1,4 @@
-<div class="w-80 h-56 overflow-y-auto bg-slate-400 p-3 flex flex-col space-y-5 rounded-lg">
+<div class="w-80 h-56 overflow-y-auto bg-slate-400 p-3 flex flex-col space-y-5 rounded-lg" *ngIf="newComment">
     <p *ngIf="comments.length === 0 || !comments" class="font-medium">No comments! Be the first one.</p>
     <div class="comment w-full my-2" *ngFor="let comment of comments">
         <div class="comment-header flex flex-row items-start">
@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="send-msg w-full flex flex-row justify-center items-center">
-        <textarea type="text" class=" w-full text-sm rounded-lg p-2 outline-none h-9 resize-none" placeholder="Appreciate..."></textarea>
-        <fa-icon [icon]="faPaperPlane" size="lg" class="ml-1 cursor-pointer"></fa-icon>
+        <textarea type="text" class=" w-full text-sm rounded-lg p-2 outline-none h-9 resize-none" placeholder="Appreciate..." [(ngModel)]="newComment.comment"></textarea>
+        <fa-icon [icon]="faPaperPlane" size="lg" class="ml-1 cursor-pointer" (click)="sendComment()"></fa-icon>
     </div>
 </div>

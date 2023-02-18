@@ -60,6 +60,7 @@ export class AccountService {
 
   updateUserFromLocalStorage(){
     this.currentUserSource.next(JSON.parse(localStorage.getItem("user")));
+    this.user = JSON.parse(localStorage.getItem("user"));
     this.isSignedUp = true;
   }
 
