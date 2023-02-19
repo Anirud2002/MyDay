@@ -13,15 +13,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Running the container
-        # run: |
-        #   cd ./MyDay-Client && ls
-        #   # docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        #   # docker build -t aniruddocyard/myday-client -f ./MyDay-Client/Dockerfile.dev ./MyDay-Client
+      # - name: Running the container
+      # run: |
+      #   cd ./MyDay-Client && ls
+      #   # docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      #   # docker build -t aniruddocyard/myday-client -f ./MyDay-Client/Dockerfile.dev ./MyDay-Client
       - name: Generate deployment package
         run: |
           zip -r ./MyDay-Client/deploy.zip . -x '*.git*'
-          cd ./MyDay-Client && ls
+          cd ./MyDay-Client
 
       # - name: Deploy to ElasticBeanStalk
       #   uses: einaregilsson/beanstalk-deploy@v18
