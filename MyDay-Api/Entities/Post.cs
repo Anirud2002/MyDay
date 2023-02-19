@@ -1,4 +1,5 @@
 ﻿using Amazon.DynamoDBv2.DataModel;
+using MyDayApi.Entities;
 
 namespace MyDay.Api.Entities
 {
@@ -17,6 +18,7 @@ namespace MyDay.Api.Entities
         public List<string> Hashtags { get; set; } = new List<string>();
         public int Likes { get; set; }
         public List<Comment> Comments { get; set; } = new List<Comment>();
+        public List<Photo> Photos { get; set; } = new List<Photo>();
         // stores the liked users AppUserID
         public List<string> LikedBy { get; set; } = new List<string>();
     }

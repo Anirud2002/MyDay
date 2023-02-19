@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using MyDay.Api.DTOs;
 using MyDay.Api.Entities;
 using MyDay.Api.Extensions;
+using MyDayApi.Entities;
+using MyDayApi.Interface;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,9 +16,11 @@ namespace MyDay.Api.Controllers
     public class PostController : Controller
     {
         private readonly IDynamoDBContext _dynamoDBContext;
-        public PostController(IDynamoDBContext dynamoDBContext)
+        public IPhotoService _photoService;
+        public PostController(IDynamoDBContext dynamoDBContext, IPhotoService photoService)
         {
             _dynamoDBContext = dynamoDBContext;
+            _photoService = photoService;
         }
 
         [HttpGet("{category}")]
@@ -64,16 +68,29 @@ namespace MyDay.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateMyDayPost([FromBody] PostDTO postDTO)
+        public async Task<ActionResult> CreateMyDayPost([FromForm] PostDTO postDTO)
         {
             var userName = User.GetUserName();
+            var user = await _dynamoDBContext.LoadAsync<MyDayUser>(userName);
 
-            if (string.IsNullOrEmpty(userName))
+            if (user == null)
             {
                 return BadRequest("User not found!");
             };
 
-            var user = await _dynamoDBContext.LoadAsync<MyDayUser>(userName);
+            var photo = new List<Photo>();
+
+            
+            if(postDTO.Photo != null)
+            {
+                var result = await _photoService.AddImageAsync(postDTO.Photo);
+                if (result.Error != null) return BadRequest("Couldn't add the photo");
+                photo.Add(new Photo
+                {
+                    URL = result.SecureUrl.AbsoluteUri,
+                    PublicID = result.PublicId
+                });
+            }
 
             var post = new Post()
             {
@@ -86,6 +103,7 @@ namespace MyDay.Api.Controllers
                 Body = postDTO.Body,
                 Hashtags = postDTO.Hashtags,
                 Likes = 0,
+                Photos = photo,
                 Comments = new List<Comment>(),
                 LikedBy = new List<string>()
             };

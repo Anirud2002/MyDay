@@ -1,5 +1,6 @@
 ﻿using System;
 using MyDay.Api.Entities;
+using MyDayApi.Entities;
 
 namespace MyDay.Api.DTOs
 {
@@ -15,6 +16,7 @@ namespace MyDay.Api.DTOs
         public List<string> Hashtags { get; set; } = new List<string>();
         public int Likes { get; set; }
         public List<Comment>? Comments { get; set; }
+        public List<Photo> Photos { get; set; } = new List<Photo>();
         public List<string> LikedBy { get; set; } = new List<string>();
 
         public PostViewModelDTO toViewModel(Post post)
@@ -30,6 +32,7 @@ namespace MyDay.Api.DTOs
                 Body = post.Body,
                 Hashtags = post.Hashtags,
                 Likes = post.Likes,
+                Photos = post.Photos,
                 LikedBy = post.LikedBy,
                 Comments = post.Comments
             };

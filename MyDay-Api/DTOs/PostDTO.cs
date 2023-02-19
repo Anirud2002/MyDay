@@ -7,6 +7,7 @@ namespace MyDay.Api.DTOs
 	{
 		public string Body { get; set; } = string.Empty;
 		public string Category { get; set; } = string.Empty;
+		public IFormFile? Photo { get; set; }
 		public List<string> Hashtags { get; set; } = new List<string>();
 	}
 }
