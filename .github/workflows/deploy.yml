@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - master
-
+ 
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -17,7 +17,7 @@ jobs:
       run: |
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
         docker build -t aniruddocyard/myday-client -f ./MyDay-Client/Dockerfile.dev ./MyDay-Client
-        
+
       - name: Generate deployment package
         run: |
           zip -r deploy.zip ./MyDay-Client -x '*.git*' -x '**node_modules'
