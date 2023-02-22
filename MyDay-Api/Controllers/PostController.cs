@@ -27,7 +27,7 @@ namespace MyDay.Api.Controllers
         public async Task<ActionResult> GetPosts(string category)
         {
             var conditions = new List<ScanCondition>();
-            // using scan condition because every post was different partition key
+            // using scan condition because every post has different partition key
             conditions.Add(new ScanCondition("Category", ScanOperator.Contains, category.ToUpper()));
             List<Post> posts = await _dynamoDBContext.ScanAsync<Post>(conditions).GetRemainingAsync();
 
