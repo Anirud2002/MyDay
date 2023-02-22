@@ -10,3 +10,7 @@ textarea::-webkit-scrollbar-thumb {
   background-color: var(--cyan);
   border-radius: 30px;
 }
+
+.signin-text{
+  color: white;
+}
