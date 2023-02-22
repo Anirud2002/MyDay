@@ -18,12 +18,13 @@ export class CommentDialogueComponent implements OnInit {
   newComment: CommentDTO;
   faUserCircle = faUserCircle;
   faPaperPlane = faPaperPlane;
-  constructor(private reactionService: ReactionService, private accountService: AccountService) { }
+  constructor(private reactionService: ReactionService, 
+    private accountService: AccountService) { }
 
   ngOnInit(): void {
     this.comments = this.post.comments;
     this.user = this.accountService.getUser();
-    this.setupNewComment()
+    if(this.user) this.setupNewComment()
   }
 
   async sendComment(){

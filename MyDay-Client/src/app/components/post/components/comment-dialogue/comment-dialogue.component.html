@@ -16,7 +16,7 @@
             {{comment.commentBody}}
         </div>
     </div>
-    <div class="send-msg w-full flex flex-row justify-center items-center">
+    <div class="send-msg w-full flex flex-row justify-center items-center" *ngIf="user">
         <textarea type="text" class=" w-full text-sm rounded-lg p-2 outline-none h-9 resize-none" placeholder="Appreciate..." [(ngModel)]="newComment.comment"></textarea>
         <fa-icon [icon]="faPaperPlane" size="lg" class="ml-1 cursor-pointer" (click)="sendComment()"></fa-icon>
     </div>

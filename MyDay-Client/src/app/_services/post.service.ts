@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { map } from 'rxjs';
 import { CreatePost } from '../_interfaces/create-post.modal';
 
@@ -19,8 +20,8 @@ export class PostService {
     return this.http.get(this.baseUrl + "post/userposts/" + category.toUpperCase()).toPromise();
   }
 
-  async post(value: CreatePost){
-    return this.http.post(this.baseUrl + "post", value).pipe(
+  async post(fd: FormData){
+    return this.http.post(this.baseUrl + "post", fd).pipe(
       map(post => {
         return post;
       })
