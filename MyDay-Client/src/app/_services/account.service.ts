@@ -45,6 +45,10 @@ export class AccountService {
   }
 
   getUser(){
+    this.currentUser$.subscribe((res) => {
+      this.user = res;
+      return res;
+    })
     return this.user;
   }
 
