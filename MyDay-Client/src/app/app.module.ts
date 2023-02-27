@@ -27,6 +27,8 @@ import { ReactionsComponent } from './components/post/components/reactions/react
 import { PostOptionsComponent } from './components/post-options/post-options.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { PostComponent } from './components/post/post.component';
+import { FileUploadModule } from 'ng2-file-upload';
+import { UploadMainPicComponent } from './components/profile/components/upload-main-pic/upload-main-pic.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { PostComponent } from './components/post/post.component';
     ReactionsComponent,
     PostOptionsComponent,
     LoaderComponent,
-    PostComponent
+    PostComponent,
+    UploadMainPicComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +61,7 @@ import { PostComponent } from './components/post/post.component';
     FormsModule,
     ReactiveFormsModule,
     CKEditorModule,
+    FileUploadModule,
     FontAwesomeModule
   ],
   providers: [
