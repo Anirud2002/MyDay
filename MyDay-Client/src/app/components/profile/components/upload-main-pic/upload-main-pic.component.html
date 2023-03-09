@@ -6,4 +6,23 @@
         </div>
     </div>
 
+    <div class="upload-container">
+        <div ng2FileDrop
+             [ngClass]="{'nv-file-over': hasBaseDropzoneOver}"
+             (fileOver)="fileOverBase($event)"
+             [uploader]="uploader"
+             class="border-2 border-dashed rounded-2xl flex flex-col justify-center items-center m-6 h-32">
+             <fa-icon [icon]="faUpload" class="text-2xl "></fa-icon>
+            <p class="text-sm">Drop your photo here</p> 
+            <p class="mt-2 text-sm">or</p>
+
+            <label class="custom-file-upload mt-2 cursor-pointer inline-block text-sm">
+                <input type="file"/>
+                Pick your photo from the device.
+            </label>
+        </div>
+    </div>
+
+    <!-- <input type="file" ng2FileSelect [uploader]="uploader"/> -->
+
 </div>
