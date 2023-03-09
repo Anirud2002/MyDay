@@ -1,5 +1,5 @@
 <div class="w-1/2 h-96 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-50 rounded-2xl">
-    <div class="header bg-slate-200 py-3 px-4 rounded-t-2xl flex items-center justify-between">
+    <div class="header bg-slate-200 rounded-t-2xl flex items-center justify-between">
         <h2 class="font-semibold">Upload your Profile Picture</h2>
         <div class="h-8 w-8 rounded-full hover:bg-slate-400 cursor-pointer flex justify-center items-center" (click)="handleCloseModal()">
             <fa-icon [icon]="faTimes" class="text-lg"></fa-icon>
@@ -17,12 +17,29 @@
             <p class="mt-2 text-sm">or</p>
 
             <label class="custom-file-upload mt-2 cursor-pointer inline-block text-sm">
-                <input type="file"/>
+                <input type="file" ng2FileSelect [uploader]="uploader"/>
                 Pick your photo from the device.
             </label>
         </div>
     </div>
 
-    <!-- <input type="file" ng2FileSelect [uploader]="uploader"/> -->
+    <div class="photo-upload-status py-3 px-4">
+        <p>Status:</p>
+        <p *ngIf="!uploader?.queue?.length" class="text-sm text-slate-400">
+            No status available.
+        </p>
+        <div *ngIf="uploader?.queue?.length">
+            <p class="text-sm" *ngFor="let item of uploader.queue">
+                {{item?.file?.name}} - {{ item?.file?.size/1024/1024 | number:'.2' }} MB
+            </p>
+        </div>
+        
 
+    </div>
+
+    <div [class]="(!uploader?.queue?.length ? 'opacity-50' : '') + (' footer absolute bottom-0 left-0 w-full py-3 px-4 flex')">
+        <button class="cursor-pointer ml-auto" [disabled]="!uploader?.queue?.length">
+            <p class="save py-1 px-2 rounded-md text-center">Save</p>
+        </button>
+    </div>
 </div>

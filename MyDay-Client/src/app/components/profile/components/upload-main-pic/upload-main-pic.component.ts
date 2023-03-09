@@ -11,7 +11,7 @@ export class UploadMainPicComponent implements OnInit {
   @Output() closeModal = new EventEmitter();
   uploader: FileUploader;
   hasBaseDropzoneOver = false;
-  
+
   faTimes = faTimes;
   faUpload = faUpload;
   constructor() { }
@@ -32,11 +32,13 @@ export class UploadMainPicComponent implements OnInit {
     })
 
     this.uploader.onAfterAddingFile = file => {
+      console.log("yooo")
       file.withCredentials = false;
     }
 
     this.uploader.onSuccessItem = (item, response, status, headers) => {
       if (response){
+        console.log(response)
         const photo = JSON.parse(response);
       }
     }

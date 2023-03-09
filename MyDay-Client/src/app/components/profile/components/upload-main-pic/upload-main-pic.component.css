@@ -5,3 +5,8 @@ input[type="file"] {
 .custom-file-upload{
     color: var(--cyan);
 }
+
+.save{
+    background-color: var(--cyan);
+    color: white;
+}
