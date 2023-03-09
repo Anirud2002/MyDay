@@ -32,13 +32,14 @@ export class UploadMainPicComponent implements OnInit {
     })
 
     this.uploader.onAfterAddingFile = file => {
-      console.log("yooo")
+      if(this.uploader.queue.length > 0){
+        this.uploader.queue = [this.uploader.queue[1]];
+      }
       file.withCredentials = false;
     }
 
     this.uploader.onSuccessItem = (item, response, status, headers) => {
       if (response){
-        console.log(response)
         const photo = JSON.parse(response);
       }
     }
