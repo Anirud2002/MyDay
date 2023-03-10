@@ -5,6 +5,7 @@ import { GetCurrentPageService } from '../../_services/get-current-page.service'
 import { AccountService } from '../../_services/account.service';
 import { User } from '../../_interfaces/user.modal';
 import { map, tap } from 'rxjs';
+import { UserDetails } from '../../_interfaces/user-details.modal';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -12,6 +13,7 @@ import { map, tap } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   user: User;
+  userDetails: UserDetails;
   faUserCircle = faUserCircle;
   faQuestionCircle = faQuestionCircle;
   activePage: any;
@@ -19,7 +21,9 @@ export class HeaderComponent implements OnInit {
     private getCurrentPageService: GetCurrentPageService,
     private accountService: AccountService,) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.user = this.accountService.getUser();
+    this.userDetails = await this.accountService.getUserDetails(this.user.userName);
     this.getCurrentPageService.getActivePageObservable().subscribe(res => {
       this.activePage = res;
     })

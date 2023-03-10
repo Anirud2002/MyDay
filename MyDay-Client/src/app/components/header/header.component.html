@@ -28,7 +28,10 @@
             <li [class]="activePage === '/support' ? 'active' : ''" routerLink="/support">Support <span><fa-icon [icon]="faQuestionCircle" size="sm"></fa-icon></span></li>
         </ul>
         <div class="avatar sm:ml-14 lg:ml-28" routerLink="/profile">
-            <fa-icon [icon]="faUserCircle" size="2xl" class="cursor-pointer"></fa-icon>
+            <img *ngIf="userDetails.profilePic.url else icon" [src]="userDetails.profilePic.url" [alt]="userDetails.userName" class="w-8 h-8 rounded-full cursor-pointer">
+            <ng-template #icon>
+                <fa-icon [icon]="faUserCircle" size="2xl" class="cursor-pointer"></fa-icon>
+            </ng-template>
         </div>
     </div>
 </nav>

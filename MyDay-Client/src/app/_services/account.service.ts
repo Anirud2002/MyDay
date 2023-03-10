@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, ReplaySubject } from 'rxjs';
 import { Login } from '../_interfaces/login.modal';
+import { UserDetails } from '../_interfaces/user-details.modal';
 import { User } from '../_interfaces/user.modal';
 
 @Injectable({
@@ -48,8 +49,8 @@ export class AccountService {
     return this.user;
   }
 
-  getUserDetails(userName: string){
-    return this.http.get(this.baseUrl + "user/" + userName).toPromise()
+  getUserDetails(userName: string): Promise<UserDetails>{
+    return this.http.get<UserDetails>(this.baseUrl + "user/" + userName).toPromise()
   }
 
   setCurrentUser(user:User){
