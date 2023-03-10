@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MyDay.Api.Entities;
+using MyDayApi.Entities;
 
 namespace MyDay.Api.DTOs
 {
@@ -10,6 +11,7 @@ namespace MyDay.Api.DTOs
     {
         public string UserName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
+        public Photo ProfilePic { get; set; } = new Photo();
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public DateTime Joined { get; set; }
@@ -23,6 +25,7 @@ namespace MyDay.Api.DTOs
             {
                 UserName = user.UserName,
                 Email = user.Email,
+                ProfilePic = user.ProfilePic,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Joined = user.Joined,

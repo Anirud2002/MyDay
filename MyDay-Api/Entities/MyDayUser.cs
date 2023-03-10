@@ -1,5 +1,6 @@
 ﻿using System;
 using Amazon.DynamoDBv2.DataModel;
+using MyDayApi.Entities;
 
 namespace MyDay.Api.Entities
 {
@@ -9,6 +10,7 @@ namespace MyDay.Api.Entities
         [DynamoDBHashKey]
         public string UserName { get; set; } = string.Empty;
         public string AppUserID { get; set; } = string.Empty;
+        public Photo ProfilePic { get; set; } = new Photo();
         public string Email { get; set; } = string.Empty;
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;

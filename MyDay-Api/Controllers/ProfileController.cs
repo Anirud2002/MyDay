@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using MyDay.Api.DTOs;
 using MyDay.Api.Entities;
 using MyDay.Api.Extensions;
+using MyDayApi.Entities;
+using MyDayApi.Interface;
 
 namespace MyDay.Api.Controllers
 {
@@ -14,9 +16,11 @@ namespace MyDay.Api.Controllers
     public class ProfileController : ControllerBase
     {
         private readonly IDynamoDBContext _context;
-        public ProfileController(IDynamoDBContext context)
+        private readonly IPhotoService _photoService;
+        public ProfileController(IDynamoDBContext context, IPhotoService photoService)
         {
             _context = context;
+            _photoService = photoService;
         }
 
         [HttpPost]
@@ -39,6 +43,27 @@ namespace MyDay.Api.Controllers
             user.City = profileDTO.city;
             user.Description = profileDTO.description;
 
+            await _context.SaveAsync<MyDayUser>(user);
+            return new OkObjectResult(new UserDetailsDTO().toViewModel(user));
+        }
+
+        [HttpPost("upload-profile-pic")]
+        public async Task<ActionResult> UploadProfilePic(IFormFile file)
+        {
+            ArgumentNullException.ThrowIfNull(file);
+
+            var user = await _context.LoadAsync<MyDayUser>(User.GetUserName());
+            var result = await _photoService.AddImageAsync(file);
+            var photo = new Photo()
+            {
+                URL = result.SecureUrl.AbsoluteUri,
+                PublicID = result.PublicId
+            };
+            if (!String.IsNullOrEmpty(user.ProfilePic.PublicID)) // if user has existing pic, delete it and add the new one
+            {
+                await _photoService.DeleteImageAsync(user.ProfilePic.PublicID);
+            }
+            user.ProfilePic = photo;
             await _context.SaveAsync<MyDayUser>(user);
             return new OkObjectResult(new UserDetailsDTO().toViewModel(user));
         }
