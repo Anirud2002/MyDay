@@ -1,6 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faTimes, faUpload } from '@fortawesome/free-solid-svg-icons';
 import { FileUploader } from 'ng2-file-upload';
+import { User } from '../../../../_interfaces/user.modal';
+import { AccountService } from '../../../../_services/account.service';
+import { AuthCheckService } from '../../../../_services/auth-check.service';
 
 @Component({
   selector: 'app-upload-main-pic',
@@ -11,19 +14,21 @@ export class UploadMainPicComponent implements OnInit {
   @Output() closeModal = new EventEmitter();
   uploader: FileUploader;
   hasBaseDropzoneOver = false;
+  user:User;
 
   faTimes = faTimes;
   faUpload = faUpload;
-  constructor() { }
+  constructor(private accountService: AccountService) { }
 
   ngOnInit(): void {
     this.initFileUploader();
+    this.user = this.accountService.getUser();
   }
 
   initFileUploader(){
     this.uploader = new FileUploader({
-      url: "https://localhost:5001",
-      authToken: 'Bearer ',
+      url: "https://localhost:5001/api/upload-main-pic",
+      authToken: `Bearer ${this.user.token}`,
       isHTML5: true,
       allowedFileType: ['image'],
       removeAfterUpload: true,
