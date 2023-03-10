@@ -38,8 +38,21 @@
     </div>
 
     <div [class]="(!uploader?.queue?.length ? 'opacity-50' : '') + (' footer absolute bottom-0 left-0 w-full py-3 px-4 flex')">
-        <button class="cursor-pointer ml-auto" [disabled]="!uploader?.queue?.length">
-            <p class="save py-1 px-2 rounded-md text-center" (click)="uploader.uploadAll()">Save</p>
+        <button class="save cursor-pointer ml-auto w-14 h-8 py-1 px-2 rounded-md" [disabled]="!uploader?.queue?.length || isUploading" (click)="uploader.uploadAll()" (click)="handleUpload()">
+            <p class="text-center" *ngIf="!isUploading else spinner">Save</p>
+            <ng-template #spinner>
+                <div class="flex items-center justify-center">
+                    <div
+                        class="inline-block h-6 w-6 animate-spin rounded-full border-2 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+                        role="status">
+                        <span
+                        class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+                        >Loading...</span
+                        >
+                    </div>
+                </div>
+            </ng-template>
         </button>
     </div>
+   
 </div>

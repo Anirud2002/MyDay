@@ -16,6 +16,8 @@ export class UploadMainPicComponent implements OnInit {
   @Output() changeProfilePic = new EventEmitter();
   uploader: FileUploader;
   hasBaseDropzoneOver = false;
+  isUploading: boolean = false;
+
   user:User;
 
   faTimes = faTimes;
@@ -46,7 +48,8 @@ export class UploadMainPicComponent implements OnInit {
     }
 
     this.uploader.onSuccessItem = (item, response, status, headers) => {
-      let photo = JSON.parse(response).profilePic
+      this.isUploading = false;
+      let photo = JSON.parse(response).profilePic;
       this.changeProfilePic.emit(photo)
       this.handleCloseModal();
     }
@@ -59,6 +62,10 @@ export class UploadMainPicComponent implements OnInit {
 
   handleCloseModal(){
     this.closeModal.emit(true)
+  }
+
+  handleUpload(){
+    this.isUploading = true;
   }
 
 }

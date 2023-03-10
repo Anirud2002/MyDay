@@ -1,12 +1,12 @@
 <div class="sm:w-11/12 md:w-4/5 lg:w-3/5 w-full mx-auto p-4 md:p-6 flex flex-col justify-center items-center" *ngIf="!isFetchingUserDetails">
-    <div class="user-photo -mt-12 w-48 h-48 relative">
+    <div class="user-photo -mt-12 w-48 h-48 relative ">
         <div class="img-overlay w-full h-full absolute top-0 left-0">
             <button class="edit-photo-btn py-1 px-4 rounded-md absolute right-2 bottom-2" (click)="uploadMainPic()">
                 <fa-icon [icon]="faPencil"></fa-icon>
             </button>
         </div>
-        <img [src]="this.userDetails.profilePic.url" [alt]="this.userDetails.userName" class="w-full h-full rounded-full object-cover">
-    </div>
+        <img *ngIf="userDetails.profilePic" [src]="userDetails.profilePic.url ? userDetails.profilePic.url : '../../../assets/default-user.png'" [alt]="userDetails.userName" class="w-full h-full rounded-full object-cover">
+    </div> 
     <div class="tabs mt-8">
         <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
             <ul class="flex flex-wrap -mb-px lg:space-x-12 md:space-x-10 sm:space-x-8">

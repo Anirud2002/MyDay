@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faPencil } from '@fortawesome/free-solid-svg-icons';
+import { faPencil, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { FileSelectDirective, FileUploader } from 'ng2-file-upload';
 import { UserDetails } from '../../_interfaces/user-details.modal';
 import { User } from '../../_interfaces/user.modal';
@@ -20,6 +20,8 @@ export class ProfileComponent implements OnInit {
   isFetchingUserDetails: boolean = true;
 
   faPencil = faPencil;
+  faUserCircle = faUserCircle;
+
   currentTab: string = "info";
 
   constructor(private accountService: AccountService) { }
