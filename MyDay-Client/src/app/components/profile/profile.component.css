@@ -19,10 +19,13 @@ li{
 }
 
 .edit-photo-btn{
-    background: rgba(0, 0, 0, 0);
+    opacity: 0;
+    visibility: hidden;
     color: #ffffff;
+    background: rgba(0, 0, 0, 1);
 }
 
 .img-overlay:hover > .edit-photo-btn{
-    background: rgba(0, 0, 0, 1);
+    opacity: 1;
+    visibility: visible;
 }

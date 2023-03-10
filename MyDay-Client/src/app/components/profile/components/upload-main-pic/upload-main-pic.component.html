@@ -1,5 +1,5 @@
 <div class="w-1/2 h-96 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-50 rounded-2xl">
-    <div class="header bg-slate-200 rounded-t-2xl flex items-center justify-between">
+    <div class="header bg-slate-200 rounded-t-2xl flex items-center justify-between py-3 px-4" >
         <h2 class="font-semibold">Upload your Profile Picture</h2>
         <div class="h-8 w-8 rounded-full hover:bg-slate-400 cursor-pointer flex justify-center items-center" (click)="handleCloseModal()">
             <fa-icon [icon]="faTimes" class="text-lg"></fa-icon>
@@ -39,7 +39,7 @@
 
     <div [class]="(!uploader?.queue?.length ? 'opacity-50' : '') + (' footer absolute bottom-0 left-0 w-full py-3 px-4 flex')">
         <button class="cursor-pointer ml-auto" [disabled]="!uploader?.queue?.length">
-            <p class="save py-1 px-2 rounded-md text-center">Save</p>
+            <p class="save py-1 px-2 rounded-md text-center" (click)="uploader.uploadAll()">Save</p>
         </button>
     </div>
 </div>

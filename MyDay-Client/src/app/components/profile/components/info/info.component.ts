@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { faArrowRightFromBracket, faPencil, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Info } from '../../../../_interfaces/info.modal';
 import { UserDetails } from '../../../../_interfaces/user-details.modal';
@@ -12,8 +12,8 @@ import { ProfileService } from '../../../../_services/profile.service';
   styleUrls: ['./info.component.css']
 })
 export class InfoComponent implements OnInit {
+  @Input() userDetails: UserDetails;
   user:User;
-  userDetails: UserDetails;
   faArrowRightFromBracket = faArrowRightFromBracket;
   faPencil = faPencil;
   faXmark = faXmark;
@@ -26,7 +26,6 @@ export class InfoComponent implements OnInit {
   constructor(private accountService: AccountService, private profileService: ProfileService) { }
 
   async ngOnInit() {
-    this.userDetails = await this.getUserDetails();
     this.fullName = this.userDetails.firstName + " " + this.userDetails.lastName;
     this.userName = this.userDetails.userName;
     this.city = this.userDetails.city;

@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, CanLoad, Router} from '@angular/router';
+import { CanActivate, Router} from '@angular/router';
 import { Observable, map, of } from 'rxjs';
 import { AccountService } from '../_services/account.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanLoad {
+export class AuthGuard implements CanActivate {
   constructor(private accountService: AccountService, private router: Router){ 
   }
   
-  canLoad(): Observable<any> {
+  canActivate(): Observable<any> {
     if(this.accountService.isSignedUp){
       return of(true)
     }

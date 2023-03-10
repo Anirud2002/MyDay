@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
 import { FileSelectDirective, FileUploader } from 'ng2-file-upload';
+import { UserDetails } from '../../_interfaces/user-details.modal';
+import { User } from '../../_interfaces/user.modal';
+import { AccountService } from '../../_services/account.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,49 +15,50 @@ export class ProfileComponent implements OnInit {
   hasBaseDropzoneOver = false;
   response:string;
   showModal: boolean = false;
+  userDetails: UserDetails;
+  user: User;
+  isFetchingUserDetails: boolean = true;
 
   faPencil = faPencil;
   currentTab: string = "info";
 
-  constructor() { }
+  constructor(private accountService: AccountService) { }
 
-  ngOnInit(): void {
-    this.initFileUploader();
-  }
-
-  initFileUploader(){
-    this.uploader = new FileUploader({
-      url: "https://localhost:5001",
-      authToken: 'Bearer ',
-      isHTML5: true,
-      allowedFileType: ['image'],
-      removeAfterUpload: true,
-      autoUpload: false,
-      maxFileSize: 10 * 1024 * 1024
+  async ngOnInit() {
+    this.isFetchingUserDetails = true;
+    this.userDetails = await this.getUserDetails()
+    .then((res) => {
+      this.isFetchingUserDetails = false;
+      return res;
     })
-
-    this.uploader.onAfterAddingFile = file => {
-      file.withCredentials = false;
-    }
-
-    this.uploader.onSuccessItem = (item, response, status, headers) => {
-      if (response){
-        const photo = JSON.parse(response);
-      }
-    }
+    .catch(err => {
+      this.isFetchingUserDetails = false;
+      console.log(err);
+      return null;
+    });
   }
 
-  fileOverBase(e: any){
-    this.hasBaseDropzoneOver = e;
+  async getUserDetails(){
+    this.accountService.currentUser$.subscribe(user => {
+      this.user = user;
+    })
+    return await this.accountService.getUserDetails(this.user.userName) as UserDetails;
   }
 
   uploadMainPic(){
     this.showModal = true;
-    // this.uploader.response.subscribe( res => this.response = res );
   }
 
   closeModal(e){
-    if(e) this.showModal = false;
+    if(e) {
+      this.showModal = false;
+    }
+  }
+
+  changeProfilePic(e){
+    if(e){
+      this.userDetails.profilePic = e
+    }
   }
 
 }
