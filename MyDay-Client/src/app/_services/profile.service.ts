@@ -15,4 +15,8 @@ export class ProfileService {
         return user;
       }));
   }
+
+  async deleteProfilePic(publicID: string){
+    return this.http.delete(`${this.baseUrl}profile/delete-profile-pic/${publicID}`).toPromise();
+  }
 }

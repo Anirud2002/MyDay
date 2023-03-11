@@ -5,6 +5,7 @@ import { UserDetails } from '../../../../_interfaces/user-details.modal';
 import { User } from '../../../../_interfaces/user.modal';
 import { AccountService } from '../../../../_services/account.service';
 import { AuthCheckService } from '../../../../_services/auth-check.service';
+import { ProfileService } from '../../../../_services/profile.service';
 
 @Component({
   selector: 'app-upload-main-pic',
@@ -24,7 +25,10 @@ export class UploadMainPicComponent implements OnInit {
 
   faTimes = faTimes;
   faUpload = faUpload;
-  constructor(private accountService: AccountService) { }
+  constructor(
+    private accountService: AccountService,
+    private profileService: ProfileService
+    ) { }
 
   ngOnInit(): void {
     this.user = this.accountService.getUser();
@@ -72,7 +76,9 @@ export class UploadMainPicComponent implements OnInit {
   }
 
   handleDeleteProfilePic(){
-    this.userProfilePic = '';
+    this.profileService.deleteProfilePic(this.userDetails.profilePic.publicID).then(() => {
+      this.userProfilePic = '';
+    })
   }
 
 }
