@@ -3,6 +3,7 @@ import { faUserCircle, faQuestionCircle } from '@fortawesome/free-solid-svg-icon
 import { NavigationEnd, Event as NavigationEvent, Router } from '@angular/router';
 import { GetCurrentPageService } from '../../_services/get-current-page.service';
 import { AccountService } from '../../_services/account.service';
+import { AuthCheckService } from '../../_services/auth-check.service';
 import { User } from '../../_interfaces/user.modal';
 import { map, tap } from 'rxjs';
 import { UserDetails } from '../../_interfaces/user-details.modal';
@@ -17,17 +18,22 @@ export class HeaderComponent implements OnInit {
   faUserCircle = faUserCircle;
   faQuestionCircle = faQuestionCircle;
   activePage: any;
+  fetchingData: boolean = false;
   constructor(private router: Router, 
     private getCurrentPageService: GetCurrentPageService,
-    private accountService: AccountService,) { }
+    private accountService: AccountService,
+    private authService: AuthCheckService,
+    ) { }
 
   async ngOnInit() {
     this.user = this.accountService.getUser();
-    this.userDetails = await this.accountService.getUserDetails(this.user.userName);
+    if(this.user){
+      this.userDetails = await this.accountService.getUserDetails(this.user.userName);
+    }
     this.getCurrentPageService.getActivePageObservable().subscribe(res => {
       this.activePage = res;
     })
-  }
+  } 
 
   toggleNav(e:any){
     const navBurger = document.querySelector('.nav-burger');
