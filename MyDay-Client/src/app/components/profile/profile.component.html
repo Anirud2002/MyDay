@@ -31,5 +31,5 @@
     </div>
 </div>
 <div class="absolute inset-0 overflow-x-hidden overflow-y-auto px-6" *ngIf="showModal">
-    <app-upload-main-pic (closeModal)="closeModal($event)" (changeProfilePic)="changeProfilePic($event)" class="w-full h-full flex justify-center items-center"></app-upload-main-pic>
+    <app-upload-main-pic [userDetails]="userDetails" (closeModal)="closeModal($event)" (changeProfilePic)="changeProfilePic($event)" class="w-full h-full flex justify-center items-center"></app-upload-main-pic>
 </div>

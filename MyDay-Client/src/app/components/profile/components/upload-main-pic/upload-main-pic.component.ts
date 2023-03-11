@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faTimes, faUpload } from '@fortawesome/free-solid-svg-icons';
 import { FileUploader } from 'ng2-file-upload';
 import { UserDetails } from '../../../../_interfaces/user-details.modal';
@@ -12,11 +12,13 @@ import { AuthCheckService } from '../../../../_services/auth-check.service';
   styleUrls: ['./upload-main-pic.component.css']
 })
 export class UploadMainPicComponent implements OnInit {
+  @Input() userDetails: UserDetails;
   @Output() closeModal = new EventEmitter();
   @Output() changeProfilePic = new EventEmitter();
   uploader: FileUploader;
   hasBaseDropzoneOver = false;
   isUploading: boolean = false;
+  userProfilePic: string = '';
 
   user:User;
 
@@ -27,6 +29,7 @@ export class UploadMainPicComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.accountService.getUser();
     this.initFileUploader();
+    this.userProfilePic = this.userDetails.profilePic.url;
   }
 
   initFileUploader(){
@@ -66,6 +69,10 @@ export class UploadMainPicComponent implements OnInit {
 
   handleUpload(){
     this.isUploading = true;
+  }
+
+  handleDeleteProfilePic(){
+    this.userProfilePic = '';
   }
 
 }
