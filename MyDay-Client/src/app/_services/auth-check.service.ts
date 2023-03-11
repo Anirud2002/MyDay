@@ -19,5 +19,6 @@ export class AuthCheckService {
 
     // gets user from localstorage and sets that as active user
     this.accountService.updateUserFromLocalStorage();
+    return true;
   }
 }

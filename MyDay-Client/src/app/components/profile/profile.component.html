@@ -5,7 +5,7 @@
                 <fa-icon [icon]="faPencil"></fa-icon>
             </button>
         </div>
-        <img *ngIf="userDetails.profilePic" [src]="userDetails.profilePic.url ? userDetails.profilePic.url : '../../../assets/default-user.png'" [alt]="userDetails.userName" class="w-full h-full rounded-full object-cover">
+        <img [src]="userDetails.profilePic?.url ? userDetails.profilePic.url : '../../../assets/default-user.png'" [alt]="userDetails.userName" class="w-full h-full rounded-full object-cover">
     </div> 
     <div class="tabs mt-8">
         <div class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">

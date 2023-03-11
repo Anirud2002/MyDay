@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { faPencil, faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { FileSelectDirective, FileUploader } from 'ng2-file-upload';
+import { Subject } from 'rxjs';
 import { UserDetails } from '../../_interfaces/user-details.modal';
 import { User } from '../../_interfaces/user.modal';
 import { AccountService } from '../../_services/account.service';
+import { ProfileService } from '../../_services/profile.service';
 
 @Component({
   selector: 'app-profile',
@@ -24,7 +26,10 @@ export class ProfileComponent implements OnInit {
 
   currentTab: string = "info";
 
-  constructor(private accountService: AccountService) { }
+  constructor(
+    private accountService: AccountService,
+    private profileService: ProfileService
+    ) { }
 
   async ngOnInit() {
     this.isFetchingUserDetails = true;
@@ -60,7 +65,12 @@ export class ProfileComponent implements OnInit {
   changeProfilePic(e){
     if(e){
       this.userDetails.profilePic = e
+    }else{
+      this.userDetails.profilePic = {
+        url: null,
+        publicID: null
+      };
     }
+    this.profileService.updateProfilePic(this.userDetails.profilePic);
   }
-
 }

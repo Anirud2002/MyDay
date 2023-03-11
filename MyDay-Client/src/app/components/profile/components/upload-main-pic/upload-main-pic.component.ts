@@ -78,6 +78,8 @@ export class UploadMainPicComponent implements OnInit {
   handleDeleteProfilePic(){
     this.profileService.deleteProfilePic(this.userDetails.profilePic.publicID).then(() => {
       this.userProfilePic = '';
+      this.changeProfilePic.emit(null);
+      
     })
   }
 

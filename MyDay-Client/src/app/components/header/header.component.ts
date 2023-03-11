@@ -7,6 +7,7 @@ import { AuthCheckService } from '../../_services/auth-check.service';
 import { User } from '../../_interfaces/user.modal';
 import { map, tap } from 'rxjs';
 import { UserDetails } from '../../_interfaces/user-details.modal';
+import { ProfileService } from '../../_services/profile.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -23,6 +24,7 @@ export class HeaderComponent implements OnInit {
     private getCurrentPageService: GetCurrentPageService,
     private accountService: AccountService,
     private authService: AuthCheckService,
+    private profileService: ProfileService,
     ) { }
 
   async ngOnInit() {
@@ -33,7 +35,14 @@ export class HeaderComponent implements OnInit {
     this.getCurrentPageService.getActivePageObservable().subscribe(res => {
       this.activePage = res;
     })
+    this.subscribeToProfilePicUpdates();
   } 
+
+  subscribeToProfilePicUpdates(){
+    this.profileService.profilePicUpdated$.subscribe(res => {
+      this.userDetails.profilePic = res;
+    })
+  }
 
   toggleNav(e:any){
     const navBurger = document.querySelector('.nav-burger');
