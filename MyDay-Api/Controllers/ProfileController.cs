@@ -68,6 +68,34 @@ namespace MyDay.Api.Controllers
             return new OkObjectResult(new UserDetailsDTO().toViewModel(user));
         }
 
+        [HttpDelete("delete-profile-pic/{publicID}")]
+        public async Task<ActionResult> DeletePhoto(string publicID)
+        {
+            ArgumentNullException.ThrowIfNull(publicID);
+
+            var user = await _context.LoadAsync<MyDayUser>(User.GetUserName());
+            if (user == null)
+            {
+                return BadRequest("User not logged in!");
+            }
+
+            if (!user.ProfilePic.PublicID.Equals(publicID))
+            {
+                return BadRequest("Cannot delete the specified image");
+            }
+
+            var result = await _photoService.DeleteImageAsync(publicID);
+            if (result.Error != null)
+            {
+                return BadRequest(result.Error.Message);
+            }
+
+            user.ProfilePic = new Photo();
+            await _context.SaveAsync<MyDayUser>(user);
+
+            return new OkResult();
+        }
+
         public async Task<bool> UserExists(string userName)
         {
             var user = await _context.LoadAsync<MyDayUser>(userName);
