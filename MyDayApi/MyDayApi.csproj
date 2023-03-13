@@ -8,6 +8,7 @@
     <UserSecretsId>a2643696-7cc6-46ff-8d64-aaa1f07d96bc</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'MyDay-Api' " />
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.5.5" />
