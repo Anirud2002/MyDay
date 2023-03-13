@@ -5,6 +5,7 @@ import { map, ReplaySubject } from 'rxjs';
 import { Login } from '../_interfaces/login.modal';
 import { UserDetails } from '../_interfaces/user-details.modal';
 import { User } from '../_interfaces/user.modal';
+import { ProfileService } from './profile.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,20 +19,25 @@ export class AccountService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router, 
+    private profileService: ProfileService
   ) { }
 
   login(options: Login){
     return this.http.post(this.baseUrl + "account/login", options).pipe(
-      map((user: User) => {
+      map(async (user: User) => {
         if (user){
           this.isSignedUp = true;
           this.setCurrentUser(user);
+          let userDetails = await this.getUserDetails(user.userName);
+          if(userDetails.profilePic.url){
+            this.profileService.updateProfilePic(userDetails.profilePic)
+          }
           return user
         }
       })
     )
-  }
+  } 
 
   register(model:any){
     return this.http.post(this.baseUrl + "account/register", model).pipe(

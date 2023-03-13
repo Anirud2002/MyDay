@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router, 
     private getCurrentPageService: GetCurrentPageService,
     private accountService: AccountService,
-    private authService: AuthCheckService,
+    private authService: AuthCheckService, // this is getting used in the HTML file
     private profileService: ProfileService,
     ) { }
 

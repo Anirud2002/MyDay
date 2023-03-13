@@ -1,4 +1,4 @@
-<nav *ngIf="userDetails && (activePage !== '/signIn' && activePage !== '/signUp')" class="sm:w-11/12 md:w-5/6 lg:w-4/5 w-full  mx-auto p-6 flex flex-row justify-around items-center">
+<nav *ngIf="activePage !== '/signIn' && activePage !== '/signUp'" class="sm:w-11/12 md:w-5/6 lg:w-4/5 w-full  mx-auto p-6 flex flex-row justify-around items-center">
     <div class="left-nav flex-1 relative sm:w-auto w-full">
         <div class="logo text-center sm:text-left cursor-pointer">
             <h1 routerLink="/" class="logo-title md:text-3xl sm:text-3xl text-2xl">myDay</h1>
@@ -28,8 +28,8 @@
             <li [class]="activePage === '/support' ? 'active' : ''" routerLink="/support">Support <span><fa-icon [icon]="faQuestionCircle" size="sm"></fa-icon></span></li>
         </ul>
         <div class="avatar sm:ml-14 lg:ml-28" routerLink="/profile">
-            <img *ngIf="authService.isLoggedIn() && userDetails.profilePic.url" [src]="userDetails.profilePic.url" [alt]="userDetails.userName" class="w-8 h-8 rounded-full cursor-pointer">
-            <fa-icon *ngIf="!authService.isLoggedIn() || !userDetails.profilePic.url" [icon]="faUserCircle" size="2xl" class="cursor-pointer"></fa-icon>
+            <img *ngIf="authService.isLoggedIn() && userDetails?.profilePic?.url" [src]="userDetails?.profilePic?.url" [alt]="userDetails.userName" class="w-8 h-8 rounded-full cursor-pointer">
+            <fa-icon *ngIf="!authService.isLoggedIn() || !userDetails?.profilePic?.url" [icon]="faUserCircle" size="2xl" class="cursor-pointer"></fa-icon>
         </div>
     </div>
 </nav>
