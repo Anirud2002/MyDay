@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
 
   async ngOnInit() {
     this.user = this.accountService.getUser();
-    if(this.user){
+    if(this.user){ // when user refreshes their page, they are already logged in
       this.userDetails = await this.accountService.getUserDetails(this.user.userName);
     }
     this.getCurrentPageService.getActivePageObservable().subscribe(res => {
@@ -39,7 +39,11 @@ export class HeaderComponent implements OnInit {
   } 
 
   subscribeToProfilePicUpdates(){
-    this.profileService.profilePicUpdated$.subscribe(res => {
+    this.profileService.profilePicUpdated$.subscribe(async (res) => {
+      if(!this.user || !this.userDetails){ // when user logs in, need to get the user and their details
+        this.user = this.accountService.getUser();
+        this.userDetails = await this.accountService.getUserDetails(this.user.userName);
+      }
       this.userDetails.profilePic = res;
     })
   }

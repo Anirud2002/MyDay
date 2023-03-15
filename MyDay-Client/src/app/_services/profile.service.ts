@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Subject } from 'rxjs';
 import { Info } from '../_interfaces/info.modal';
+import { Photo } from '../_interfaces/user-details.modal';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,7 @@ export class ProfileService {
     return this.http.delete(`${this.baseUrl}profile/delete-profile-pic/${publicID}`).toPromise();
   }
 
-  updateProfilePic(profilePic: any){
+  updateProfilePic(profilePic: Photo){
     this.profilePicUpdated.next(profilePic);
   }
 
