@@ -2,7 +2,8 @@
     <app-loader [dataLoaded]="dataLoaded"></app-loader>
     <div class="container flex items-start mb-8" *ngFor="let post of posts">
         <div class="user">
-            <fa-icon [icon]="faUserCircle" size="2xl"></fa-icon>
+            <img *ngIf="post.creatorPic.url" [src]="post.creatorPic.url" alt="creator_pic" class="w-8 h-8 rounded-full cursor-pointer">
+            <fa-icon *ngIf="!post.creatorPic.url" [icon]="faUserCircle" size="2xl"></fa-icon>
         </div>
         <div class="user-post ml-4 -mt-2 flex flex-col items-start w-full">
             <div class="post-detail">
