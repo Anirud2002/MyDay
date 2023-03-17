@@ -1,4 +1,4 @@
-﻿namespace MyDay.Api.DTOs
+﻿namespace MyDayApi.DTOs
 {
     public class RegisterDTO
     {

@@ -2,15 +2,15 @@
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.DocumentModel;
 using Microsoft.AspNetCore.Mvc;
-using MyDay.Api.DTOs;
-using MyDay.Api.Entities;
-using MyDay.Api.Extensions;
+using MyDayApi.DTOs;
+using MyDayApi.Entities;
+using MyDayApi.Extensions;
 using MyDayApi.Entities;
 using MyDayApi.Interface;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace MyDay.Api.Controllers
+namespace MyDayApi.Controllers
 {
     [Route("/api/[controller]")]
     public class PostController : Controller
@@ -79,8 +79,8 @@ namespace MyDay.Api.Controllers
             };
 
             var photo = new List<Photo>();
-            
-            if(postDTO.Photo != null)
+
+            if (postDTO.Photo != null)
             {
                 var result = await _photoService.AddImageAsync(postDTO.Photo);
                 if (result.Error != null) return BadRequest("Couldn't add the photo");

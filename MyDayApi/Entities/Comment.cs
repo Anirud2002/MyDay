@@ -1,5 +1,5 @@
 ﻿using System;
-namespace MyDay.Api.Entities
+namespace MyDayApi.Entities
 {
     public class Comment
     {

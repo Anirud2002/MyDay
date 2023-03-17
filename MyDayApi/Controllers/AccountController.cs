@@ -3,11 +3,11 @@ using System.Text;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.DynamoDBv2.Model;
 using Microsoft.AspNetCore.Mvc;
-using MyDay.Api.DTOs;
-using MyDay.Api.Entities;
-using MyDay.Api.Interface;
+using MyDayApi.DTOs;
+using MyDayApi.Entities;
+using MyDayApi.Interface;
 
-namespace MyDay.Api.Controllers
+namespace MyDayApi.Controllers
 {
     [Route("api/[controller]")]
     public class AccountController : Controller

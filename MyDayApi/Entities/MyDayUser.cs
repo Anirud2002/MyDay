@@ -2,7 +2,7 @@
 using Amazon.DynamoDBv2.DataModel;
 using MyDayApi.Entities;
 
-namespace MyDay.Api.Entities
+namespace MyDayApi.Entities
 {
     [DynamoDBTable("MyDayUser")]
     public class MyDayUser

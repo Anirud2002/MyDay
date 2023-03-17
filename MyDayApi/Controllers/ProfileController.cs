@@ -4,13 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Amazon.DynamoDBv2.DataModel;
 using Microsoft.AspNetCore.Mvc;
-using MyDay.Api.DTOs;
-using MyDay.Api.Entities;
-using MyDay.Api.Extensions;
+using MyDayApi.DTOs;
+using MyDayApi.Entities;
+using MyDayApi.Extensions;
 using MyDayApi.Entities;
 using MyDayApi.Interface;
 
-namespace MyDay.Api.Controllers
+namespace MyDayApi.Controllers
 {
     [Route("api/[controller]")]
     public class ProfileController : ControllerBase

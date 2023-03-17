@@ -1,10 +1,10 @@
 using Amazon.DynamoDBv2.DataModel;
 using Microsoft.AspNetCore.Mvc;
-using MyDay.Api.DTOs;
-using MyDay.Api.Entities;
-using MyDay.Api.Extensions;
+using MyDayApi.DTOs;
+using MyDayApi.Entities;
+using MyDayApi.Extensions;
 
-namespace MyDay.Api.Controllers
+namespace MyDayApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MyDay.Api.Entities;
-using MyDay.Api.Service;
+using MyDayApi.Entities;
+using MyDayApi.Service;
 
-namespace MyDay.Api.Interface
+namespace MyDayApi.Interface
 {
     public interface ITokenService
     {

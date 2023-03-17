@@ -3,10 +3,10 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
-using MyDay.Api.Entities;
-using MyDay.Api.Interface;
+using MyDayApi.Entities;
+using MyDayApi.Interface;
 
-namespace MyDay.Api.Service
+namespace MyDayApi.Service
 {
     public class TokenService : ITokenService
     {

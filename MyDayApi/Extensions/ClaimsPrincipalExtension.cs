@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Claims;
 
-namespace MyDay.Api.Extensions
+namespace MyDayApi.Extensions
 {
     public static class ClaimsPrincipalExtension
     {

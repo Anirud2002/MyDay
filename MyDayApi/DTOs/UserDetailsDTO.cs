@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MyDay.Api.Entities;
+using MyDayApi.Entities;
 using MyDayApi.Entities;
 
-namespace MyDay.Api.DTOs
+namespace MyDayApi.DTOs
 {
     public class UserDetailsDTO
     {

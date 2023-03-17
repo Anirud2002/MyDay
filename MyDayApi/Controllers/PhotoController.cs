@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Amazon.DynamoDBv2.DataModel;
 using Microsoft.AspNetCore.Mvc;
-using MyDay.Api.Entities;
-using MyDay.Api.Extensions;
+using MyDayApi.Entities;
+using MyDayApi.Extensions;
 using MyDayApi.Entities;
 using MyDayApi.Interface;
 
@@ -29,7 +29,7 @@ namespace MyDayApi.Controllers
         public async Task<ActionResult> AddPhoto(IFormFile file)
         {
             var user = await _context.LoadAsync<MyDayUser>(User.GetUserName());
-            if(user == null)
+            if (user == null)
             {
                 return BadRequest("User not logged in!");
             }

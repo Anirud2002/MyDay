@@ -2,7 +2,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
-namespace MyDay.Api.Extensions
+namespace MyDayApi.Extensions
 {
     public static class AuthenticationExtension
     {

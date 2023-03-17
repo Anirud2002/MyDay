@@ -4,13 +4,13 @@ using System.Threading.Tasks;
 using Amazon.DynamoDBv2.DataModel;
 using FakeItEasy;
 using Microsoft.AspNetCore.Mvc;
-using MyDay.Api.Controllers;
-using MyDay.Api.DTOs;
-using MyDay.Api.Entities;
+using MyDayApi.Controllers;
+using MyDayApi.DTOs;
+using MyDayApi.Interface;
 using Shouldly;
 using Xunit;
 
-namespace MyDay.Tests.ControllerTests
+namespace MyDayTests.ControllerTests
 {
     public class PostControllerTests
     {
@@ -19,8 +19,9 @@ namespace MyDay.Tests.ControllerTests
         {
             // Arrage - What do I need to bring in?
             var _dynamoDBContext = A.Fake<IDynamoDBContext>();
+            var _photoService = A.Fake<IPhotoService>();
             // SUT -> System Under Test
-            var _postController = new PostController(_dynamoDBContext);
+            var _postController = new PostController(_dynamoDBContext, _photoService);
 
             // Act
             var result = _postController.GetPosts("MYDAY");
@@ -36,7 +37,9 @@ namespace MyDay.Tests.ControllerTests
         {
             // Arrange
             var _dynamoDBContext = A.Fake<IDynamoDBContext>();
-            var postController = new PostController(_dynamoDBContext);
+            var _photoService = A.Fake<IPhotoService>();
+
+            var postController = new PostController(_dynamoDBContext, _photoService);
             var category = "MYDAY";
 
             // Act
@@ -52,7 +55,9 @@ namespace MyDay.Tests.ControllerTests
         {
             // Arrange
             var _dynamoDBContext = A.Fake<IDynamoDBContext>();
-            var postController = new PostController(_dynamoDBContext);
+            var _photoService = A.Fake<IPhotoService>();
+
+            var postController = new PostController(_dynamoDBContext, _photoService);
             var post = new PostDTO()
             {
                 Body = "This is a test",
@@ -73,7 +78,9 @@ namespace MyDay.Tests.ControllerTests
         {
             // Arrange
             var _dynamoDBContext = A.Fake<IDynamoDBContext>();
-            var postController = new PostController(_dynamoDBContext);
+            var _photoService = A.Fake<IPhotoService>();
+
+            var postController = new PostController(_dynamoDBContext, _photoService);
             var postID = "1234";
             var date = 123456677889;
 

@@ -1,30 +1,30 @@
 ﻿using System;
 using Microsoft.Extensions.Options;
-using MyDay.Api.Options;
+using MyDayApi.Options;
 
-namespace MyDay.Api.Helpers
+namespace MyDayApi.Helpers
 {
-	public class GetCredentials
-	{
-		private readonly IConfiguration _config;
+    public class GetCredentials
+    {
+        private readonly IConfiguration _config;
 
-		public GetCredentials( IConfiguration config )
-		{
-			_config = config;
-		}
-
-
-		public List<string> GetAppSecrets()
+        public GetCredentials(IConfiguration config)
         {
-			var dbOptions = new DynamoDBAccessOptions();
-			_config.GetSection(DynamoDBAccessOptions.AccessName).Bind(dbOptions);
-			return new List<string>
-			{
-				dbOptions.AccessKey,
-				dbOptions.SecretAccessKey
-			};
+            _config = config;
+        }
+
+
+        public List<string> GetAppSecrets()
+        {
+            var dbOptions = new DynamoDBAccessOptions();
+            _config.GetSection(DynamoDBAccessOptions.AccessName).Bind(dbOptions);
+            return new List<string>
+            {
+                dbOptions.AccessKey,
+                dbOptions.SecretAccessKey
+            };
 
         }
-	}
+    }
 }
 
