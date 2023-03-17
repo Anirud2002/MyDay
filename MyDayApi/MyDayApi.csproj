@@ -15,6 +15,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.9" />
     <PackageReference Include="Docker.DotNet" Version="3.125.12" />
     <PackageReference Include="CloudinaryDotNet" Version="1.20.0" />
+    <PackageReference Include="Amazon.Lambda.AspNetCoreServer" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +29,7 @@
     <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
     <None Remove="Docker.DotNet" />
     <None Remove="CloudinaryDotNet" />
+    <None Remove="Amazon.Lambda.AspNetCoreServer" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />

@@ -79,7 +79,6 @@ namespace MyDay.Api.Controllers
             };
 
             var photo = new List<Photo>();
-
             
             if(postDTO.Photo != null)
             {
@@ -92,6 +91,13 @@ namespace MyDay.Api.Controllers
                 });
             }
 
+            var creatorPic = new Photo();
+
+            if (!string.IsNullOrEmpty(user.ProfilePic.URL)) // if the user posting something has an image, set that as creator pic
+            {
+                creatorPic = user.ProfilePic;
+            }
+
             var post = new Post()
             {
                 PostID = Guid.NewGuid().ToString(),
@@ -100,6 +106,7 @@ namespace MyDay.Api.Controllers
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 UserName = user.UserName,
+                CreatorPic = creatorPic,
                 Body = postDTO.Body,
                 Hashtags = postDTO.Hashtags,
                 Likes = 0,

@@ -14,6 +14,7 @@ namespace MyDay.Api.Entities
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public string UserName { get; set; } = string.Empty;
+        public Photo CreatorPic { get; set; } = new Photo();
         public string Body { get; set; } = string.Empty;
         public List<string> Hashtags { get; set; } = new List<string>();
         public int Likes { get; set; }
