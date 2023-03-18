@@ -1,14 +1,11 @@
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
 using Amazon.Runtime;
-using Microsoft.Extensions.DependencyInjection;
 using MyDayApi.Extensions;
 using MyDayApi.Interface;
 using MyDayApi.Options;
 using MyDayApi.Service;
 using MyDayApi.Helpers;
-using MyDayApi.Interface;
-using MyDayApi.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
