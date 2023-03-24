@@ -16,6 +16,7 @@
     <PackageReference Include="Docker.DotNet" Version="3.125.12" />
     <PackageReference Include="CloudinaryDotNet" Version="1.20.0" />
     <PackageReference Include="Amazon.Lambda.AspNetCoreServer" Version="8.0.0" />
+    <PackageReference Include="Amazon.Lambda.AspNetCoreServer.Hosting" Version="1.5.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +31,7 @@
     <None Remove="Docker.DotNet" />
     <None Remove="CloudinaryDotNet" />
     <None Remove="Amazon.Lambda.AspNetCoreServer" />
+    <None Remove="Amazon.Lambda.AspNetCoreServer.Hosting" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
