@@ -13,8 +13,6 @@ ConfigurationManager configuration = builder.Configuration;
 
 // Add services to the container.
 
-// adding ApiGateway & Lambda
-builder.Services.AddAWSLambdaHosting(LambdaEventSource.RestApi);
 
 // adding dynamoDB
 builder.Services.Configure<DynamoDBAccessOptions>(configuration.GetSection(DynamoDBAccessOptions.AccessName));
@@ -42,6 +40,9 @@ builder.Services.AddControllers();
 builder.Services.AddCors();
 builder.Services.AddAuthorization();
 builder.Services.AddAuthenticationServices(builder.Configuration);
+
+// adding ApiGateway & Lambda
+builder.Services.AddAWSLambdaHosting(LambdaEventSource.RestApi);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
