@@ -15,7 +15,6 @@ ConfigurationManager configuration = builder.Configuration;
 
 
 // adding dynamoDB
-builder.Services.Configure<DynamoDBAccessOptions>(configuration.GetSection(DynamoDBAccessOptions.AccessName));
 var credentials = new BasicAWSCredentials(configuration["MyDayDB:AccessKey"], configuration["MyDayDB:SecretAccessKey"]);
 
 var config = new AmazonDynamoDBConfig()
