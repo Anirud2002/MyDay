@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { map } from 'rxjs';
 import { CreatePost } from '../_interfaces/create-post.modal';
-
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,15 +13,15 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
   async getPosts(category: string){
-    return this.http.get(this.baseUrl + "post/" + category.toUpperCase()).toPromise();
+    return this.http.get(environment.apiUrl + "post/" + category.toUpperCase()).toPromise();
   }
 
   async getUserPosts(category: string){
-    return this.http.get(this.baseUrl + "post/userposts/" + category.toUpperCase()).toPromise();
+    return this.http.get(environment.apiUrl + "post/userposts/" + category.toUpperCase()).toPromise();
   }
 
   async post(fd: FormData){
-    return this.http.post(this.baseUrl + "post", fd).pipe(
+    return this.http.post(environment.apiUrl + "post", fd).pipe(
       map(post => {
         return post;
       })
@@ -29,6 +29,6 @@ export class PostService {
   }
 
   async deletePost(postID: string, date: number){
-    return this.http.delete(this.baseUrl + `post/${postID}/${date}`);
+    return this.http.delete(environment.apiUrl + `post/${postID}/${date}`);
   }
 }

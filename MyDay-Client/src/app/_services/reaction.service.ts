@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CommentDTO } from '../_interfaces/commentDTO.modal';
-
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,6 +10,6 @@ export class ReactionService {
   constructor(private http: HttpClient) { }
 
   sendComment(commentDTO: CommentDTO){
-    return this.http.post(this.baseUrl + "reaction/addComment", commentDTO).toPromise();
+    return this.http.post(environment.apiUrl + "reaction/addComment", commentDTO).toPromise();
   }
 }
