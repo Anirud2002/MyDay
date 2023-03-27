@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: "https://nzusfs2qn5.execute-api.us-west-2.amazonaws.com/test/api/"
+  apiUrl: "https:localhost:5001/api/"
 };
 
 /*

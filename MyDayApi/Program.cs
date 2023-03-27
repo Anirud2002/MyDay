@@ -60,7 +60,7 @@ app.UseHttpsRedirection();
 
 app.UseRouting();
 
-app.UseCors(options => options.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
+app.UseCors(options => options.AllowAnyHeader().AllowAnyMethod().WithOrigins("*"));
 
 app.UseAuthentication();
 
