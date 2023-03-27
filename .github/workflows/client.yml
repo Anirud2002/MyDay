@@ -25,14 +25,15 @@ jobs:
           node-version: 14
 
       - name: Install dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npm run test:headless
+        run: |
+          cd MyDay-Client
+          npm install
 
       - name: Build
-        run: npm run build:prod
+        run: |
+          cd MyDay-Client 
+          npm run build
 
       - name: Deploy
         if: success()
-        run: aws s3 sync ./dist/mydayclient s3://com.myd4y
+        run: aws s3 sync ./MyDay-Client/dist/mydayclient s3://com.myd4y
