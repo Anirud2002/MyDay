@@ -6,6 +6,7 @@ import { User } from '../../../../_interfaces/user.modal';
 import { AccountService } from '../../../../_services/account.service';
 import { AuthCheckService } from '../../../../_services/auth-check.service';
 import { ProfileService } from '../../../../_services/profile.service';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-upload-main-pic',
@@ -38,7 +39,7 @@ export class UploadMainPicComponent implements OnInit {
 
   initFileUploader(){
     this.uploader = new FileUploader({
-      url: "https://localhost:5001/api/profile/upload-profile-pic",
+      url: `${environment.apiUrl}profile/upload-profile-pic`,
       authToken: `Bearer ${this.user.token}`,
       isHTML5: true,
       allowedFileType: ['image'],
