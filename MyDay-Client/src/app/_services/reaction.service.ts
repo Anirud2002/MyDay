@@ -1,15 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CommentDTO } from '../_interfaces/commentDTO.modal';
+import { CommentDTO, LikeDTO } from '../_interfaces/reactionDTOs.modal';
 import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class ReactionService {
-  baseUrl = "https://localhost:5001/api/";
   constructor(private http: HttpClient) { }
 
+  likePost(likeDTO: LikeDTO){
+    return this.http.post(environment.apiUrl + "reaction/add-like", likeDTO).toPromise();
+  }
+
   sendComment(commentDTO: CommentDTO){
-    return this.http.post(environment.apiUrl + "reaction/addComment", commentDTO).toPromise();
+    return this.http.post(environment.apiUrl + "reaction/add-comment", commentDTO).toPromise();
   }
 }

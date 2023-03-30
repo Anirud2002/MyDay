@@ -6,7 +6,6 @@ using Amazon.DynamoDBv2.DataModel;
 using Microsoft.AspNetCore.Mvc;
 using MyDayApi.Entities;
 using MyDayApi.Extensions;
-using MyDayApi.Entities;
 using MyDayApi.Interface;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

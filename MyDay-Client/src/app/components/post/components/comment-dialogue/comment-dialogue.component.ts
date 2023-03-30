@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faUserCircle, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
-import { CommentDTO } from '../../../../_interfaces/commentDTO.modal';
+import { CommentDTO } from '../../../../_interfaces/reactionDTOs.modal';
 import { PostReponse } from '../../../../_interfaces/post-response.modal';
 import { User } from '../../../../_interfaces/user.modal';
 import { AccountService } from '../../../../_services/account.service';

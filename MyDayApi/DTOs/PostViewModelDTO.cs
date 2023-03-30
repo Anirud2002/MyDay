@@ -14,7 +14,6 @@ namespace MyDayApi.DTOs
         public Photo CreatorPic { get; set; } = new Photo();
         public long PostedOn { get; set; }
         public string Body { get; set; } = string.Empty;
-        public List<string> Hashtags { get; set; } = new List<string>();
         public int Likes { get; set; }
         public List<Comment>? Comments { get; set; }
         public List<Photo> Photos { get; set; } = new List<Photo>();
@@ -32,7 +31,6 @@ namespace MyDayApi.DTOs
                 CreatorPic = post.CreatorPic,
                 PostedOn = post.PostedOn,
                 Body = post.Body,
-                Hashtags = post.Hashtags,
                 Likes = post.Likes,
                 Photos = post.Photos,
                 LikedBy = post.LikedBy,

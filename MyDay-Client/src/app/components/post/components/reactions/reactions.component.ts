@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { faUserCircle, faShare, faHeart, faComment} from '@fortawesome/free-solid-svg-icons';
 import { PostReponse } from '../../../../_interfaces/post-response.modal';
+import { LikeDTO } from '../../../../_interfaces/reactionDTOs.modal';
+import { User } from '../../../../_interfaces/user.modal';
+import { AccountService } from '../../../../_services/account.service';
+import { ReactionService } from '../../../../_services/reaction.service';
 @Component({
   selector: 'app-reactions',
   templateUrl: './reactions.component.html',
@@ -8,13 +12,43 @@ import { PostReponse } from '../../../../_interfaces/post-response.modal';
 })
 export class ReactionsComponent implements OnInit {
   @Input() post: PostReponse;
+  user: User;
   faUserCircle = faUserCircle;
   faShare = faShare;
   faHeart = faHeart;
   faComment = faComment;
-  constructor() { }
+  isPostLiked: boolean = false;
+  constructor(
+    private reactionService: ReactionService,
+    private accountService: AccountService) { }
 
   ngOnInit(): void {
+    this.user = this.accountService.getUser();
+    this.checkIfPostAleadyLiked()
+  }
+
+  checkIfPostAleadyLiked(){
+    const res = this.post.likedBy.find(userName => userName === this.user.userName); // check if user has already liked
+    if(res){
+      this.isPostLiked = true;
+    }
+  }
+
+  async handleLikePost(postToLike:PostReponse){
+    const likeDTO = {
+      postID: this.post.postID,
+      postCreatedDate: this.post.postedOn,
+      isLiked: this.isPostLiked
+    } as LikeDTO
+    if(!this.isPostLiked){
+      await this.reactionService.likePost(likeDTO);
+      postToLike.likes++;
+      this.isPostLiked = true;
+    }else{
+      await this.reactionService.likePost(likeDTO);
+      postToLike.likes--;
+      this.isPostLiked = false;
+    }
   }
 
   popCommentDialogue(e){

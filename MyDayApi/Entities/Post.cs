@@ -16,11 +16,10 @@ namespace MyDayApi.Entities
         public string UserName { get; set; } = string.Empty;
         public Photo CreatorPic { get; set; } = new Photo();
         public string Body { get; set; } = string.Empty;
-        public List<string> Hashtags { get; set; } = new List<string>();
         public int Likes { get; set; }
         public List<Comment> Comments { get; set; } = new List<Comment>();
         public List<Photo> Photos { get; set; } = new List<Photo>();
-        // stores the liked users AppUserID
+        // stores the liked users UserName
         public List<string> LikedBy { get; set; } = new List<string>();
     }
 }

@@ -4,3 +4,9 @@ export interface CommentDTO{
     userName: string, 
     postCreatedDate: number
 }
+
+export interface LikeDTO{
+    postID: string, 
+    postCreatedDate: number,
+    isLiked: boolean
+}

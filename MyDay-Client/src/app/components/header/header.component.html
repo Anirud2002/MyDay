@@ -16,7 +16,7 @@
                 <li (click)="closeBurger()" [class]="activePage === '/' ? 'active' : ''" routerLink="/">Share</li>
                 <li (click)="closeBurger()" [class]="activePage === '/explore' ? 'active' : ''" routerLink="/explore">Explore</li>
                 <li (click)="closeBurger()" [class]="activePage === '/journals' ? 'active' : ''" routerLink="/journals">Journals</li>
-                <li (click)="closeBurger()" [class]="activePage === '/support' ? 'active' : ''" routerLink="/support">Support <span><fa-icon [icon]="faQuestionCircle" size="sm"></fa-icon></span></li>
+                <!-- <li (click)="closeBurger()" [class]="activePage === '/support' ? 'active' : ''" routerLink="/support">Support <span><fa-icon [icon]="faQuestionCircle" size="sm"></fa-icon></span></li> -->
             </ul>
         </div>
     </div>
@@ -25,7 +25,7 @@
             <li [class]="activePage === '/' ? 'active' : ''" routerLink="/">Share</li>
             <li [class]="activePage === '/explore' ? 'active' : ''" routerLink="/explore">Explore</li>
             <li [class]="activePage === '/journals' ? 'active' : ''" routerLink="/journals">Journals</li>
-            <li [class]="activePage === '/support' ? 'active' : ''" routerLink="/support">Support <span><fa-icon [icon]="faQuestionCircle" size="sm"></fa-icon></span></li>
+            <!-- <li [class]="activePage === '/support' ? 'active' : ''" routerLink="/support">Support <span><fa-icon [icon]="faQuestionCircle" size="sm"></fa-icon></span></li> -->
         </ul>
         <div class="avatar sm:ml-14 lg:ml-28" routerLink="/profile">
             <img *ngIf="authService.isLoggedIn() && userDetails?.profilePic?.url" [src]="userDetails?.profilePic?.url" [alt]="userDetails.userName" class="w-8 h-8 rounded-full cursor-pointer">

@@ -5,8 +5,7 @@ using Amazon.DynamoDBv2.Model;
 using Microsoft.AspNetCore.Mvc;
 using MyDayApi.DTOs;
 using MyDayApi.Entities;
-using MyDayApi.Interface;
-using MyDayApi.DTOs;
+using MyDayApi.Extensions;
 
 namespace MyDayApi.Controllers
 {
@@ -20,7 +19,37 @@ namespace MyDayApi.Controllers
             _dynamoDBContext = dynamoDBContext;
         }
 
-        [HttpPost("addComment")]
+        [HttpPost("add-like")]
+        public async Task<ActionResult> AddLike([FromBody] LikePostDTO likedPost)
+        {
+            var user = await _dynamoDBContext.LoadAsync<MyDayUser>(User.GetUserName());
+            if (user == null)
+            {
+                return BadRequest("Cannot like the post!");
+            }
+
+            var post = await _dynamoDBContext.LoadAsync<Post>(likedPost.PostID, likedPost.PostCreatedDate);
+            if (likedPost.isLiked)
+            {
+                post.Likes--;
+                if(post.Likes < 0)
+                {
+                    post.Likes = 0; // just being safe and setting likes to zero if in-case the likes is below 0
+                }
+                post.LikedBy.Remove(User.GetUserName());
+            }
+            else
+            {
+                post.Likes++;
+                post.LikedBy.Add(User.GetUserName());
+            }
+
+
+            await _dynamoDBContext.SaveAsync<Post>(post);
+            return new OkResult();
+        }
+
+        [HttpPost("add-comment")]
         public async Task<ActionResult> AddComment([FromBody] AddCommentDTO addComment)
         {
             ArgumentNullException.ThrowIfNull(addComment.PostID);
@@ -28,7 +57,7 @@ namespace MyDayApi.Controllers
             ArgumentNullException.ThrowIfNull(addComment.UserName);
             ArgumentNullException.ThrowIfNull(addComment.PostCreatedDate);
 
-            var user = await _dynamoDBContext.LoadAsync<MyDayUser>(addComment.UserName);
+            var user = await _dynamoDBContext.LoadAsync<MyDayUser>(User.GetUserName());
             if (user == null)
             {
                 return BadRequest("Cannot add comment!");

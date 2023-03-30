@@ -12,22 +12,27 @@ export class SignInComponent implements OnInit {
     userName: "",
     password: ""
   }
+  isCredentialMatched: boolean = true;
   constructor(private accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   async signIn(){
-    try {
       const response = await this.accountService.login(this.loginValues);
-      response.subscribe(res => {
-        if(res) this.router.navigateByUrl("/profile")
+      response.subscribe({
+        next: res => {
+          if(res){
+            this.router.navigateByUrl("/profile")
+          }
+        },
+        error: err => {
+          if(err){
+            console.log(err)
+            this.isCredentialMatched = false;
+          }
+        }
       })
-      
-    } catch (error) {
-      console.log(error)
-    }
-
   }
 
 }

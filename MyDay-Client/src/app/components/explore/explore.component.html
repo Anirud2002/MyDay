@@ -13,5 +13,9 @@
             <app-post [post]="post" class="w-full"></app-post>
         </div>
     </div>
+
+    <div *ngIf="posts.length === 0 && dataLoaded">
+        <h2 class="text-center">No posts! Be the first one to write your <span class="font-medium cursor-pointer" routerLink="/">MyDay</span>.</h2>
+    </div>
 </div>
 

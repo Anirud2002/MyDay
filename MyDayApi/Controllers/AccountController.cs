@@ -62,7 +62,10 @@ namespace MyDayApi.Controllers
             var user = await _dynamoDBContext.LoadAsync<MyDayUser>(loginDTO.UserName);
 
             // check for username if it exists
-            if (user == null) return BadRequest("Username/Password Invalid");
+            if (user == null) return new BadRequestObjectResult(new 
+            {
+                credentialMatched = false
+            });
 
             using var hmac = new HMACSHA512(user.PasswordSalt);
             var hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDTO.Password));

@@ -108,7 +108,6 @@ namespace MyDayApi.Controllers
                 UserName = user.UserName,
                 CreatorPic = creatorPic,
                 Body = postDTO.Body,
-                Hashtags = postDTO.Hashtags,
                 Likes = 0,
                 Photos = photo,
                 Comments = new List<Comment>(),
