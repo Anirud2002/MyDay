@@ -37,6 +37,7 @@
                 {{item?.file?.name}} - {{ item?.file?.size/1024/1024 | number:'.2' }} MB
             </p>
         </div>
+        <p *ngIf="uploadPhotoStatus === 400" class="text-red-600 text-sm">Something went wrong! Please try again later.</p>
         
 
     </div>

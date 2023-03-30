@@ -21,6 +21,7 @@ export class UploadMainPicComponent implements OnInit {
   hasBaseDropzoneOver = false;
   isUploading: boolean = false;
   userProfilePic: string = '';
+  uploadPhotoStatus = 0;
 
   user:User;
 
@@ -52,6 +53,7 @@ export class UploadMainPicComponent implements OnInit {
       if(this.uploader.queue.length > 0){
         this.uploader.queue = [this.uploader.queue[1]];
       }
+      this.uploadPhotoStatus = 0;
       file.withCredentials = false;
     }
 
@@ -60,6 +62,11 @@ export class UploadMainPicComponent implements OnInit {
       let photo = JSON.parse(response).profilePic;
       this.changeProfilePic.emit(photo)
       this.handleCloseModal();
+    }
+
+    this.uploader.onErrorItem =(item, response, status, headers) => {
+      this.isUploading = false;
+      this.uploadPhotoStatus = 400;
     }
   }
 
