@@ -72,6 +72,10 @@ export class AccountService {
     this.isSignedUp = true;
   }
 
+  backToSignInPage(){
+    this.router.navigateByUrl("/signIn");
+  }
+
   logout(){
     localStorage.removeItem('user');
     this.currentUserSource.next(null);

@@ -25,6 +25,10 @@ export class MyJournalsComponent implements OnInit {
     this.posts = await this.postService.getUserPosts("journal").then(res => {
       this.dataLoaded = true;
       if(res) return res;
+    })
+    .catch(err => {
+      this.dataLoaded = true;
+      console.log(err);
     }) as PostReponse[];
   }
 

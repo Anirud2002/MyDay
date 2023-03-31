@@ -40,7 +40,7 @@ export class ProfileComponent implements OnInit {
     })
     .catch(err => {
       this.isFetchingUserDetails = false;
-      console.log(err);
+      this.accountService.backToSignInPage(); // something wrong happened, so navigate the user to signIn page again
       return null;
     });
   }
