@@ -25,8 +25,8 @@ export class ReactionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.accountService.getUser();
-    this.checkIfPostAleadyLiked();
     if(this.user){
+      this.checkIfPostAleadyLiked();
       this.isLoggedIn = true;
     }
 
