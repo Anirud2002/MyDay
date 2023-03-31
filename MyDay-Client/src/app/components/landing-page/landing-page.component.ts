@@ -67,6 +67,7 @@ export class LandingPageComponent implements OnInit {
       this.router.navigateByUrl("/signIn");
       return;
     }
+    console.log(this.editorContent)
     let fd = new FormData();
     fd.append('body', this.editorContent);
     fd.append('category', this.activeDropdownItem.toUpperCase());

@@ -18,13 +18,26 @@ export class ReactionsComponent implements OnInit {
   faHeart = faHeart;
   faComment = faComment;
   isPostLiked: boolean = false;
+  isLoggedIn: boolean = false;
   constructor(
     private reactionService: ReactionService,
     private accountService: AccountService) { }
 
   ngOnInit(): void {
     this.user = this.accountService.getUser();
-    this.checkIfPostAleadyLiked()
+    this.checkIfPostAleadyLiked();
+    if(this.user){
+      this.isLoggedIn = true;
+    }
+
+    this.accountService.currentUser$.subscribe(res => {
+      this.user = res;
+      if(this.user){
+        this.isLoggedIn = true;
+      }else{
+        this.isLoggedIn = false;
+      }
+    })
   }
 
   checkIfPostAleadyLiked(){

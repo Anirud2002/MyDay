@@ -1,6 +1,6 @@
 <app-comment-dialogue class="comment-dialogue absolute right-6 bottom-14 z-50" [post]="post"></app-comment-dialogue>
 <div class="reactions absolute flex flex-row justify-around items-center bottom-6 right-6 w-32 h-7 bg-slate-500 rounded-md z-40">
-    <button class="text-center border-r-2 w-1/2 cursor-pointer" (click)="handleLikePost(post)">
+    <button [class]="(isLoggedIn ? 'cursor-pointer' : 'cursor-not-allowed') + ' text-center border-r-2 w-1/2'" (click)="handleLikePost(post)">
         <span class="font-medium text-white mr-2">{{post.likes}}</span> <fa-icon [icon]="faHeart" [class]="isPostLiked ? 'text-white' : 'text-black'"></fa-icon>
     </button>
     <button class="text-center w-1/2 cursor-pointer" (click)="popCommentDialogue($event)">
