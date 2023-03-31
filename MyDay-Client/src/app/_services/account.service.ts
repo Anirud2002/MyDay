@@ -73,6 +73,7 @@ export class AccountService {
   }
 
   backToSignInPage(){
+    this.setCurrentUser(null);
     this.router.navigateByUrl("/signIn");
   }
 
