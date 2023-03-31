@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   userDetails: UserDetails;
   faUserCircle = faUserCircle;
   faQuestionCircle = faQuestionCircle;
-  activePage: any;
+  activePage: string = "/";
   fetchingData: boolean = false;
   constructor(private router: Router, 
     private getCurrentPageService: GetCurrentPageService,
@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
     if(this.user){ // when user refreshes their page, they are already logged in
       this.userDetails = await this.accountService.getUserDetails(this.user.userName);
     }
-    this.getCurrentPageService.getActivePageObservable().subscribe(res => {
+    this.getCurrentPageService.getActivePageObservable().subscribe((res: string) => {
       this.activePage = res;
     })
     this.subscribeToProfilePicUpdates();

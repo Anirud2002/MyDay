@@ -2,8 +2,8 @@
     <ng-container [ngSwitch]="activePage">
         <p class="text-white font-thin text-base" *ngSwitchCase="'/'">
             <span class="font-semibold block text-center mb-4 text-lg">What is MyDay?</span>
-             MyDay is simple social-media like application for users to share their day on the internet. Users can also quickly jot down their journal and share it too. People can come in this app and like or comment on other people posts. It is a very simple app and made only as a personal project to refine technical skill. 
-             It is also <a href="https://github.com/Anirud2002/MyDay" target="_blank" class="underline hover:text-black ease-in duration-100">open source</a>
+             MyDay is a simple social-media like application for users to share their day on the internet. Users can also quickly jot down their journal and share it too. People can come in this app and like or comment on other people posts. It is a very simple app and made only as a personal project to refine technical skills. 
+             It is also <a href="https://github.com/Anirud2002/MyDay" target="_blank" class="underline hover:text-black ease-in duration-100">open source</a>.
         </p>
         <button *ngSwitchCase="'/explore'" (click)="handleClick('myday')" class="p-4 rounded-md text-white">Share your Day <fa-icon [icon]="faPencil" size="lg" class="ml-4"></fa-icon></button>
         <button *ngSwitchCase="'/journals'" (click)="handleClick('journal')" class="p-4 rounded-md text-white">Write your Journal <fa-icon [icon]="faSun" size="lg" class="ml-4"></fa-icon></button>
